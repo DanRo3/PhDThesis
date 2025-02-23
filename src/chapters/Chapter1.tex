@@ -1,3 +1,262 @@
 \chapter{Fundamentos Teóricos y Contextuales de la Transformación de Datos Históricos y Sistemas Multiagentes Conversacionales}
 \label{chap:chapter1}
 
+\textbf{\LARGE Introducción}\\
+El primer capítulo de la tesis establece el marco teórico, contextual y técnico necesario para el desarrollo de un sistema multiagente conversacional capaz de interactuar con datos históricos del transporte marítimo, extraídos del Diario de la Marina, un periódico cubano de gran relevancia histórica, publicado entre 1844 y 1960. Este capítulo se organiza en torno a cinco pilares fundamentales: la fundamentación teórica del tema, un análisis del estado del arte y del mercado en el ámbito de los sistemas multiagente aplicados a este tipo de contextos, la justificación metodológica del proceso de desarrollo de software, la selección y descripción de las herramientas y tecnologías utilizadas, y la gestión de bases de datos requerida para el procesamiento de la información histórica. Como cierre, se presentan observaciones preliminares que no solo resumen los hallazgos iniciales, sino que también sientan las bases conceptuales y técnicas para los capítulos subsiguientes de la investigación.
+
+\section{Fundamentación Teórica del Tema de Investigación}\label{seq_0}
+
+\subsection{Reconocimiento Óptico de Caracteres (OCR)}\label{seq_1}
+
+El Reconocimiento Óptico de Caracteres (OCR) es una tecnología que permite convertir diferentes tipos de documentos, como imágenes escaneadas o fotografías de texto, en datos digitales editables \cite{uci2024}. Utiliza algoritmos para analizar la estructura de la imagen, identificando caracteres y palabras a partir de patrones visuales \cite{dialnet2024}. Esto facilita la digitalización de documentos impresos, permitiendo su edición y búsqueda en formato digital.
+
+\textbf{Análisis de las dificultades del OCR en el procesamiento de documentos antiguos:}
+
+El procesamiento de documentos históricos mediante OCR (\textit{Optical Character Recognition}) enfrenta desafíos técnicos y contextuales únicos debido a las características físicas, lingüísticas y estructurales de estos materiales. A continuación, se detallan las principales dificultades y sus implicaciones:
+
+\textbf{1. Degradación física del documento}
+\begin{itemize}
+	\item \textbf{Problema}:  
+	Los documentos antiguos suelen presentar daños como manchas, desvanecimiento de tinta, rasgaduras, marcas de humedad o amarillamiento del papel. Esto introduce ruido visual que dificulta la identificación precisa de caracteres.  
+	\begin{itemize}
+		\item Ejemplo: Letras borrosas o parcialmente desaparecidas en periódicos del siglo XIX como el \textit{Diario de la Marina}.  
+	\end{itemize}
+	
+	\item \textbf{Impacto en el OCR}:  
+	El software puede confundir caracteres dañados con símbolos irrelevantes o generar errores de reconocimiento (p.ej., interpretar m como rn).
+\end{itemize}
+
+\textbf{2. Variabilidad tipográfica y caligráfica}
+\begin{itemize}
+	\item \textbf{Problema}:  
+	Los documentos históricos emplean fuentes, estilos de impresión o caligrafías que difieren de los estándares modernos. Por ejemplo:  
+	\begin{itemize}
+		\item Uso de ligaduras (como r en lugar de s en textos antiguos).  
+		\item Tipografías serifadas complejas o variantes regionales (p.ej., diferencias entre imprentas cubanas y españolas del siglo XIX).  
+	\end{itemize}
+	
+	\item \textbf{Impacto en el OCR}:  
+	Los motores OCR entrenados con fuentes modernas no reconocen caracteres arcaicos, generando errores sistemáticos.
+\end{itemize}
+
+\textbf{3. Interferencias en la estructura del documento}
+\begin{itemize}
+	\item \textbf{Problema}:  
+	Los documentos antiguos suelen tener diseños complejos:  
+	\begin{itemize}
+		\item Columnas no lineales.  
+		\item Anotaciones manuscritas en los márgenes.  
+		\item Sellos, marcas de agua o ilustraciones superpuestas al texto.  
+	\end{itemize}
+	
+	\item \textbf{Impacto en el OCR}:  
+	El software puede mezclar texto principal con elementos secundarios o alterar el orden lógico de lectura (p.ej., saltar entre columnas).
+\end{itemize}
+
+\textbf{4. Calidad de digitalización}
+\begin{itemize}
+	\item \textbf{Problema}:  
+	La digitalización de documentos frágiles a menudo produce imágenes con:  
+	\begin{itemize}
+		\item Baja resolución.  
+		\item Iluminación desigual (sombras o reflejos).  
+		\item Distorsiones geométricas (páginas curvadas o dobladas).  
+	\end{itemize}
+	
+	\item \textbf{Impacto en el OCR}:  
+	Caracteres mal alineados o pixelados reducen la precisión del reconocimiento.
+\end{itemize}
+
+\textbf{5. Lenguaje y contexto histórico}
+\begin{itemize}
+	\item \textbf{Problema}:  
+	Los documentos antiguos contienen:  
+	\begin{itemize}
+		\item Léxico obsoleto (p.ej., términos marítimos en desuso).  
+		\item Abreviaturas históricas o notaciones específicas.  
+		\item Errores ortográficos originales (antes de la estandarización del idioma).  
+	\end{itemize}
+	
+	\item \textbf{Impacto en el OCR}:  
+	Los modelos lingüísticos modernos no reconocen términos arcaicos, lo que genera incoherencias en el texto digitalizado.
+\end{itemize}
+
+\textbf{6. Falta de datos de entrenamiento especializados}
+\begin{itemize}
+	\item \textbf{Problema}:  
+	Los modelos de OCR modernos se entrenan con datasets de documentos contemporáneos, no con ejemplos históricos.  
+	
+	\item \textbf{Impacto}:  
+	Limitaciones para reconocer peculiaridades de documentos antiguos, como símbolos náuticos o formatos tabulares específicos.
+\end{itemize}
+
+
+
+\textbf{Estrategias de mitigación}
+Para abordar estas dificultades, se recomienda:  
+\begin{itemize}
+	\item \textbf{Preprocesamiento de imágenes}:  
+	\begin{itemize}
+		\item Aplicar filtros de mejora de contraste (\textit{thresholding}).  
+		\item Corregir distorsiones geométricas con herramientas como \textit{ScanTailor}.  
+	\end{itemize}
+	\item \textbf{Entrenamiento personalizado}:  
+	\begin{itemize}
+		\item Crear modelos OCR específicos usando datasets de documentos históricos similares al \textit{Diario de la Marina}.  
+	\end{itemize}
+	\item \textbf{Integración de IA avanzada}:  
+	\begin{itemize}
+		\item Usar redes neuronales convolucionales (CNN) para reconocer patrones complejos.  
+		\item Implementar modelos de lenguaje largo para contextualizar términos obsoletos.  
+	\end{itemize}
+	\item \textbf{Verificación humana}:  
+	\begin{itemize}
+		\item Incluir etapas de corrección manual para validar resultados.  
+	\end{itemize}
+\end{itemize}
+
+\subsection{Sistema Multiagente (SMA)}\label{seq_2}
+
+Un sistema multiagente (SMA) es un sistema compuesto por múltiples agentes autónomos que interactúan en un entorno compartido para resolver problemas complejos o realizar tareas específicas \cite{wooldridge2009introduccion}. Cada agente actúa de manera independiente, pero también colabora o compite con otros agentes para alcanzar objetivos individuales o colectivos \cite{ferber1999multi}.
+
+\textbf{Características principales de los Sistemas Multiagente}
+\begin{itemize}[leftmargin=*]
+	\item \textbf{Autonomía}: Los agentes son entidades independientes que pueden tomar decisiones y ejecutar acciones sin intervención externa \cite{stone2000multiagent}.
+	\item \textbf{Interacción}: Los agentes se comunican entre sí mediante protocolos definidos, como el lenguaje ACL (Agent Communication Language), para coordinarse y compartir información \cite{panait2005cooperative}.
+	\item \textbf{Descentralización}: No existe un controlador central; las decisiones están distribuidas entre los agentes, lo que mejora la escalabilidad y la tolerancia a fallos \cite{russell2016artificial}.
+	\item \textbf{Adaptabilidad}: Los agentes pueden ajustar su comportamiento en función de los cambios en el entorno o en sus objetivos \cite{stone2000multiagent}.
+	\item \textbf{Proactividad y reactividad}:
+	\begin{itemize}
+		\item \textit{Proactividad}: Los agentes son capaces de planificar y actuar anticipadamente para alcanzar sus metas \cite{ferber1999multi}.
+		\item \textit{Reactividad}: Responden dinámicamente a estímulos del entorno \cite{russell2016artificial}.
+	\end{itemize}
+\end{itemize}
+
+\textbf{Elementos clave de un Sistema Multiagente}
+\begin{itemize}[leftmargin=*]
+	\item \textbf{Agentes}: Entidades autónomas con capacidades específicas, como percepción, razonamiento, aprendizaje y acción \cite{wooldridge2009introduccion}.
+	\item \textbf{Entorno}: Espacio donde los agentes operan e interactúan, que puede ser físico (robots) o virtual (software) \cite{stone2000multiagent}.
+	\item \textbf{Comunicación}: Mecanismos que permiten a los agentes intercambiar información y coordinarse, como mensajes o señales \cite{panait2005cooperative}.
+	\item \textbf{Organización}: Estructura que define las relaciones entre los agentes, ya sea jerárquica, en red o basada en roles \cite{russell2016artificial}.
+\end{itemize}
+
+\textbf{Tipos de Agentes}
+\begin{enumerate}[leftmargin=*]
+	\item \textbf{Agentes reactivos}: Responden directamente a estímulos del entorno sin realizar un razonamiento complejo \cite{ferber1999multi}.
+	\item \textbf{Agentes deliberativos}: Realizan procesos de planificación basados en modelos internos del mundo \cite{russell2016artificial}.
+	\item \textbf{Agentes híbridos}: Combinan características reactivas y deliberativas \cite{stone2000multiagent}.
+	\item \textbf{Agentes cognitivos}: Incorporan capacidades avanzadas como razonamiento lógico, aprendizaje y toma de decisiones complejas \cite{wooldridge2009introduccion}.
+\end{enumerate}
+
+\textbf{Aplicaciones de los Sistemas Multiagente}
+\begin{enumerate}[leftmargin=*]
+	\item \textbf{Logística y transporte}: Coordinación de flotas de vehículos autónomos para optimizar rutas y entregas \cite{stone2000multiagent}.
+	\item \textbf{Simulación social}: Modelado del comportamiento humano en escenarios como evacuaciones o mercados financieros \cite{panait2005cooperative}.
+	\item \textbf{Sistemas inteligentes distribuidos}: Gestión de redes eléctricas inteligentes (smart grids) o sistemas IoT \cite{russell2016artificial}.
+	\item \textbf{Juegos y entretenimiento}: Creación de personajes no jugables (NPCs) que interactúan con jugadores en entornos dinámicos \cite{ferber1999multi}.
+\end{enumerate}
+
+\subsection{Arquitecturas de Sistemas Multiagente: Características, Rendimiento y Especialidades}
+	\textbf{Clasificación y Análisis de Arquitecturas}
+	A continuación, se presenta un análisis detallado de seis arquitecturas: centralizada, descentralizada, jerárquica, basada en mercado, inteligencia de enjambre y híbrida, organizadas en tablas para mayor claridad, con características, rendimiento, especialidades y desarrollos recientes, respaldados por citas recientes.
+	
+	\textbf{Arquitectura Centralizada}
+	\begin{table}[h!]
+		\centering
+		\begin{tabular}{|p{4cm}|p{4cm}|p{4cm}|p{4cm}|}
+			\hline
+			\textbf{Características} & \textbf{Rendimiento} & \textbf{Especialidad} & \textbf{Desarrollos Recientes} \\
+			\hline
+			Un agente central controla a los demás. & Decisión rápida, fácil gestión. Punto único de fallo, no escalable. & Sistemas pequeños, control estricto, respuestas rápidas. & Manejo de más datos con computación avanzada, pero limitada en escalabilidad. \\
+			\hline
+		\end{tabular}
+		\caption{Arquitectura Centralizada}
+	\end{table}
+	\textbf{Detalles:} La arquitectura centralizada implica que un agente central toma todas las decisiones, comunicándose directamente con otros agentes. Es eficiente para sistemas pequeños, como en redes de control básico, pero su dependencia de un solo punto de fallo la hace vulnerable, como se destacó en estudios de pronósticos colaborativos \citep{palau2019multi}.\\
+	\textbf{Citas:} \citep{palau2019multi, goodai2022centralized}.
+	
+	\textbf{Arquitectura Descentralizada}
+	\begin{table}[h!]
+		\centering
+		\begin{tabular}{|p{4cm}|p{4cm}|p{4cm}|p{4cm}|}
+			\hline
+			\textbf{Características} & \textbf{Rendimiento} & \textbf{Especialidad} & \textbf{Desarrollos Recientes} \\
+			\hline
+			Sin control central, agentes autónomos. & Robusta, escalable, pero coordinación difícil. & Sistemas grandes, información parcial, flexibilidad. & Aprendizaje local mejorado con IA y machine learning. \\
+			\hline
+		\end{tabular}
+		\caption{Arquitectura Descentralizada}
+	\end{table}
+	\textbf{Detalles:} Los agentes descentralizados operan de forma autónoma, compartiendo información localmente, lo que los hace ideales para sistemas grandes como redes inteligentes. Su escalabilidad y robustez son ventajas, pero pueden surgir conflictos \citep{geeksforgeeks2018comparison}.\\
+	\textbf{Citas:} \citep{palau2019multi, geeksforgeeks2018comparison, goodai2022centralized}.
+	
+	\textbf{Arquitectura Jerárquica}
+	\begin{table}[h!]
+		\centering
+		\begin{tabular}{|p{4cm}|p{4cm}|p{4cm}|p{4cm}|}
+			\hline
+			\textbf{Características} & \textbf{Rendimiento} & \textbf{Especialidad} & \textbf{Desarrollos Recientes} \\
+			\hline
+			Agentes en jerarquía, niveles de autonomía. & Balance entre control y autonomía, manejable para sistemas grandes. & Sistemas con jerarquías naturales, planificación y ejecución. & Aplicaciones en mantenimiento predictivo y control industrial. \\
+			\hline
+		\end{tabular}
+		\caption{Arquitectura Jerárquica}
+	\end{table}
+	\textbf{Detalles:} Esta arquitectura organiza agentes en niveles, con agentes superiores controlando a los inferiores, ideal para sistemas con estructuras jerárquicas \citep{ibm_multiagent}. Es eficiente para tareas que requieren planificación estratégica \citep{palau2019multi}.\\
+	\textbf{Citas:} \citep{ibm_multiagent, wikipedia_multiagent, palau2019multi}.
+	
+	\textbf{Arquitectura Basada en Mercado}
+	\begin{table}[h!]
+		\centering
+		\begin{tabular}{|p{4cm}|p{4cm}|p{4cm}|p{4cm}|}
+			\hline
+			\textbf{Características} & \textbf{Rendimiento} & \textbf{Especialidad} & \textbf{Desarrollos Recientes} \\
+			\hline
+			Agentes negocian mediante subastas. & Asignación eficiente de recursos, fomenta competencia. & Sistemas con recursos escasos, simulaciones económicas. & Uso en gestión de cadenas de suministro y asignación distribuida. \\
+			\hline
+		\end{tabular}
+		\caption{Arquitectura Basada en Mercado}
+	\end{table}
+	\textbf{Detalles:} Los agentes interactúan como compradores y vendedores, utilizando mecanismos de mercado para asignar recursos \citep{jaimez2021towards}. Es eficiente para escenarios económicos, pero requiere un diseño de mercado robusto.\\
+	\textbf{Citas:} \citep{wikipedia_multiagent, ibm_multiagent, jaimez2021towards}.
+	
+	\textbf{Arquitectura de Inteligencia de Enjambre}
+	\begin{table}[h!]
+		\centering
+		\begin{tabular}{|p{4cm}|p{4cm}|p{4cm}|p{4cm}|}
+			\hline
+			\textbf{Características} & \textbf{Rendimiento} & \textbf{Especialidad} & \textbf{Desarrollos Recientes} \\
+			\hline
+			Agentes siguen reglas simples, interacción local. & Robusta, adaptable, resuelve problemas complejos por emergencia. & Problemas de optimización, como búsqueda de rutas. & Investigación en robótica de enjambres y agentes de IA. \\
+			\hline
+		\end{tabular}
+		\caption{Arquitectura de Inteligencia de Enjambre}
+	\end{table}
+	\textbf{Detalles:} Inspirada en colonias naturales, los agentes generan comportamientos complejos mediante interacciones locales \citep{riegler2024exploring}. Es ideal para optimización, con aplicaciones en robótica \citep{luo2021hybrid}.\\
+	\textbf{Citas:} \citep{riegler2024exploring, quora_swarm, luo2021hybrid}.
+	
+	\textbf{Arquitectura Híbrida}
+	\begin{table}[h!]
+		\centering
+		\begin{tabular}{|p{4cm}|p{4cm}|p{4cm}|p{4cm}|}
+			\hline
+			\textbf{Características} & \textbf{Rendimiento} & \textbf{Especialidad} & \textbf{Desarrollos Recientes} \\
+			\hline
+			Combina control central y autonomía local. & Balancea eficiencia y flexibilidad, escalable. & Sistemas complejos, supervisión global y autonomía local. & Uso creciente en manufactura y robótica. \\
+			\hline
+		\end{tabular}
+		\caption{Arquitectura Híbrida}
+	\end{table}
+	\textbf{Detalles:} Integra elementos de arquitecturas centralizadas y descentralizadas, ofreciendo flexibilidad para sistemas complejos \citep{smythos2024understanding}. Es útil en fábricas y vehículos autónomos \citep{palau2019multi}.\\
+	\textbf{Citas:} \citep{ibm_multiagent, smythos2024understanding, palau2019multi}.
+	
+
+	Cada arquitectura tiene fortalezas y debilidades específicas, influenciadas por el contexto de aplicación. La centralizada es eficiente para sistemas pequeños, mientras que la descentralizada y la de inteligencia de enjambre son ideales para escalabilidad y robustez. Las jerárquicas y híbridas ofrecen soluciones para sistemas complejos, y las basadas en mercado son cruciales para asignaciones económicas. Las tendencias recientes, como el uso de IA en enjambres y aprendizaje local, reflejan un enfoque hacia sistemas más adaptativos y escalables, respaldados por investigaciones de 2019 a 2024.
+	
+	Este análisis proporciona una base para seleccionar la arquitectura adecuada según las necesidades específicas, considerando factores como escalabilidad, robustez y complejidad, con referencias actualizadas para profundizar en cada enfoque.
+	
+
+
+
+
+
