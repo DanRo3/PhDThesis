@@ -1,0 +1,192 @@
+% ============================
+% CONFIGURACIÓN DEL DOCUMENTO
+% ============================
+\documentclass[spanish,authorshippage=ltd]{thesis} % Clase de documento específica para tesis
+
+
+% ============================
+% PAQUETES UTILIZADOS
+% ============================
+\usepackage{masterthesis}    % Plantilla específica para tesis
+\usepackage{titlesec}        % Personalización de títulos y secciones
+\usepackage{pgfplots}        % Gráficos en coordenadas matemáticas
+\usepackage{graphicx}        % Inclusión de imágenes
+\usepackage{appendix}        % Manejo de anexos
+\usepackage{rotating}        % Rotación de elementos
+\usepackage{tabularray}      % Tablas avanzadas
+\usepackage{lipsum}          % Texto de relleno
+\usepackage{tablefootnote}   % Notas al pie en tablas
+% Paquetes matemáticos
+\usepackage{amssymb}
+\usepackage{latexsym}
+\usepackage{amsmath}
+\usepackage{csquotes}
+
+
+% Paquetes para algoritmos
+\usepackage{algorithm}
+\usepackage{algorithmic}
+
+% Paquetes para imágenes y gráficos
+\usepackage{epsfig}          % Manejo de imágenes EPS
+\usepackage{epstopdf}        % Conversión de EPS a PDF
+\usepackage{graphics}        % Soporte adicional para gráficos
+\usepackage{ps4pdf}          % Soporte para PostScript
+\usepackage{float}           % Control de posición de imágenes
+\usepackage{pgf}             % Creación de gráficos vectoriales
+\usepackage{afterpage}       % Control de paginación
+
+% Configuración de código fuente con listings
+\usepackage{listings,newtxtt} % Resaltado de código
+\lstset{
+	extendedchars=true,
+	language=Python,
+	basicstyle=\footnotesize\ttfamily,
+	showstringspaces=false,
+	showspaces=false,
+	numbers=left,
+	numberstyle=\footnotesize,
+	numbersep=9pt,
+	tabsize=2,
+	breaklines=true,
+	showtabs=false,
+	captionpos=b,
+	basicstyle=\ttfamily, 
+	keywordstyle=\bfseries,
+	morekeywords={self,import,print},
+	xleftmargin=15pt,
+	xrightmargin=0pt,
+	emph={MyClass,__init__}
+}
+
+% ============================
+% DEFINICIÓN DE COMANDOS
+% ============================
+\newcommand\blankpage{%
+	\null
+	\thispagestyle{empty}%
+	\addtocounter{page}{-1}%
+	\newpage}
+
+% Configuración de gráficos con PGFPLOTS
+\pgfplotsset{
+	textnumber/.style={
+		/pgf/number format/.cd,
+		fixed,
+		fixed zerofill,
+		precision=4,
+		1000 sep={ },
+	},
+}
+
+% Definición de operadores matemáticos personalizados
+\newtheorem{definition}{Definición}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+
+% Formato de subpárrafos
+\titleformat{\subparagraph}
+{\normalfont\normalsize\bfseries}{\thesubparagraph}{1em}{}
+\titlespacing*{\subparagraph}{\parindent}{3.25ex plus 1ex minus .2ex}{.75ex plus .1ex}
+
+% ============================
+% INFORMACIÓN DEL DOCUMENTO
+% ============================
+\addauthor{Daniel Rojas Grass}
+\title{{\normalsize Multiagente Conversacional para la interacción con los datos del transporte marítimo recogidos en el Diario de la Marina.}}
+\ucicenter{Centro de Informatización Gobierno-Empresa}
+\facultynum{1}
+\addtutor[Tutor]{Dr.C. Orlando Grabiel Toledano López}
+\addtutor[Tutores]{MsC. Olga Yarisbel Rojas Grass}
+\addtutor[Tutores]{Ing. Keren Saray Naranjo}
+
+% ============================
+% SECCIONES INICIALES
+% ============================
+\acknowledgment{
+	Agradecimientos y cita inspiradora:
+	\begin{flushright}
+		\textbf{\textit{"La ciencia es mi vida (...) moriría por ella". Nikolái Ivánovich Vavílov}}
+	\end{flushright}
+}
+
+\abstract{Resumen de la tesis.}
+\keywords{Palabras clave}
+
+% ============================
+% ESTRUCTURA DEL DOCUMENTO
+% ============================
+\begin{document}
+	
+	% ========================
+	% PORTADA Y SECCIONES PRELIMINARES
+	% ========================
+	\begin{titlepage}
+		\begin{figure}
+			\centering
+			\includegraphics[width=0.25\linewidth]{images/uci}
+		\end{figure}
+		\centering{\textsc{\large UNIVERSIDAD DE LAS CIENCIAS INFORMÁTICAS}     \\
+			\textsc{\large CENTRO DE INFORMATIZACIÓN GOBIERNO-EMPRESA} \\
+			\textsc{\large FACULTAD DE TECNOLOGIAS LIBRES} \\}
+		\vspace{3cm}
+		\centering\textsc{\large Multiagente Conversacional para la interacción con los datos del transporte marítimo recogidos en el Diario de la Marina.\\}
+		\vspace{2cm}
+		\centering{\bfseries Tesis presentada en opción al grado científico de \\
+			Ingeniero en Ciencias Informáticas\\}
+		\vspace{2.5cm}
+		\centering{\bfseries Autor:\\}
+		\centering{Daniel Rojas Grass\\}
+		\vspace{0.5cm}
+		\centering{\bfseries Tutores:\\}
+		\centering{
+			Dr.C. Orlando Grabiel Toledano López\\
+			MsC. Olga Yarisbel Rojas Grass\\
+			Ing. Keren Saray Naranjo\\
+		}	
+		\vspace{2cm}
+		\centering{ \bfseries La Habana, febrero del 2025}
+		
+	\end{titlepage}
+	
+	\pagenumbering{roman}
+	\input{src/statement/statement.tex}
+	\input{src/contact/contact.tex}
+	\input{src/acknowledgment/acknowledgment.tex}
+	\input{src/dedication/dedication.tex}
+	\input{src/tutorop/tutor.tex}
+	\input{src/resumen/resumen.tex}
+	\input{src/abstract/abstract.tex}
+	\newpage
+	
+	
+	% ============================
+	% CAPÍTULOS DE LA TESIS
+	% ============================
+	\pagenumbering{arabic}
+	\input{src/introduction/Introduction} % Introducción
+	\newpage
+	\vspace*{\fill} % Espacio flexible para centrar verticalmente
+	\textsc{\Large \bfseries Capítulo 1.\\ }
+	\Large{Fundamentos Teóricos y Contextuales de la Transformación de Datos Históricos y Sistemas Multiagentes Conversacionales}
+	\vspace*{\fill} % Espacio flexible para centrar verticalmente
+	\thispagestyle{empty}
+	\addtocounter{page}{-1}
+	\newpage
+	\input{src/chapters/Chapter1} % Capítulo 1
+	\input{src/conclusions/Conclusions} % Conclusiones
+	\input{src/recommendation/Recommendations} % Recomendaciones
+	
+	
+	% ============================
+	% ANEXOS Y REFERENCIAS
+	% ============================
+	\appendix
+	\input{Anexos/Anexos} % Anexos
+	
+	% Bibliografía
+	\renewcommand\bibname{Referencias bibliográficas}
+	\bibliographystyle{IEEEtran}
+	\bibliography{library}\label{bibliography}
+	
+\end{document}

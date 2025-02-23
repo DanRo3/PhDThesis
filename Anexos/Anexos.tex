@@ -1,0 +1,30 @@
+\appendixes
+
+\renewcommand{\appendixname}{Anexo}
+\renewcommand{\appendixtocname}{Anexos}
+\renewcommand{\appendixpagename}{Anexos}
+%\newcounter{anexo1}
+%\setcounter{anexo1}{1}
+\begin{addendum}
+	
+	\chapter{Notación matemática. Un ejemplo de Anexo}
+	
+	Para lograr una descripción homogénea de los principales conceptos y definiciones se debe establecer la notación básica de modo que se comprendan los referentes teóricos y las contribuciones de la presente investigación. A continuación se detallan elementos generales de la notación matemática a utilizar en este trabajo:
+	
+	\begin{itemize}
+		\item $V$: Vocabulario de entrada.
+		\item $N$: Cantidad de ejemplos de entrenamiento.
+		\item $d$: Dimensión o cantidad de rasgos de un ejemplo de entrenamiento. En una entrada de texto puede representar el número de \textit{tokens} que conforma el documento de entrada.
+		\item $d_{model}$: Dimensión del vector \textit{embedding} que representa una palabra o \textit{token}.
+		\item $\mathbf{x}$: Vector que representa un ejemplo de entrenamiento, tal que $\mathbf{x}\in {\rm I\!R}^{d}$
+		\item $X$: Conjunto de entrenamiento, tal que $X=\{\mathbf{x}_1,\mathbf{x}_2,\mathbf{x}_3,..., \mathbf{x}_N\}$.
+		\item $W$: Matriz que representa los parámetros de una ANN, tal que $W \in {\rm I\!R}^{A \times K}$, siendo $A$ el número de filas y $K$ el número de columnas.
+		\item $W_{i:}$ Representa el vector de la i-ésima fila de la matriz $W$.
+		\item $W_{:j}$ Representa el vector de la j-ésima columna de la matriz $W$.
+		\item $w_{i,j}$ Elemento de la matriz $W$ que se encuentra en la i-ésima fila y j-ésima columna, tal que $0 \le i < A$ y $0 \le j < K$.
+		\item $F(W,X)$: Función objetivo de una ANN a optimizar de forma tal que $F(.):{\rm I\!R}^{A \times K} \rightarrow {\rm I\!R}$.
+	\end{itemize}
+	
+	
+		
+\end{addendum}

@@ -1,0 +1,86 @@
+\introduction
+
+\parskip 10pt \spacing{1.5} \setlength{\parindent}{0pc}
+
+La digitalización masiva de documentos históricos ha transformado el acceso a fuentes de información que, durante siglos, permanecieron confinadas a archivos físicos. Este proceso ha dado lugar a una explosión de datos digitales provenientes de colecciones tan diversas como periódicos históricos, manuscritos y registros oficiales, incluyendo ejemplos emblemáticos como el Diario de la Marina (Cuba, 1844–1960), un testimonio clave de la historia política y cultural del Caribe. Sin embargo, esta transición del medio impreso al digital no ha estado exenta de desafíos. La conversión de estos materiales ha generado grandes volúmenes de datos no estructurados, caracterizados por su heterogeneidad, falta de metadatos estandarizados y dificultades para su procesamiento automatizado. Este fenómeno plantea problemas tanto técnicos —como la preservación a largo plazo y la interoperabilidad de formatos— como conceptuales —como la extracción de conocimiento significativo y su contextualización para fines académicos y culturales—.
+En un mundo donde la cantidad de información digital crece exponencialmente, la incapacidad de estructurar y analizar estos datos de manera eficiente limita su potencial como recurso para la investigación histórica, el análisis lingüístico y la comprensión de patrones sociales del pasado. Estudios recientes subrayan la necesidad de desarrollar enfoques innovadores que no solo preserven estos acervos digitales, sino que también los transformen en repositorios accesibles y funcionalmente útiles. No obstante, las técnicas tradicionales de procesamiento de datos, basadas en métodos manuales o semi-automatizados, resultan insuficientes frente a la escala y complejidad de estas colecciones. La falta de estructura inherente a los documentos digitalizados —a menudo escaneados como imágenes o textos sin formato— obstaculiza la aplicación de herramientas analíticas avanzadas, dejando gran parte de este conocimiento histórico en un estado de latencia digital.
+En este contexto, la inteligencia artificial emerge como una solución prometedora para superar estas limitaciones. En particular, los modelos de lenguaje de gran escala (LLMs), gracias a su capacidad para interpretar y generar texto con un alto grado de sofisticación, ofrecen una oportunidad única para abordar la problemática de los datos históricos no estructurados. Sin embargo, su implementación aislada no basta para resolver la diversidad de tareas involucradas, como la transcripción, categorización, enriquecimiento semántico y búsqueda contextual. Es aquí donde un enfoque multiagente, impulsado por la colaboración de múltiples LLMs especializados, puede marcar una diferencia significativa. Este tipo de sistema tiene el potencial de coordinar esfuerzos entre agentes diseñados para tareas específicas, optimizando así la transformación de datos brutos en conocimiento estructurado y accesible.\\
+El Diario de la Marina, publicado en La Habana entre 1844 y 1960, se erigió como un referente clave de la prensa cubana, autodenominado «El decano de la prensa cubana» tras suceder a El Noticioso y Lucero de La Habana. Este periódico de carácter conservador no solo documentó eventos políticos y sociales de su tiempo, sino que también registró información valiosa sobre actividades económicas, como el transporte marítimo, un pilar fundamental de la historia comercial y cultural de Cuba. La digitalización de sus páginas, impulsada por la necesidad de preservar este patrimonio histórico, ha permitido rescatar y almacenar de manera segura contenidos que, de otro modo, podrían haberse perdido debido al deterioro físico de los ejemplares originales. Técnicas como el Reconocimiento Óptico de Caracteres (OCR) han facilitado la conversión de imágenes escaneadas en datos digitales editables y buscables, mejorando la accesibilidad a esta riqueza informativa. Sin embargo, este proceso presenta limitaciones significativas. Factores como la diversidad de tipografías antiguas, la calidad variable de impresión y el estado de conservación de los documentos generan datos no estructurados, con errores de transcripción y sin una organización clara. En el caso específico de los datos relacionados con el transporte marítimo —como rutas, cargamentos, puertos y fechas—, esta falta de estructura dificulta su análisis sistemático y su uso en investigaciones históricas o económicas. Por ende, la mera digitalización no basta: se requieren procesos avanzados de interpretación y contextualización para transformar estos datos en conocimiento útil, especialmente cuando se busca responder a consultas específicas de los usuarios.
+
+\textbf{Planteamiento del problema científico}
+
+A partir de la situación problemática descrita se identifica el siguiente \textbf{problema científico}:
+
+\textit{¿Cómo interpretar y contextualizar los datos no estructurados del transporte marítimo recogidos en el Diario de la Marina, a partir de consultas del usuario expresadas en lenguaje natural?}
+
+Este desafío implica superar las barreras de la imprecisión del OCR, la ausencia de metadatos estandarizados y la complejidad de extraer significado de textos históricos, todo ello mientras se habilita una interacción intuitiva y efectiva con los usuarios mediante un sistema conversacional.
+
+Con lo anterior, se define como \textbf{objeto de estudio} la visualización de la transformación de datos aplicando técnicas de inteligencia artificial. Como \textbf{campo de acción} los sistemas multiagentes para la transformación de datos no estructurados en conocimiento estructurado.
+
+\textbf{Objetivo general de la investigación}
+
+\textit{Desarrollar un sistema multiagente conversacional que permita interpretar y contextualizar automáticamente los datos no estructurados del transporte marítimo recogidos en el Diario de la Marina, facilitando respuestas precisas y relevantes a consultas expresadas en lenguaje natural por los usuarios.}
+
+\textbf{Objetivos específicos}
+
+A partir del planteamiento del objetivo de investigación, se definen los siguientes objetivos específicos:
+	\begin{itemize}
+		\item Identificar los referentes teóricos y metodológicos sobre la transformación de información no estructurada a lenguaje natural, revisando enfoques de inteligencia artificial y sistemas conversacionales aplicados a datos históricos.
+		\item Realizar la identificación de requisitos, análisis y diseño del sistema multiagente conversacional, definiendo sus componentes, interacciones y flujos de trabajo.
+		\item Implementar un sistema multiagente conversacional que contribuya a la transformación y el análisis de la información no estructurada extraída del Diario de la Marina, enfocándose en los datos del transporte marítimo.
+		\item Validar el correcto funcionamiento del sistema multiagente conversacional, aplicando métricas de evaluación y pruebas de software para garantizar su calidad, precisión y usabilidad.
+	\end{itemize}
+	
+\textbf{Hipótesis científica}
+
+La hipotesis va aqui .....
+
+\textbf{Métodos de Investigación}
+	
+	Para llevar a cabo esta investigación se aplicaron métodos teóricos y empíricos de la investigación científica, los cuales se relacionan con el desarrollo de un sistema multiagente conversacional para la transformación e interacción con datos históricos. A continuación, se detallan:
+	
+\textbf{Métodos Teóricos}
+	
+	\begin{enumerate}
+		\item \textbf{Analítico-sintético.} Permitió analizar, sintetizar y evaluar el proceso de transformación de datos no estructurados provenientes del \textit{Diario de la Marina}, desde un enfoque centrado en la aplicación de técnicas de procesamiento de lenguaje natural y sistemas multiagentes. Con este método se identificó la esencia del problema de investigación, analizando los componentes del proceso de digitalización, las limitaciones de las técnicas actuales de reconocimiento óptico de caracteres (OCR) y las necesidades de contextualización de los datos del transporte marítimo para su uso efectivo.
+		
+		\item \textbf{Hipotético-deductivo.} Se empleó para identificar las variables clave involucradas en la interacción conversacional con datos históricos y sus interrelaciones, especialmente aquellas relacionadas con el diseño de sistemas multiagentes y el procesamiento de consultas en lenguaje natural. Este método facilitó la formulación de supuestos sobre cómo los agentes colaborativos pueden mejorar la interpretación y estructuración de la información no estructurada.
+		
+		\item \textbf{Histórico-lógico.} Se aplicó para revisar la evolución de las tecnologías de digitalización de documentos históricos, el desarrollo de sistemas conversacionales basados en inteligencia artificial y el uso de datos del transporte marítimo en contextos históricos. Este enfoque permitió reconocer los avances teórico-prácticos en el área, así como las limitaciones actuales en la gestión de datos no estructurados extraídos de fuentes como el \textit{Diario de la Marina}.
+	\end{enumerate}
+	
+	\subsection*{Métodos Empíricos}
+	
+	\begin{enumerate}
+		\item \textbf{Análisis documental.} Consistió en la revisión de la literatura relacionada con la transformación de datos no estructurados, el diseño de sistemas multiagentes y las aplicaciones de modelos de lenguaje en la interpretación de textos históricos. Incluyó el estudio de enfoques, algoritmos y herramientas de inteligencia artificial utilizadas en tareas de procesamiento de lenguaje natural y extracción de conocimiento a partir de documentos digitalizados.
+		
+		\item \textbf{Experimental.} Se empleó para comprobar los resultados del sistema multiagente conversacional desarrollado, evaluando su capacidad para interpretar consultas en lenguaje natural y contextualizar los datos del transporte marítimo del \textit{Diario de la Marina}. Se compararon los resultados obtenidos mediante métricas estándares de evaluación (como precisión, recall y F1-score), ajustadas a la calidad de las respuestas generadas y la satisfacción del usuario.
+	\end{enumerate}
+	
+	
+\textbf{Estructura del documento}
+
+El documento está organizado en introducción, tres capítulos, conclusiones, recomendaciones, bibliografía y anexos. A continuación se describe el contenido abordado en cada capítulo:
+
+\begin{itemize}
+	\item \textbf{Capítulo 1.Fundamentos Teóricos y Contextuales de la Transformación de Datos Históricos y Sistemas Multiagentes Conversacionales}:
+	Se realiza un estudio y análisis de los diferentes métodos y técnicas para el procesamiento de datos no estructurados provenientes de documentos históricos, con énfasis en la digitalización del Diario de la Marina. Se analizan los fundamentos teóricos relacionados con la transformación de datos mediante técnicas de inteligencia artificial, centrándose en el uso de sistemas multiagentes y modelos de lenguaje para interpretar textos históricos. De igual manera, se revisan los principales referentes teóricos sobre el procesamiento de lenguaje natural (PLN), la estructuración de información no estructurada y la interacción conversacional con usuarios. Finalmente, se evalúan los desafíos específicos asociados a los datos del transporte marítimo (rutas, puertos, fechas) extraídos de fuentes digitalizadas, identificando las limitaciones de las técnicas actuales como el Reconocimiento Óptico de Caracteres (OCR).
+	\item \textbf{Capítulo 2.Diseño e Implementación del Sistema Multiagente Conversacional}:
+	En este capítulo, se desarrolla un sistema multiagente conversacional diseñado para interpretar y contextualizar automáticamente los datos no estructurados del transporte marítimo del Diario de la Marina. Se modelan y describen las arquitecturas de los agentes involucrados, incluyendo un agente de preprocesamiento (corrección de errores de OCR), un agente de contextualización (enriquecimiento semántico) y un agente conversacional (interacción con el usuario en lenguaje natural). Se analiza el costo computacional del sistema desarrollado y sus variantes, determinadas por las tecnologías y algoritmos empleados en cada fase (como modelos de lenguaje preentrenados y frameworks de multiagentes). Finalmente, se presentan las conclusiones parciales del capítulo, destacando las decisiones de diseño y los resultados preliminares de la implementación.
+	\item \textbf{Capítulo 3.Validación y Análisis de Resultados}:
+	Se desarrolla un conjunto de experimentos utilizando una muestra representativa de datos digitalizados del Diario de la Marina, enfocándose en registros del transporte marítimo, y se discuten los principales resultados en cuanto a la eficacia del sistema multiagente al procesar consultas en lenguaje natural. Con la arquitectura óptima seleccionada, se evalúa el sistema propuesto en escenarios prácticos, como la respuesta a preguntas sobre rutas marítimas, puertos y fechas históricas. Primero, se valida el sistema con una muestra controlada de datos extraídos del periódico y se comparan los resultados con enfoques tradicionales del estado del arte (por ejemplo, búsquedas manuales o sistemas no conversacionales). Se realiza un análisis exploratorio de los datos históricos, incluyendo preprocesamiento, corrección de errores y extracción de características relevantes para estructurar la información. Finalmente, se presentan los resultados experimentales, evaluando métricas como precisión, recall y satisfacción del usuario, y se discuten las implicaciones para la investigación histórica y la gestión de patrimonios digitales.
+\end{itemize}
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
