@@ -6,17 +6,45 @@
 Este capítulo presenta la propuesta de solución para abordar el problema identificado en la investigación: la interpretación y contextualización de datos no estructurados del transporte marítimo extraídos del Diario de la Marina (1844–1960). Aquí se detallan los requisitos funcionales (RF) y no funcionales (RNF) que el sistema debe cumplir, así como una descripción exhaustiva de la solución propuesta, incluyendo las historias de usuario y las tarjetas CRC (Clase-Responsabilidad-Colaboración). Además, se analizan los patrones arquitectónicos y de diseño seleccionados para estructurar la aplicación, junto con las buenas prácticas de codificación asociadas a las tecnologías empleadas. Finalmente, se incluyen el diagrama de clases y el diagrama de componentes, que ilustran los elementos clave que integran esta propuesta. Este capítulo sienta las bases técnicas y conceptuales para la implementación y validación descritas en capítulos posteriores, alineándose con los objetivos específicos de diseño e implementación establecidos en la introducción.
 
 \section{Descripción de la Propuesta de Solución}
-La solución propuesta consiste en el desarrollo de un sistema multiagente conversacional basado en inteligencia artificial (IA) y procesamiento de lenguaje natural (PLN), diseñado específicamente para transformar datos históricos no estructurados en conocimiento estructurado y accesible. Este sistema se centra en el análisis del transporte marítimo documentado en el Diario de la Marina, abarcando el período de 1844 a 1960, y busca superar las limitaciones identificadas en el estado del arte, como la falta de contextualización histórica y la incapacidad de las herramientas actuales para manejar textos antiguos con precisión. Para ello, integra modelos de lenguaje de gran escala (LLMs), técnicas de Recuperación Aumentada por Generación (RAG), y una arquitectura multiagente que coordina tareas especializadas.
-El sistema permite a los usuarios interactuar mediante consultas en lenguaje natural, obteniendo respuestas precisas y contextualizadas que combinan texto y, cuando sea necesario, representaciones gráficas de patrones marítimos (e.g., rutas, cargamentos, frecuencias de puertos). Esta funcionalidad no solo facilita la comprensión de las dinámicas comerciales del Caribe en el período estudiado, sino que también optimiza la investigación histórica al automatizar la extracción y análisis de información. Al hacerlo, contribuye a la preservación del patrimonio documental al hacer accesible un recurso que, de otro modo, permanecería confinado a archivos físicos o datos digitales desorganizados.\\
-\begin{figure}[h]
+\label{sec:propuesta_solucion}
+
+La solución propuesta aborda la interacción con los datos históricos del transporte marítimo del \textit{Diario de la Marina} (1844-1960) mediante el desarrollo de una aplicación web moderna, separando claramente las responsabilidades entre la interfaz de usuario, la lógica de negocio y el procesamiento avanzado de lenguaje natural. Esta arquitectura se compone de tres elementos principales: un \textit{frontend} desarrollado con \textbf{React js}, un \textit{backend} API construido con \textbf{Django REST Framework}, y un microservicio dedicado que alberga el \textbf{sistema multiagente conversacional} basado en inteligencia artificial y que se expone con una api creada con \textbf{FastApi}. Esta elección arquitectónica promueve la escalabilidad, la mantenibilidad y la separación de intereses, permitiendo que cada componente evolucione de forma independiente.
+
+% Incluye aquí tu nueva figura de arquitectura web
+\begin{figure}[htbp] % h: here, t: top, b: bottom, p: page of floats - ajusta según necesidad
 	\centering
-	\includegraphics[width=1\textwidth]{images/mas}
-	\caption{Esquema general de la propuesta de solución.}
-	\label{fig:Propuesta de solución}
-\end{figure}\\
-La Figura \ref{fig:Propuesta de solución} ilustra el flujo de trabajo del sistema multiagente. El proceso inicia cuando el usuario introduce una consulta en lenguaje natural (e.g., “¿Cuáles fueron los principales puertos de exportación en 1880?”). Esta consulta es recibida por el Agente de Moderación (proxy), que actúa como coordinador central. Este agente extrae palabras clave (e.g., “puertos”, “exportación”, “1880”) y determina la intención del usuario (e.g., consulta informativa o solicitud de análisis estadístico). A continuación, el Agente de Moderación delega la tarea al Agente Recuperador de Información, que convierte las palabras clave en embeddings utilizando un modelo preentrenado y consulta una base de datos vectorial para recuperar fragmentos relevantes del \textit{Diario de la Marina}. Los datos recuperados —como textos sobre actividades portuarias— se devuelven al Agente de Moderación.
-Posteriormente, el Agente de Moderación envía la información recuperada, junto con la intención del usuario, al Agente Contextualizador . Este agente evalúa si la consulta requiere una respuesta textual, estadísticas o ambas. Si se necesitan estadísticas (e.g., un gráfico de puertos más activos), genera instrucciones que se envían al Agente Python . Este agente crea un script en Python para procesar los datos y producir visualizaciones (e.g., un gráfico de barras), el cual es validado por una herramienta de análisis de código. Una vez aprobado, una segunda herramienta convierte el script en una imagen gráfica que se retorna al Agente Contextualizador. Si no se requieren gráficos, el Agente Contextualizador enriquece la información con contexto histórico (e.g., eventos económicos relevantes de 1880) utilizando técnicas RAG y datos externos.
-Antes de entregar la respuesta al usuario, el Agente Validación revisa la coherencia y precisión del contenido generado, comparándolo con la consulta original para evitar inconsistencias o alucinaciones. Finalmente, el Agente de Moderación ensambla la respuesta validada —que puede incluir texto, imágenes o ambos— y la presenta al usuario en un formato adecuado, completando el ciclo de interacción. Este diseño multiagente asegura una división eficiente de tareas, aprovechando las fortalezas de cada componente para abordar la complejidad de los datos históricos.
+	% Asegúrate de que la ruta 'images/arquitectura_web.png' sea correcta
+	\includegraphics[width=0.9\textwidth]{images/micro.png} 
+	\caption{Arquitectura de la propuesta de solución.}
+	\label{fig:arquitectura_web}
+\end{figure}
+
+La Figura \ref{fig:arquitectura_web} ilustra la arquitectura general. El flujo de interacción del usuario es el siguiente:
+
+\begin{enumerate}
+	\item El usuario interactúa con la interfaz web desarrollada en \textbf{React}, donde ingresa sus consultas en lenguaje natural (e.g., “¿Qué barcos llegaron de Europa en enero de 1850?”).
+	\item El frontend React envía la consulta del usuario, típicamente como una petición HTTP (e.g., POST con JSON), al \textit{endpoint} correspondiente del \textbf{backend DRF}.
+	\item El backend DRF actúa como orquestador principal de la lógica de negocio. Puede gestionar autenticación de usuarios (si aplica), almacenar historial de conversaciones, y, crucialmente, procesa la solicitud entrante. Determina que la consulta requiere procesamiento por IA y la reenvía al \textbf{microservicio del MAS} a través de una llamada API interna (e.g., HTTP/JSON o gRPC).
+	\item El \textbf{microservicio MAS} recibe la consulta y ejecuta su lógica interna basada en agentes para procesar el lenguaje natural, buscar en la base de datos vectorial del \textit{Diario de la Marina}, contextualizar la información y generar la respuesta (texto y/o imágenes).
+	\item El microservicio MAS devuelve el resultado procesado (e.g., un objeto JSON con texto y/o datos de imagen) al backend DRF.
+	\item El backend DRF recibe la respuesta del microservicio, la formatea si es necesario (e.g., preparándola para la visualización), y la envía de vuelta al frontend React.
+	\item Finalmente, el frontend \textbf{React} recibe la respuesta del backend y la presenta al usuario de forma clara y ordenada en la interfaz de chat, mostrando el texto y/o las imágenes generadas.
+\end{enumerate}
+
+Dentro del \textbf{microservicio del MAS} opera la lógica conversacional avanzada, cuyo flujo interno se detalla a continuación y se ilustra en la Figura \ref{fig:flujo_mas_interno}. Este microservicio está diseñado específicamente para transformar los datos históricos no estructurados en conocimiento estructurado y accesible, superando las limitaciones de herramientas previas mediante la integración de LLMs, RAG y una coordinación eficiente entre agentes especializados.
+
+% Renombra la etiqueta de tu figura original y ajusta la referencia
+\begin{figure}[htbp] 
+	\centering
+	% Asegúrate de que la ruta 'images/mas.png' sea correcta
+	\includegraphics[width=1\textwidth]{images/mas.png} 
+	\caption{Flujo Interno del Microservicio Multiagente Conversacional.}
+	\label{fig:flujo_mas_interno} % Nueva etiqueta para la figura original
+\end{figure}
+
+El proceso interno del microservicio (Figura \ref{fig:flujo_mas_interno}) inicia cuando recibe una consulta del backend DRF. Esta consulta es manejada por el \textbf{Agente de Moderación (proxy)}, que actúa como coordinador central dentro del microservicio. Este agente extrae palabras clave (e.g., “barcos”, “Europa”, “enero 1850”) y determina la intención del usuario. A continuación, delega la tarea al \textbf{Agente Recuperador de Información}, que convierte las palabras clave en embeddings y consulta la base de datos vectorial especializada para recuperar fragmentos relevantes del \textit{Diario de la Marina}. Los datos recuperados se devuelven al Agente de Moderación. Posteriormente, el Agente de Moderación envía la información recuperada, junto con la intención, al \textbf{Agente Contextualizador}. Este agente evalúa si se necesita una respuesta textual, estadísticas gráficas o ambas. Si se requieren gráficos (e.g., un gráfico de la frecuencia de llegada de barcos por mes), genera instrucciones que se envían al \textbf{Agente Python}. Este agente crea un script Python para generar la visualización, valida su corrección y lo convierte en una imagen. La imagen resultante se retorna al Agente Contextualizador. Si no se requieren gráficos, el Agente Contextualizador enriquece la información textual con contexto histórico relevante usando técnicas RAG. Antes de enviar la respuesta final de vuelta al backend DRF, el \textbf{Agente Validación} revisa la coherencia y precisión del contenido generado (texto y/o imagen), comparándolo con la consulta original. Finalmente, el Agente de Moderación ensambla la respuesta validada y la retorna como salida del microservicio. 
+
+Esta arquitectura desacoplada, combinando una interfaz web moderna, un backend robusto y un microservicio especializado en IA, no solo facilita la interacción del usuario y la gestión de datos, sino que también optimiza la investigación histórica, contribuye a la preservación del patrimonio documental y permite escalar los componentes de IA de forma independiente.
 
 
 \section{Análisis de requisitos}
@@ -42,59 +70,64 @@ Los requisitos funcionales son enunciados acerca de servicios que el sistema deb
 
 A continuación, se describen los requisitos funcionales específicos para el sistema multiagente conversacional propuesto:
 
-\begin{longtable}{@{}l >{\raggedright\arraybackslash}p{4cm} >{\raggedright\arraybackslash}p{7cm} l l@{}} % Reduced width slightly for Description, added last 'l'
-	\caption{Tabla de Requisitos Funcionales (RF)} \label{tab:requisitos_funcionales_con_prioridad} \\ 
+\begin{longtable}{@{}l >{\raggedright\arraybackslash}p{4.5cm} >{\raggedright\arraybackslash}p{6.5cm} l l@{}} % Ajustados anchos
+	\caption{Tabla de Requisitos Funcionales (RF)} \label{tab:requisitos_funcionales_final} \\ 
 	\toprule
-	\textbf{ID} & \textbf{Nombre} & \textbf{Descripción} & \textbf{Complejidad} & \textbf{Prioridad} \\ % Added Prioridad Header
+	\textbf{ID} & \textbf{Nombre} & \textbf{Descripción} & \textbf{Complejidad} & \textbf{Prioridad} \\ 
 	\midrule
-	\endfirsthead % Encabezado para la primera página de la tabla
-	\toprule
-	\textbf{ID} & \textbf{Nombre} & \textbf{Descripción} & \textbf{Complejidad} & \textbf{Prioridad} \\ % Added Prioridad Header
-	\midrule
-	\endhead % Encabezado para las páginas siguientes
+	\endfirsthead 
 	
-	\endfoot % Pie de página para páginas intermedias
+	\caption[]{Tabla de Requisitos Funcionales (RF) (Continuación)} \\ 
+	\toprule
+	\textbf{ID} & \textbf{Nombre} & \textbf{Descripción} & \textbf{Complejidad} & \textbf{Prioridad} \\ 
+	\midrule
+	\endhead 
 	
 	\bottomrule
-	\endlastfoot % Pie de página para la última página
+	\multicolumn{5}{r@{}}{\textit{Continúa en la siguiente página...}} \\ 
+	\endfoot 
 	
-	% --- Requisitos ---
-	\textbf{RF1} & Permitir entrada de consulta & Permitir al usuario ingresar consultas utilizando lenguaje natural en formato de texto a través de la interfaz de chat. & Baja & Alta \\ % Added Priority
-	\textbf{RF2} & Mostrar respuestas & Mostrar las respuestas generadas por el sistema (texto y/o imágenes) en la interfaz de chat de forma clara y ordenada. & Media & Alta \\ % Added Priority
-	\textbf{RF3} & Limpiar chat & Permitir al usuario limpiar el historial de la conversación actual en la interfaz. & Baja & Baja \\ % Added Priority
-	\midrule
+	\bottomrule
+	\endlastfoot 
 	
-	\textbf{RF4} & Recibir consulta & Recibir y registrar la consulta textual ingresada por el usuario (manejado por el Agente Moderador). & Alta & Alta \\ % Added Priority
-	\textbf{RF5} & Extraer palabras clave & Analizar la consulta para extraer palabras clave relevantes (manejado por el Agente Moderador). & Alta & Alta \\ % Added Priority
-	\textbf{RF6} & Identificar intención & Identificar la intención principal del usuario a partir de la consulta (manejado por el Agente Moderador). & Alta & Alta \\ % Added Priority
-	\textbf{RF7} & Dirigir consulta & Dirigir la consulta procesada (palabras clave, intención) al agente correspondiente (del Agente Moderador al Agente recuperador de información. & Media & Media \\ % Added Priority
-	\midrule
-	
-	\textbf{RF8} & Convertir a embeddings & Convertir las palabras clave de la consulta en representaciones vectoriales (embeddings) (manejado por el Agente recuperador de información). & Alta & Alta \\ % Added Priority
-	\textbf{RF9} & Consultar BD vectorial & Consultar la base de datos vectorial utilizando los embeddings para encontrar fragmentos de información histórica pertinentes (manejado por el Agente recuperador de información). & Alta & Alta \\ % Added Priority
-	\textbf{RF10} & Devolver información & Recuperar y devolver los fragmentos de información más relevantes encontrados al agente coordinador (del Agente recuperador de información al Agente Moderador). & Media & Media \\ % Added Priority
-	\midrule
-	
-	\textbf{RF11} & Recibir información e intención & Recibir la información recuperada y la intención del usuario (manejado por el Agente Contextualizador). & Alta & Alta \\ % Added Priority
-	\textbf{RF12} & Sintetizar y contextualizar & Sintetizar y contextualizar la información recuperada para que se ajuste a la pregunta original del usuario (manejado por el Agente Contextualizador). & Alta & Alta \\ % Added Priority
-	\textbf{RF13} & Determinar necesidad de gráficos & Determinar si la respuesta requiere la generación de análisis estadísticos o representaciones gráficas (manejado por el Agente Contextualizador). & Media & Media \\ % Added Priority
-	\textbf{RF14} & Generar indicaciones para gráficos & Generar las indicaciones necesarias si se requiere una visualización y enviarlas al agente correspondiente (manejado por el Agente Contextualizador). & Alta & Alta \\ % Added Priority (High if graphics are core)
-	\midrule
-	
-	\textbf{RF15} & Recibir datos para gráficos & Recibir los datos y las indicaciones para la generación de gráficos (manejado por el Agente Python). & Media & Media \\ % Added Priority
-	\textbf{RF16} & Generar script de visualización & Generar un script (ej. Python) capaz de producir la visualización solicitada (manejado por el Agente Python). & Alta & Alta \\ % Added Priority
-	\textbf{RF17} & Validar script & Validar la corrección del script generado utilizando una herramienta externa/interna (manejado por el Agente Python). & Alta & Alta \\ % Added Priority
-	\textbf{RF18} & Ejecutar script y generar imagen & Ejecutar el script validado para generar la representación gráfica como un archivo de imagen (manejado por el Agente Python). & Alta & Alta \\ % Added Priority
-	\textbf{RF19} & Devolver imagen & Devolver la imagen generada al agente que solicitó la visualización (del Agente Python al Agente Contextualizador). & Media & Media \\ % Added Priority
-	\midrule
-	
-	\textbf{RF20} & Integrar texto y gráficos & Integrar la información textual contextualizada con las representaciones gráficas generadas (si existen) para formar una respuesta preliminar (manejado por el Agente Contextualizador). & Alta & Alta \\ % Added Priority
-	\textbf{RF21} & Enviar a validación & Enviar la respuesta preliminar al agente de validación (manejado por el Agente de Validación). & Media & Media \\ % Added Priority
-	\textbf{RF22} & Validar coherencia & Validar la coherencia, precisión y relevancia de la respuesta generada en comparación con la consulta original (manejado por el Agente de Validación). & Alta & Alta \\ % Added Priority
-	\textbf{RF23} & Ensamblar respuesta final & Ensamblar la respuesta final validada (texto y/o imagen) (manejado por el Agente Moderador). & Alta & Alta \\ % Added Priority
-	\midrule
-	
-	\textbf{RF24} & Presentar respuesta final & Presentar la respuesta final validada al usuario a través de la interfaz de chat. & Baja & Media \\ % Added Priority
+	% --- Gestión de Usuarios y Autenticación ---
+	\textbf{RF1} & Registrar nuevo usuario & Permitir a un visitante registrarse proporcionando datos válidos (e.g., email, contraseña), que serán almacenados de forma segura por el backend. & Media & Alta \\ 
+	\textbf{RF2} & Autenticar usuario existente & Permitir a un usuario registrado iniciar sesión proporcionando credenciales válidas, verificadas por el backend, generando una sesión activa. & Media & Alta \\ 
+	\textbf{RF3} & Cerrar sesión de usuario & Permitir al usuario autenticado finalizar su sesión activa en el sistema. & Baja & Media \\ 
+	\textbf{RF4} & Proteger acceso a funcionalidades & Asegurar que solo los usuarios autenticados puedan acceder a las funcionalidades de chat, historial y consulta de datos históricos. & Media & Alta \\ 
+	% --- Gestión de Conversaciones ---
+	\textbf{RF5} & Iniciar nueva conversación & Permitir al usuario autenticado crear una nueva sesión de chat independiente de las anteriores. & Baja & Alta \\ % NUEVO
+	\textbf{RF6} & Listar conversaciones anteriores & Mostrar al usuario autenticado una lista de sus conversaciones previas para poder seleccionarlas y revisarlas. & Media & Media \\ % NUEVO
+	\textbf{RF7} & Seleccionar conversación existente & Permitir al usuario seleccionar una conversación de su historial para visualizarla y continuarla. & Media & Media \\ % NUEVO
+	\textbf{RF8} & Eliminar conversación del historial & Permitir al usuario eliminar permanentemente una conversación específica de su historial. & Media & Baja \\ % NUEVO
+	\textbf{RF9} & Persistir historial de conversaciones & El backend debe almacenar de forma persistente las consultas y respuestas asociadas a cada conversación de cada usuario. & Media & Alta \\ % NUEVO (Lógica Backend)
+	% --- Interfaz y Flujo del Chat ---
+	\textbf{RF10} & Ingresar consulta en chat activo & Permitir al usuario escribir y enviar una consulta en lenguaje natural dentro de la conversación activa. & Baja & Alta \\ 
+	\textbf{RF11} & Visualizar intercambio en chat & Mostrar de forma clara y ordenada el diálogo (consultas del usuario y respuestas del sistema) dentro de la conversación activa. & Media & Alta \\ 
+	\textbf{RF12} & Limpiar contenido del chat actual & Permitir al usuario borrar visualmente el contenido de la conversación activa en la interfaz (sin eliminarla del historial). & Baja & Baja \\ 
+	\textbf{RF13} & Transmitir consulta al backend & El frontend debe enviar la consulta del usuario, junto con el identificador de la conversación activa y el token de sesión, al backend. & Media & Alta \\ 
+	\textbf{RF14} & Recibir consulta y contexto & El backend debe recibir la consulta, el ID de conversación y validar la sesión antes de procesar la solicitud. & Media & Alta \\ 
+	\textbf{RF15} & Delegar procesamiento de consulta al MAS & El backend debe enviar la consulta (y potencialmente contexto de conversación si es relevante para el MAS) al microservicio MAS para su procesamiento. & Media & Alta \\ 
+	% --- Procesamiento Interno del Microservicio MAS ---
+	\textbf{RF16} & Recibir solicitud de procesamiento & El microservicio MAS debe recibir la consulta (vía API) para iniciar el flujo de agentes. & Media & Alta \\ 
+	\textbf{RF17} & Extraer palabras clave de consulta & El Agente Moderador debe analizar la consulta para identificar términos clave relevantes. & Alta & Alta \\ 
+	\textbf{RF18} & Determinar intención de consulta & El Agente Moderador debe interpretar el propósito principal de la consulta del usuario (información, análisis, etc.). & Alta & Alta \\ 
+	\textbf{RF19} & Generar embeddings para búsqueda & El Agente Recuperador debe convertir las palabras clave en representaciones vectoriales (embeddings) adecuadas para la búsqueda semántica. & Alta & Alta \\ 
+	\textbf{RF20} & Recuperar información de BD Vectorial & El Agente Recuperador debe buscar y obtener fragmentos de texto relevantes del \textit{Diario de la Marina} desde la base de datos vectorial, basándose en los embeddings. & Alta & Alta \\ 
+	\textbf{RF21} & Sintetizar y contextualizar respuesta textual & El Agente Contextualizador debe generar una respuesta coherente en lenguaje natural, integrando la información recuperada y añadiendo contexto histórico si es pertinente. & Alta & Alta \\ 
+	\textbf{RF22} & Identificar necesidad de visualización & El Agente Contextualizador debe determinar si la consulta o los datos recuperados justifican la creación de una representación gráfica. & Media & Media \\ 
+	\textbf{RF23} & Formular instrucciones para gráfico & Si se requiere un gráfico, el Agente Contextualizador debe generar las especificaciones (tipo de gráfico, datos a usar) para el Agente Python. & Alta & Alta \\ 
+	\textbf{RF24} & Generar script de visualización & El Agente Python debe crear un script ejecutable (Python) que produzca la visualización solicitada a partir de los datos y especificaciones. & Alta & Alta \\ 
+	\textbf{RF25} & Validar corrección de script & El Agente Python debe verificar que el script generado es sintácticamente correcto y no contiene errores obvios antes de ejecutarlo. & Alta & Alta \\ 
+	\textbf{RF26} & Producir imagen de visualización & El Agente Python debe ejecutar el script validado para generar la visualización como un archivo de imagen (e.g., PNG, JPG). & Alta & Alta \\ 
+	\textbf{RF27} & Integrar texto y/o imagen en respuesta preliminar & El Agente Contextualizador (o Moderador) debe combinar la respuesta textual y/o la imagen generada en una estructura de respuesta unificada. & Alta & Alta \\ 
+	\textbf{RF28} & Validar coherencia y relevancia de respuesta & El Agente de Validación debe revisar la respuesta preliminar para asegurar su precisión, coherencia con la consulta y ausencia de información errónea. & Alta & Alta \\ 
+	\textbf{RF29} & Ensamblar respuesta final del MAS & El Agente Moderador debe preparar la respuesta validada en el formato esperado por la API del microservicio (e.g., JSON con campos para texto e imagen). & Alta & Alta \\ 
+	\textbf{RF30} & Retornar respuesta procesada al backend & El microservicio MAS debe enviar la respuesta final ensamblada al backend a través de su API. & Media & Alta \\ 
+	% --- Flujo de Respuesta Backend y Frontend ---
+	\textbf{RF31} & Recibir y almacenar respuesta & El backend debe recibir la respuesta del MAS y almacenarla como parte del historial de la conversación activa. & Media & Alta \\ 
+	\textbf{RF32} & Enviar respuesta formateada al frontend & El backend debe enviar la respuesta (texto y/o referencia a la imagen) al frontend para su visualización. & Media & Alta \\ 
+	\textbf{RF33} & Presentar respuesta al usuario & El frontend debe mostrar la respuesta recibida (texto y/o imagen) dentro de la interfaz de chat de la conversación activa. & Baja & Media \\ 
 	
 \end{longtable}
 
@@ -105,49 +138,78 @@ La gestión adecuada de los requisitos no funcionales es crucial para garantizar
 
 A continuación, se listan los requisitos no funcionales identificados:
 
-\begin{longtable}{@{}l >{\raggedright\arraybackslash}p{4cm} >{\raggedright\arraybackslash}p{7cm} l l@{}}
-	\caption{Tabla de Requisitos No Funcionales (RNF)} \label{tab:requisitos_no_funcionales} \\
+\begin{longtable}{@{}l >{\raggedright\arraybackslash}p{5cm} >{\raggedright\arraybackslash}p{8cm}@{}} % Ajustados anchos
+	\caption{Tabla de Requisitos No Funcionales (RNF)} \label{tab:requisitos_no_funcionales_actualizados} \\
+	\toprule
 	\textbf{ID} & \textbf{Atributo/Categoría} & \textbf{Descripción} \\
 	\midrule
+	\endfirsthead 
 	
-	% --- RNF1 ---
-	\textbf{RNF1} & \textbf{Rendimiento del sistema} & Atributos relacionados con la velocidad y eficiencia operativa. \\
-	\textbf{RNF1.1} & Latencia de respuesta & El sistema deberá entregar respuestas textuales promedio en <= 15 segundos (1 usuario). \\
-	\textbf{RNF1.2} & Latencia de generación de gráficos & El tiempo adicional para generar y mostrar gráficos estándar no debe exceder los 30 segundos. \\
-	\textbf{RNF1.3} & Eficiencia de recuperación & La consulta a la BD vectorial debe completarse en promedio en < 5 segundos. \\
+	\caption[]{Tabla de Requisitos No Funcionales (RNF) (Continuación)} \\ 
+	\toprule
+	\textbf{ID} & \textbf{Atributo/Categoría} & \textbf{Descripción} \\ 
+	\midrule
+	\endhead 
+	
+	\bottomrule
+	\multicolumn{3}{r@{}}{\textit{Continúa en la siguiente página...}} \\ 
+	\endfoot 
+	
+	\bottomrule
+	\endlastfoot 
+	
+	% --- RNF1: Rendimiento ---
+	\textbf{RNF1} & \textbf{Rendimiento del Sistema} & Atributos relacionados con la velocidad y eficiencia operativa percibida por el usuario y entre componentes. \\
+	\textbf{RNF1.1} & Latencia de respuesta (End-to-End) & El tiempo total desde que el usuario envía una consulta en React hasta que recibe la respuesta textual debe ser en promedio <= 15 segundos (para 1 usuario activo). \\
+	\textbf{RNF1.2} & Latencia de generación de gráficos & El tiempo adicional para generar y mostrar gráficos estándar en la interfaz React no debe exceder los 30 segundos sobre la respuesta textual base. \\
+	\textbf{RNF1.3} & Eficiencia de recuperación (MAS) & La consulta interna del microservicio MAS a la BD vectorial debe completarse en promedio en < 5 segundos. \\
+	\textbf{RNF1.4} & Latencia de comunicación inter-servicios & La comunicación API entre DRF y MAS debe tener una latencia baja (e.g., promedio < 500ms) bajo carga normal. \\
 	\midrule
 	
-	% --- RNF2 ---
-	\textbf{RNF2} & \textbf{Usabilidad} & Atributos relacionados con la facilidad de uso e interacción. \\
-	\textbf{RNF2.1} & Interfaz intuitiva & La interfaz Gradio debe ser simple y usable sin formación específica. \\
-	\textbf{RNF2.2} & Claridad de la información & Respuestas textuales coherentes y legibles; gráficos con títulos/etiquetas claras. \\
-	\textbf{RNF2.3} & Retroalimentación al usuario & Indicaciones visuales de estado (procesando, error) claras y descriptivas. \\
+	% --- RNF2: Usabilidad ---
+	\textbf{RNF2} & \textbf{Usabilidad} & Atributos relacionados con la facilidad de uso e interacción con la interfaz web. \\
+	\textbf{RNF2.1} & Interfaz de usuario intuitiva & La interfaz web desarrollada con React (incluyendo chat, historial, login/registro) debe ser simple, estéticamente agradable y usable sin formación específica. \\
+	\textbf{RNF2.2} & Claridad de la información & Las respuestas textuales deben ser coherentes y legibles; los gráficos deben tener títulos/etiquetas claras y ser comprensibles en la interfaz React. \\
+	\textbf{RNF2.3} & Retroalimentación al usuario & La interfaz React debe proporcionar indicaciones visuales claras y descriptivas sobre el estado (e.g., enviando consulta, procesando, error en backend/MAS). \\
+	\textbf{RNF2.4} & Diseño responsivo & La interfaz web (React) debe adaptarse y ser funcional en diferentes tamaños de pantalla (escritorio, tableta). \\
 	\midrule
 	
-	% --- RNF3 ---
-	\textbf{RNF3} & \textbf{Fiabilidad} & Atributos relacionados con la robustez y disponibilidad. \\
-	\textbf{RNF3.1} & Disponibilidad & El sistema debe estar operativo durante las sesiones de trabajo del usuario. \\
-	\textbf{RNF3.2} & Tolerancia a fallos (parcial) & Fallos no críticos (ej. gráfico) no deben impedir la entrega de respuesta textual. Informar del fallo parcial. \\
-	\textbf{RNF3.3} & Precisión de la validación & El Agente de validacón debe identificar respuestas incoherentes con una tasa de éxito razonable (ej. >80\%). \\
+	% --- RNF3: Fiabilidad ---
+	\textbf{RNF3} & \textbf{Fiabilidad} & Atributos relacionados con la robustez, disponibilidad y consistencia del sistema completo. \\
+	\textbf{RNF3.1} & Disponibilidad del Sistema & Los componentes críticos (DRF, MAS) deben tener una alta disponibilidad (e.g., >99.5 uptime) durante las horas operativas esperadas. \\
+	\textbf{RNF3.2} & Tolerancia a fallos (parcial) & Un fallo en la generación de gráficos (MAS) no debe impedir la entrega de la respuesta textual. Fallos en el MAS no deben impedir el acceso al historial en DRF (si aplica). Se debe informar al usuario del fallo parcial. \\
+	\textbf{RNF3.3} & Precisión de la validación (MAS) & El Agente de Validación dentro del MAS debe identificar respuestas incoherentes con una tasa de éxito razonable (ej. >80). \\
+	\textbf{RNF3.4} & Consistencia del historial & El historial de conversaciones almacenado en el backend DRF debe reflejar consistentemente los intercambios realizados por el usuario. \\
 	\midrule
 	
-	% --- RNF4 ---
-	\textbf{RNF4} & \textbf{Mantenibilidad} & Atributos relacionados con la facilidad de modificación y corrección. \\
-	\textbf{RNF4.1} & Modularidad & Arquitectura multiagente debe permitir modificación/sustitución de agentes con mínimo impacto. \\
-	\textbf{RNF4.2} & Calidad del código & Seguir buenas prácticas (Python PEP 8), código comentado y estructurado. \\
-	\textbf{RNF4.3} & Facilidad de actualización de datos & Proceso documentado y razonable para actualizar/añadir datos a la BD vectorial. \\
+	% --- RNF4: Mantenibilidad ---
+	\textbf{RNF4} & \textbf{Mantenibilidad} & Atributos relacionados con la facilidad de modificación, corrección y evolución del código y la arquitectura. \\
+	\textbf{RNF4.1} & Modularidad Arquitectónica & La arquitectura debe mantener un bajo acoplamiento entre el frontend (React), backend (DRF) y microservicio (MAS), permitiendo modificaciones o reemplazos con impacto mínimo en otros componentes. \\
+	\textbf{RNF4.2} & Modularidad Interna (MAS) & Dentro del microservicio MAS, la arquitectura basada en agentes debe permitir la modificación/sustitución de agentes individuales con mínimo impacto en el resto del microservicio. \\
+	\textbf{RNF4.3} & Calidad del código & Seguir buenas prácticas de codificación para cada tecnología (React/JS/TS, Python/Django, Python/FastAPI), incluyendo código comentado, estructurado y adherencia a linters (e.g., PEP 8). \\
+	\textbf{RNF4.4} & Facilidad de actualización de datos (MAS) & Debe existir un proceso documentado y razonablemente sencillo para actualizar o añadir nuevos datos históricos a la BD vectorial utilizada por el MAS. \\
 	\midrule
 	
-	% --- RNF5 ---
-	\textbf{RNF5} & \textbf{Escalabilidad} & Atributos relacionados con la capacidad de crecimiento. \\
-	\textbf{RNF5.1} & Escalabilidad de datos & La BD vectorial debe manejar el volumen de datos previsto (1844-1960) y permitir crecimiento. \\
-	\textbf{RNF5.2} & Escalabilidad de carga (limitada) & La arquitectura no debe impedir adaptación futura para usuarios concurrentes limitados. \\
+	% --- RNF5: Escalabilidad ---
+	\textbf{RNF5} & \textbf{Escalabilidad} & Atributos relacionados con la capacidad del sistema para manejar un crecimiento en datos, carga o funcionalidad. \\
+	\textbf{RNF5.1} & Escalabilidad de datos (MAS) & La BD vectorial utilizada por el MAS debe poder manejar eficientemente el volumen de datos previsto (1844-1960) y permitir crecimiento futuro. \\
+	\textbf{RNF5.2} & Escalabilidad de carga & La arquitectura (especialmente el backend DRF y el microservicio MAS) debe estar diseñada para permitir escalabilidad horizontal (añadir más instancias) para manejar un aumento de usuarios concurrentes. \\
 	\midrule
 	
-	% --- RNF6 ---
-	\textbf{RNF6} & \textbf{Restricciones Tecnológicas} & Limitaciones o imposiciones sobre las herramientas a usar. \\
-	\textbf{RNF6.1} & Plataforma de desarrollo & Debe usarse python y bibliotecas asociadas (IA, PLN). \\
-	\textbf{RNF6.2} & Dependencias clave & Dependencia de LLMs y una BD vectorial específicos (a detallar en arquitectura). \\
+	% --- RNF6: Seguridad ---
+	\textbf{RNF6} & \textbf{Seguridad} & Atributos relacionados con la protección de datos y la prevención de accesos no autorizados. \\
+	\textbf{RNF6.1} & Almacenamiento seguro de contraseñas & Las contraseñas de los usuarios deben almacenarse en el backend (DRF) utilizando algoritmos de hashing robustos con salt. \\
+	\textbf{RNF6.2} & Autenticación y Autorización & Implementar mecanismos seguros de autenticación (e.g., tokens JWT con expiración, sesiones seguras) y autorización para proteger los endpoints del backend (DRF). \\
+	\textbf{RNF6.3} & Protección contra vulnerabilidades web & Aplicar prácticas para mitigar riesgos comunes (OWASP Top 10) como XSS, CSRF, Inyección SQL en el backend DRF y frontend React. \\
+	\textbf{RNF6.4} & Comunicación segura & Toda la comunicación entre el navegador del usuario, el backend DRF y el microservicio MAS (si es externo) debe realizarse sobre HTTPS. \\
+	\textbf{RNF6.5} & Gestión segura de claves API & Las claves de API para servicios externos (e.g., LLM) deben gestionarse de forma segura (variables de entorno, gestores de secretos) y no exponerse en el código fuente o frontend. \\
+	\midrule
+	
+	% --- RNF7: Restricciones Tecnológicas ---
+	\textbf{RNF7} & \textbf{Restricciones Tecnológicas} & Limitaciones o imposiciones sobre las herramientas, plataformas o estándares a usar. \\ % Renumerado a RNF7
+	\textbf{RNF7.1} & Stack tecnológico principal & El frontend debe usar React. El backend debe usar Django REST Framework. El microservicio MAS debe usar Python y FastAPI. \\ % Actualizado
+	\textbf{RNF7.2} & Lenguajes principales & JavaScript/TypeScript para el frontend. Python para el backend y microservicio. \\ % Nuevo/Aclarado
+	\textbf{RNF7.3} & Dependencias clave de IA (MAS) & El microservicio MAS dependerá de un modelo LLM, por tanto debe tener soporte para múltiples proveedores y una BD vectorial FAISS. \\ % Actualizado
 	
 \end{longtable}
 
@@ -158,230 +220,433 @@ Las historias de usuario (HU) son descripciones breves y simples de los requerim
 
 Se realiza una HU por cada RF del componente, a continuación, se mostrarán las HU correspondientes a los requisitos funcionales:
 
-\begin{userstory}[hu:01]
-	\storyname{Gestionar interacción del usuario con la interfaz de chat}
-	\storyuser{Usuario}
-	\storyiter{1}
+% ==========================================
+% Gestión de Usuarios y Autenticación
+% ==========================================
+
+\begin{userstory}[hu:01] % Nueva HU
+	\storyname{Registrar una nueva cuenta de usuario}
+	\storyuser{Visitante del sitio web}
+	\storyiter{1} % Ajustar iteración
 	\storypriority{Alta}
 	\storyrisk{Bajo}
-	\storypoints{1 semana}
+	\storypoints{1 semana} % Ajustar puntos
 	\storyprogrammer{Daniel Rojas Grass}
 	\storydescription{
-		 Permitir que el usuario interactúe con la interfaz de chat de Gradio, ingresando consultas en lenguaje natural, recibiendo respuestas y limpiando el historial de conversación. (Corresponde a RF1)
+		Como visitante del sitio web, quiero poder registrar una nueva cuenta proporcionando mi email y una contraseña segura, para poder acceder a las funcionalidades del sistema de chat y guardar mi historial de conversaciones. (Corresponde principalmente a RF1, RF2, RF3, RF4)
 		
 		\textbf{Precondiciones:}
 		\begin{itemize}
-			\item El usuario debe estar en la interfaz de chat.
-			\item El sistema debe estar listo para recibir y procesar entradas.
+			\item El visitante no tiene una sesión activa.
+			\item El visitante se encuentra en la página o sección de registro.
 		\end{itemize}
 		
 		\textbf{Flujo de acción:}
 		\begin{enumerate}
-			\item Usuario ingresa una consulta en el campo de texto.
-			\item Usuario envía la consulta.
-			\item El sistema genera una respuesta (texto e imágenes).
-			\item (Opcional) Usuario limpia el historial de conversación.
+			\item Visitante completa el formulario de registro (email, contraseña, confirmación).
+			\item Visitante envía el formulario.
+			\item El sistema valida los datos y crea la cuenta en el backend.
+			\item El sistema muestra un mensaje de éxito o error en la interfaz React.
 		\end{enumerate}
 	}
 	\storyobservation{
-		La interfaz debe ser clara y fácil de usar. El mensaje de error debe ser amigable si hay algún problema en la interacción.
+		La validación de contraseña debe ser clara (e.g., longitud mínima). Los mensajes de error deben ser específicos (e.g., "Email ya registrado").
 	}
-	\storyinterface{[N/A]}
+	\storyinterface{ % Inicio del contenido de storyinterface
+		Formulario de Registro en React: % Texto descriptivo inicial
+		% Puedes usar \newline o \par para separar el texto de la imagen si es necesario
+		\par\medskip % Añade un pequeño espacio vertical
+		\begin{center} % Para centrar la imagen
+			\includegraphics[width=0.6\textwidth]{images/create.jpeg} % 
+		\end{center}
+		\medskip % Espacio después de la imagen
+	}
 \end{userstory}
 
-\begin{userstory}[hu:02]
-	\storyname{Procesar y comprender la consulta del usuario}
-	\storyuser{Sistema}
-	\storyiter{2}
+\begin{userstory}[hu:02] % Nueva HU
+	\storyname{Iniciar sesión en el sistema}
+	\storyuser{Usuario registrado}
+	\storyiter{1} % Ajustar iteración
 	\storypriority{Alta}
 	\storyrisk{Bajo}
-	\storypoints{2 semanas}
+	\storypoints{1 semana} % Ajustar puntos
 	\storyprogrammer{Daniel Rojas Grass}
 	\storydescription{
-		 El sistema debe procesar la consulta del usuario, extrayendo palabras clave, identificando la intención y dirigiendo la consulta al agente correspondiente. (Corresponde a RF2)
+		Como usuario registrado, quiero poder iniciar sesión utilizando mi email y contraseña, para poder acceder a mis conversaciones anteriores y utilizar el chat. (Corresponde principalmente a RF5, RF6, RF7, RF8, RF9)
 		
 		\textbf{Precondiciones:}
 		\begin{itemize}
-			\item La consulta del usuario ha sido ingresada.
-			\item El sistema debe tener un agente moderador que se encargue de este proceso.
+			\item El usuario tiene una cuenta registrada.
+			\item El usuario no tiene una sesión activa.
+			\item El usuario se encuentra en la página o sección de inicio de sesión.
 		\end{itemize}
 		
 		\textbf{Flujo de acción:}
 		\begin{enumerate}
-			\item El sistema recibe la consulta textual del usuario.
-			\item El sistema extrae palabras clave de la consulta.
-			\item El sistema identifica la intención de la consulta.
-			\item El sistema dirige la consulta al agente correspondiente.
+			\item Usuario completa el formulario de inicio de sesión (email, contraseña).
+			\item Usuario envía el formulario.
+			\item El sistema valida las credenciales en el backend y genera una sesión/token.
+			\item Si el login es exitoso, el usuario es redirigido a la interfaz principal del chat. Si falla, se muestra un mensaje de error.
 		\end{enumerate}
 	}
 	\storyobservation{
-		El proceso debe ser rápido y preciso. La intención debe estar claramente identificada para dirigir la consulta correctamente.
+		El manejo de la sesión/token en el frontend debe ser seguro.
 	}
-	\storyinterface{[N/A]}
+	\storyinterface{Formulario de Inicio de Sesión en React:
+		\par\medskip % Añade un pequeño espacio vertical
+		\begin{center} % Para centrar la imagen
+			\includegraphics[width=0.6\textwidth]{images/login.jpeg} % 
+		\end{center}
+		\medskip
+	}
 \end{userstory}
 
-\begin{userstory}[hu:03]
-	\storyname{Recuperar información histórica relevante}
-	\storyuser{Sistema}
-	\storyiter{3}
+\begin{userstory}[hu:03] % Nueva HU
+	\storyname{Cerrar sesión del sistema}
+	\storyuser{Usuario autenticado}
+	\storyiter{1} % Ajustar iteración
+	\storypriority{Media}
+	\storyrisk{Bajo}
+	\storypoints{0.5 semanas} % Ajustar puntos
+	\storyprogrammer{Daniel Rojas Grass}
+	\storydescription{
+		Como usuario autenticado, quiero poder cerrar mi sesión activa, para asegurar que mi cuenta quede protegida al dejar de usar el sistema. (Corresponde principalmente a RF11, RF12)
+		
+		\textbf{Precondiciones:}
+		\begin{itemize}
+			\item El usuario tiene una sesión activa.
+		\end{itemize}
+		
+		\textbf{Flujo de acción:}
+		\begin{enumerate}
+			\item Usuario hace clic en la opción "Cerrar Sesión".
+			\item El frontend elimina el token/identificador de sesión local.
+			\item (Opcional) El frontend notifica al backend para invalidar la sesión/token en el servidor.
+			\item El usuario es redirigido a la página de inicio de sesión o a una página pública.
+		\end{enumerate}
+	}
+	\storyobservation{
+		Debe ser una acción fácilmente accesible desde la interfaz principal.
+	}
+	\storyinterface{Botón Cerrar Sesión en React:
+		\par\medskip % Añade un pequeño espacio vertical
+		\begin{center} % Para centrar la imagen
+			\includegraphics[width=0.6\textwidth]{images/cerrar_s.jpeg} % 
+		\end{center}
+	}
+\end{userstory}
+
+% ==========================================
+% Gestión de Conversaciones
+% ==========================================
+
+\begin{userstory}[hu:04] % Nueva HU
+	\storyname{Iniciar una nueva conversación}
+	\storyuser{Usuario autenticado}
+	\storyiter{2} % Ajustar iteración
 	\storypriority{Alta}
-	\storyrisk{Moderado}
-	\storypoints{3 semanas}
+	\storyrisk{Bajo}
+	\storypoints{0.5 semanas} % Ajustar puntos
 	\storyprogrammer{Daniel Rojas Grass}
 	\storydescription{
-		Recuperar información histórica pertinente a partir de la base de datos vectorial utilizando \textit{embeddings}.Corresponde a RF3)
+		Como usuario autenticado, quiero poder iniciar una nueva conversación de chat, para poder realizar consultas sobre un tema nuevo sin mezclarlo con diálogos anteriores. (Corresponde principalmente a RF5)
 		
 		\textbf{Precondiciones:}
 		\begin{itemize}
-			\item La consulta del usuario ha sido procesada.
-			\item El sistema tiene acceso a la base de datos vectorial.
+			\item El usuario tiene una sesión activa.
 		\end{itemize}
 		
 		\textbf{Flujo de acción:}
 		\begin{enumerate}
-			\item El sistema convierte las palabras clave en embeddings.
-			\item El sistema consulta la base de datos vectorial utilizando los embeddings generados.
-			\item El sistema devuelve los fragmentos de información más relevantes encontrados.
+			\item Usuario hace clic en la opción "Nueva Conversación" (o similar).
+			\item La interfaz de chat principal se limpia o se presenta una nueva interfaz vacía.
+			\item El sistema (backend) está listo para asociar las siguientes consultas a una nueva conversación en el historial.
 		\end{enumerate}
 	}
 	\storyobservation{
-		Los resultados deben ser relevantes y contextualmente apropiados para la consulta del usuario.
+		La acción debe ser clara y resultar en una interfaz lista para una nueva interacción.
 	}
-	\storyinterface{[N/A]}
+	\storyinterface{Botón Nueva Conversación en React:
+		\par\medskip % Añade un pequeño espacio vertical
+		\begin{center} % Para centrar la imagen
+			\includegraphics[width=0.6\textwidth]{images/new_c.jpeg} % 
+		\end{center}
+		\medskip
+	}
 \end{userstory}
 
-\begin{userstory}[hu:04]
-	\storyname{Contextualizar y preparar respuesta para el usuario}
-	\storyuser{Sistema}
-	\storyiter{4}
+\begin{userstory}[hu:05] % Nueva HU
+	\storyname{Ver historial de conversaciones}
+	\storyuser{Usuario autenticado}
+	\storyiter{2} % Ajustar iteración
+	\storypriority{Media}
+	\storyrisk{Bajo}
+	\storypoints{1 semana} % Ajustar puntos
+	\storyprogrammer{Daniel Rojas Grass}
+	\storydescription{
+		Como usuario autenticado, quiero poder ver una lista de mis conversaciones anteriores (e.g., con títulos o fechas), para poder localizar y seleccionar una para revisión o continuación. (Corresponde principalmente a RF6)
+		
+		\textbf{Precondiciones:}
+		\begin{itemize}
+			\item El usuario tiene una sesión activa.
+			\item El usuario ha tenido conversaciones previas (opcionalmente).
+		\end{itemize}
+		
+		\textbf{Flujo de acción:}
+		\begin{enumerate}
+			\item Usuario accede a la sección o panel de historial.
+			\item El frontend solicita la lista de conversaciones al backend.
+			\item El backend recupera y envía la lista asociada al usuario.
+			\item El frontend muestra la lista de conversaciones en la interfaz.
+		\end{enumerate}
+	}
+	\storyobservation{
+		La lista debe ser fácil de navegar. Considerar cómo generar títulos/identificadores útiles para cada conversación.
+	}
+	\storyinterface{Panel/Sección de Historial en React:
+		\par\medskip % Añade un pequeño espacio vertical
+		\begin{center} % Para centrar la imagen
+			\includegraphics[width=0.4\textwidth]{images/histo.jpeg} % 
+		\end{center}
+		\medskip
+	}
+\end{userstory}
+
+\begin{userstory}[hu:06] % Nueva HU
+	\storyname{Abrir una conversación del historial}
+	\storyuser{Usuario autenticado}
+	\storyiter{2} % Ajustar iteración
+	\storypriority{Media}
+	\storyrisk{Bajo}
+	\storypoints{1 semana} % Ajustar puntos
+	\storyprogrammer{Daniel Rojas Grass}
+	\storydescription{
+		Como usuario autenticado, quiero poder seleccionar una conversación específica de mi historial, para poder cargarla en la interfaz principal del chat, ver el diálogo completo y, si lo deseo, continuarla. (Corresponde principalmente a RF7)
+		
+		\textbf{Precondiciones:}
+		\begin{itemize}
+			\item El usuario tiene una sesión activa.
+			\item El usuario está viendo la lista de su historial de conversaciones.
+		\end{itemize}
+		
+		\textbf{Flujo de acción:}
+		\begin{enumerate}
+			\item Usuario hace clic en una conversación de la lista del historial.
+			\item El frontend solicita el contenido de esa conversación al backend.
+			\item El backend recupera las consultas y respuestas asociadas.
+			\item El frontend carga y muestra el diálogo completo en la interfaz principal del chat.
+			\item La conversación seleccionada se convierte en la conversación activa.
+		\end{enumerate}
+	}
+	\storyobservation{
+		La carga de la conversación debe ser rápida. La interfaz debe indicar claramente qué conversación está activa.
+	}
+	\storyinterface{Interacción con lista de Historial y Chat Principal en React:
+		\par\medskip % Añade un pequeño espacio vertical
+		\begin{center} % Para centrar la imagen
+			\includegraphics[width=0.6\textwidth]{images/int_ch.jpeg} % 
+		\end{center}
+		\medskip
+	}
+\end{userstory}
+
+\begin{userstory}[hu:07] % Nueva HU
+	\storyname{Eliminar una conversación del historial}
+	\storyuser{Usuario autenticado}
+	\storyiter{3} % Ajustar iteración
+	\storypriority{Baja}
+	\storyrisk{Bajo}
+	\storypoints{1 semana} % Ajustar puntos
+	\storyprogrammer{Daniel Rojas Grass}
+	\storydescription{
+		Como usuario autenticado, quiero poder eliminar una conversación específica de mi historial, para que ya no aparezca en mi lista y sus datos sean borrados permanentemente. (Corresponde principalmente a RF8)
+		
+		\textbf{Precondiciones:}
+		\begin{itemize}
+			\item El usuario tiene una sesión activa.
+			\item El usuario está viendo la lista de su historial o una conversación específica.
+		\end{itemize}
+		
+		\textbf{Flujo de acción:}
+		\begin{enumerate}
+			\item Usuario selecciona la opción de eliminar para una conversación específica.
+			\item El sistema pide confirmación al usuario.
+			\item Si el usuario confirma, el frontend envía la solicitud de eliminación al backend.
+			\item El backend elimina los datos de la conversación asociada al usuario.
+			\item La conversación eliminada desaparece de la lista del historial en el frontend.
+		\end{enumerate}
+	}
+	\storyobservation{
+		La eliminación debe requerir confirmación para evitar borrados accidentales.
+	}
+	\storyinterface{Opción de Eliminar en la lista de Historial:
+		\par\medskip % Añade un pequeño espacio vertical
+		\begin{center} % Para centrar la imagen
+			\includegraphics[width=0.6\textwidth]{images/delete_c.jpeg} % 
+		\end{center}
+		\medskip
+	}
+\end{userstory}
+
+
+% ==========================================
+% Funcionalidad Principal del Chat y MAS (Adaptadas y Re-numeradas)
+% ==========================================
+
+\begin{userstory}[hu:08] % Adaptada de HU:01 original
+	\storyname{Interactuar con el chat activo}
+	\storyuser{Usuario autenticado}
+	\storyiter{1} % Mantenida
 	\storypriority{Alta}
-	\storyrisk{Moderado}
-	\storypoints{3 semanas}
+	\storyrisk{Bajo}
+	\storypoints{1 semana} % Mantenido
 	\storyprogrammer{Daniel Rojas Grass}
 	\storydescription{
-		Contextualizar la información recuperada y generar la respuesta que se ajusta a la consulta del usuario. (Corresponde a RF4)
+		Como usuario autenticado, quiero poder escribir consultas en lenguaje natural en la interfaz de chat activa (React), enviarlas al sistema, ver las respuestas del sistema (texto y/o imágenes) y limpiar visualmente el contenido del chat actual si lo deseo. (Corresponde principalmente a RF10, RF11, RF12, RF13)
 		
 		\textbf{Precondiciones:}
 		\begin{itemize}
-			\item Los fragmentos de información han sido recuperados.
-			\item El sistema debe estar preparado para sintetizar la respuesta.
+			\item El usuario tiene una sesión activa.
+			\item El usuario tiene una conversación activa (nueva o cargada del historial).
 		\end{itemize}
 		
 		\textbf{Flujo de acción:}
 		\begin{enumerate}
-			\item El sistema recibe la información recuperada y la intención del usuario.
-			\item El sistema sintetiza y contextualiza la información para ajustarla a la consulta.
-			\item El sistema determina si se necesitan gráficos.
+			\item Usuario ingresa una consulta en el campo de texto del chat.
+			\item Usuario envía la consulta (e.g., presionando Enter o un botón Enviar).
+			\item El frontend envía la consulta al backend.
+			\item El backend procesa y obtiene una respuesta (interactuando con el MAS).
+			\item El backend envía la respuesta al frontend.
+			\item El frontend muestra la consulta del usuario y la respuesta del sistema en el área de diálogo.
+			\item (Opcional) Usuario hace clic en "Limpiar Chat" y el contenido visual del chat actual se borra.
 		\end{enumerate}
 	}
 	\storyobservation{
-		El proceso de contextualización debe ser preciso para garantizar que la respuesta sea relevante. La decisión de generar gráficos debe basarse en la consulta del usuario.
+		La interfaz debe ser responsiva. La presentación del diálogo (usuario/sistema) debe ser clara. Limpiar el chat no debe eliminarlo del historial.
 	}
-	\storyinterface{[N/A]}
+	\storyinterface{Interfaz principal del Chat en React:
+		\par\medskip % Añade un pequeño espacio vertical
+		\begin{center} % Para centrar la imagen
+			\includegraphics[width=0.6\textwidth]{images/chat.jpeg} % 
+		\end{center}
+		\medskip
+	}
 \end{userstory}
 
-\begin{userstory}[hu:05]
-	\storyname{Generar representaciones gráficas cuando sea necesario}
-	\storyuser{Sistema}
-	\storyiter{5}
+\begin{userstory}[hu:09] % Adaptada de HU:02, HU:03, HU:04, HU:06 - Enfocada en el resultado del procesamiento
+	\storyname{Obtener respuesta relevante a consulta histórica}
+	\storyuser{Usuario autenticado}
+	\storyiter{2} % Agrupa varias iteraciones originales
+	\storypriority{Alta}
+	\storyrisk{Moderado} % Riesgo combinado
+	\storypoints{4 semanas} % Puntos combinados (ajustar)
+	\storyprogrammer{Daniel Rojas Grass}
+	\storydescription{
+		Como usuario autenticado, quiero que al enviar una consulta sobre el transporte marítimo del Diario de la Marina, el sistema la procese utilizando el microservicio MAS para comprenderla, buscar información relevante en los datos históricos, contextualizarla adecuadamente y validar su coherencia, para recibir una respuesta precisa y útil. (Corresponde principalmente al flujo interno del MAS: RF17 a RF29)
+		
+		\textbf{Precondiciones:}
+		\begin{itemize}
+			\item El usuario ha enviado una consulta válida desde el chat activo (HU:08).
+			\item El backend ha delegado la consulta al microservicio MAS.
+			\item El microservicio MAS y sus componentes (agentes, BD vectorial, LLM) están operativos.
+		\end{itemize}
+		
+		\textbf{Flujo de acción (interno del MAS):}
+		\begin{enumerate}
+			\item MAS recibe la consulta.
+			\item Agente Moderador analiza (palabras clave, intención).
+			\item Agente Recuperador busca información en BD vectorial.
+			\item Agente Contextualizador sintetiza respuesta textual y determina si se necesitan gráficos.
+			\item (Si aplica) Agente Python genera y valida la imagen del gráfico.
+			\item (Si aplica) Se integra texto e imagen.
+			\item Agente Validación verifica coherencia y precisión.
+			\item Agente Moderador ensambla la respuesta final para la API del MAS.
+		\end{enumerate}
+	}
+	\storyobservation{
+		La relevancia de la información recuperada es clave. La contextualización debe ser históricamente apropiada. La validación debe minimizar errores o "alucinaciones". La latencia del MAS es importante (ver RNF).
+	}
+	\storyinterface{[N/A - Proceso interno del MAS]}
+\end{userstory}
+
+
+\begin{userstory}[hu:10] % Adaptada de HU:05 - Enfocada en el resultado
+	\storyname{Recibir visualización gráfica cuando sea pertinente}
+	\storyuser{Usuario autenticado}
+	\storyiter{3} % Ajustar iteración (puede ser parte de la 2)
 	\storypriority{Media}
 	\storyrisk{Moderado}
-	\storypoints{4 semanas}
+	\storypoints{2 semanas} % Ajustar puntos (solo la parte gráfica)
 	\storyprogrammer{Daniel Rojas Grass}
 	\storydescription{
-		Generar representaciones gráficas (si es necesario) a partir de los datos recuperados para mejorar la respuesta final al usuario. (Corresponde a RF5)
+		Como usuario autenticado, quiero que cuando mi consulta sugiera un análisis de patrones o tendencias (e.g., "puertos más activos en X año"), el sistema genere y me presente una visualización gráfica (e.g., gráfico de barras, mapa) junto con la respuesta textual, para facilitar la comprensión de los datos. (Corresponde principalmente a RF22, RF23, RF24, RF25, RF26)
 		
 		\textbf{Precondiciones:}
 		\begin{itemize}
-			\item El sistema ha determinado que se necesitan gráficos para la respuesta.
-			\item El sistema debe tener acceso a los datos para generar gráficos.
+			\item El usuario ha enviado una consulta que el Agente Contextualizador interpreta como necesitada de un gráfico (dentro de HU:09).
+			\item Los datos necesarios para el gráfico están disponibles.
 		\end{itemize}
 		
 		\textbf{Flujo de acción:}
 		\begin{enumerate}
-			\item El sistema recibe los datos y las indicaciones para generar gráficos.
-			\item El sistema genera un script de visualización.
-			\item El sistema valida el script generado.
-			\item El sistema ejecuta el script para generar la imagen.
-			\item El sistema devuelve la imagen generada.
+			\item El Agente Contextualizador determina la necesidad del gráfico.
+			\item El Agente Python genera, valida y produce la imagen del gráfico.
+			\item La imagen es integrada en la respuesta final del MAS.
+			\item La respuesta (incluyendo la imagen) se envía al backend y luego al frontend.
+			\item El frontend muestra la imagen del gráfico junto al texto en la interfaz de chat.
 		\end{enumerate}
 	}
 	\storyobservation{
-		La generación de gráficos debe ser precisa y coherente con los datos recuperados. La validación del script es crucial para garantizar la calidad.
+		Los gráficos deben ser legibles y apropiados para los datos. La generación no debe fallar catastróficamente (ver RNF).
 	}
-	\storyinterface{[N/A]}
+	\storyinterface{Visualización de imagen dentro del Chat en React}
 \end{userstory}
 
-\begin{userstory}[hu:06]
-	\storyname{Elaborar y validar respuesta final para el usuario}
-	\storyuser{Sistema}
-	\storyiter{6}
-	\storypriority{Alta}
-	\storyrisk{Bajo}
-	\storypoints{2 semanas}
-	\storyprogrammer{Daniel Rojas Grass}
-	\storydescription{
-		Ensamblar y validar la respuesta final antes de presentarla al usuario, asegurando que es coherente y precisa. (Corresponde a RF6)
-		
-		\textbf{Precondiciones:}
-		\begin{itemize}
-			\item La información ha sido contextualizada y los gráficos generados (si es necesario).
-			\item El sistema debe tener acceso al agente de validación.
-		\end{itemize}
-		
-		\textbf{Flujo de acción:}
-		\begin{enumerate}
-			\item El sistema integra la información contextualizada con los gráficos generados (si aplica).
-			\item El sistema envía la respuesta preliminar al agente de validación.
-			\item El sistema valida la coherencia, precisión y relevancia de la respuesta.
-			\item El sistema ensambla la respuesta final validada.
-		\end{enumerate}
-	}
-	\storyobservation{
-		La validación debe ser rigurosa para garantizar que la respuesta sea completamente precisa.
-	}
-	\storyinterface{[N/A]}
-\end{userstory}
-
-\begin{userstory}[hu:07]
-	\storyname{Entregar respuesta final al usuario}
-	\storyuser{Usuario}
-	\storyiter{7}
-	\storypriority{Alta}
-	\storyrisk{Bajo}
-	\storypoints{1 semana}
-	\storyprogrammer{Daniel Rojas Grass}
-	\storydescription{
-		Presentar la respuesta final al usuario a través de la interfaz de chat. (Corresponde a RF7)
-		
-		\textbf{Precondiciones:}
-		\begin{itemize}
-			\item La respuesta final ha sido ensamblada y validada.
-			\item El sistema debe estar listo para presentar la respuesta al usuario.
-		\end{itemize}
-		
-		\textbf{Flujo de acción:}
-		\begin{enumerate}
-			\item El sistema presenta la respuesta final al usuario a través de la interfaz de chat.
-		\end{enumerate}
-	}
-	\storyobservation{
-		La respuesta debe ser presentada de forma clara y comprensible para el usuario.
-	}
-	\storyinterface{[N/A]}
-\end{userstory}
+% HU:07 original (Entregar respuesta final) está implícitamente cubierta
+% por el flujo de HU:08 y el resultado de HU:09/HU:10. No necesita
+% una historia separada si HU:08 cubre la visualización.
 
 \section{Patrones de diseño}
 \label{sec:patrones_diseno}
 
-Los patrones de diseño de software representan soluciones probadas y estandarizadas para problemas recurrentes en el desarrollo, encapsulando mejores prácticas y promoviendo la creación de software modular, legible, flexible y robusto \cite{gavilanez2022analisis}. En el desarrollo de este sistema multiagente, se han aplicado conscientemente varios patrones para abordar los desafíos inherentes a su arquitectura distribuida conceptualmente y su flujo de trabajo basado en IA.
+Los patrones de diseño de software representan soluciones probadas y estandarizadas para problemas recurrentes en el desarrollo, encapsulando mejores prácticas y promoviendo la creación de software modular, legible, flexible y robusto \cite{gavilanez2022analisis}. En el desarrollo de esta aplicación web y su microservicio asociado, se han aplicado conscientemente varios patrones para abordar los desafíos inherentes a su arquitectura distribuida y su flujo de trabajo basado en IA.
 
 \subsection{Patrones Arquitectónicos}
 \label{subsec:patrones_arquitectonicos}
 
 Estos patrones definen la estructura general del sistema y cómo sus componentes principales interactúan.
 
+\subsubsection{Microservicios}
+La arquitectura general de la solución (descrita en la Sección \ref{sec:propuesta_solucion}) adopta el patrón de \textbf{Microservicios}. El sistema se descompone en componentes independientes con responsabilidades claras: el frontend (React), el backend API (Django REST Framework) y el servicio de procesamiento de IA (Sistema Multiagente expuesto vía FastAPI).
+
+\textbf{Justificación:} Esta separación permite el desarrollo, despliegue y escalado independientes de cada parte. Por ejemplo, el microservicio MAS, que es intensivo en recursos de IA, puede escalarse por separado del backend DRF, que maneja la lógica de negocio y la gestión de usuarios/conversaciones. Además, facilita el uso de tecnologías más adecuadas para cada tarea (React para UI, DRF para API web robusta, FastAPI/Langchain para el MAS).
+
 \subsection{Patrones de Comportamiento}
+\label{subsec:patrones_comportamiento}
+Estos patrones se centran en la comunicación efectiva y la asignación de responsabilidades entre objetos/componentes.
+
+\subsubsection{Strategy (Estrategia)}
+Dentro del microservicio MAS, específicamente en el \textbf{Agente Contextualizador}, se aplica el patrón Strategy. Dependiendo de la intención identificada de la consulta del usuario (e.g., solicitud de información simple vs. solicitud de análisis que requiere visualización), el agente selecciona una estrategia diferente para construir la respuesta final.
+
+\textbf{Justificación:} Una estrategia podría ser simplemente formatear el texto recuperado y enriquecerlo, mientras que otra estrategia implicaría coordinarse con el Agente Python para generar un gráfico e integrarlo en la respuesta. Esto permite añadir o modificar formas de responder a diferentes intenciones sin alterar la lógica principal del agente contextualizador, simplemente implementando nuevas estrategias.
+
+\subsection{Patrones Estructurales}
+\label{subsec:patrones_estructurales}
+Estos patrones se ocupan de cómo se componen las clases y los objetos para formar estructuras más grandes y flexibles.
+
+\subsubsection{Facade (Fachada)}
+La \textbf{API del microservicio MAS (construida con FastAPI)} actúa como una Fachada para el complejo sistema multiagente interno. El backend DRF interactúa únicamente con esta API simplificada (e.g., un endpoint `/query`) sin necesidad de conocer los detalles de la coordinación entre los agentes (Moderador, Recuperador, Contextualizador, etc.), el acceso a la base de datos vectorial o las llamadas al LLM.
+
+\textbf{Justificación:} Este patrón simplifica la interacción entre el backend DRF y el microservicio MAS. Reduce el acoplamiento, ya que los cambios en la lógica interna del MAS no afectan al DRF siempre que la interfaz de la API (la fachada) se mantenga estable.
+
+\subsection{Patrones de Concurrencia}
+\label{subsec:patrones_concurrencia}
+Estos patrones abordan problemas relacionados con la ejecución simultánea de tareas para mejorar el rendimiento y la capacidad de respuesta.
+
+\subsubsection{Invocación Asíncrona}
+La comunicación entre los diferentes componentes de la arquitectura (Frontend $\leftrightarrow$ Backend, Backend $\leftrightarrow$ Microservicio MAS) y potencialmente dentro del MAS (llamadas a LLMs externos) utiliza invocaciones asíncronas. Por ejemplo, cuando el backend DRF llama a la API del microservicio MAS, no espera bloqueado, sino que utiliza mecanismos `async/await` (propios de frameworks como DRF/FastAPI si se configuran así) o maneja la respuesta cuando esté disponible.
+
+\textbf{Justificación:} Esto evita que los componentes se bloqueen mientras esperan respuestas de red o tareas largas (como el procesamiento de IA), mejorando la capacidad de respuesta general del sistema y permitiendo un uso más eficiente de los recursos del servidor, ya que puede manejar otras solicitudes mientras espera. Frameworks como FastAPI están diseñados específicamente para facilitar este patrón.
 
 
 \section{Targetas CRC}
