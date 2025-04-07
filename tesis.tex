@@ -1,13 +1,12 @@
 % ============================
 % CONFIGURACIÓN DEL DOCUMENTO
 % ============================
-\documentclass[spanish,authorshippage=ltd]{thesis} % Clase de documento específica para tesis
-
+\documentclass[spanish]{thesis} % Clase de documento específica para tesis
 
 % ============================
 % PAQUETES UTILIZADOS
 % ============================
-\usepackage{masterthesis}    % Plantilla específica para tesis
+   % Plantilla específica para tesis
 \usepackage{titlesec}        % Personalización de títulos y secciones
 \usepackage{pgfplots}        % Gráficos en coordenadas matemáticas
 \usepackage{graphicx}        % Inclusión de imágenes
@@ -16,28 +15,26 @@
 \usepackage{tabularray}      % Tablas avanzadas
 \usepackage{lipsum}          % Texto de relleno
 \usepackage{tablefootnote}   % Notas al pie en tablas
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{tcolorbox}
+\usepackage{booktabs} 
 % Paquetes matemáticos
 \usepackage{amssymb}
 \usepackage{latexsym}
 \usepackage{amsmath}
 \usepackage{csquotes}
-
-
+\usepackage{newtxtext, newtxmath}
+\usepackage[hang,flushmargin]{footmisc}
 % Paquetes para algoritmos
 \usepackage{algorithm}
 \usepackage{algorithmic}
 
-% Paquetes para imágenes y gráficos
-\usepackage{epsfig}          % Manejo de imágenes EPS
-\usepackage{epstopdf}        % Conversión de EPS a PDF
-\usepackage{graphics}        % Soporte adicional para gráficos
-\usepackage{ps4pdf}          % Soporte para PostScript
-\usepackage{float}           % Control de posición de imágenes
-\usepackage{pgf}             % Creación de gráficos vectoriales
-\usepackage{afterpage}       % Control de paginación
-
 % Configuración de código fuente con listings
-\usepackage{listings,newtxtt} % Resaltado de código
+\usepackage{listings} % Resaltado de código
+
+
 \lstset{
 	extendedchars=true,
 	language=Python,
@@ -84,6 +81,13 @@
 \DeclareMathOperator*{\argmax}{arg\,max}
 \DeclareMathOperator*{\argmin}{arg\,min}
 
+% Anular todos los comandos obligatorios
+\makeatletter
+\def\@keywords{}
+\def\@acknowledgment{}
+\def\@abstract{}
+\makeatother
+
 % Formato de subpárrafos
 \titleformat{\subparagraph}
 {\normalfont\normalsize\bfseries}{\thesubparagraph}{1em}{}
@@ -94,24 +98,11 @@
 % ============================
 \addauthor{Daniel Rojas Grass}
 \title{{\normalsize Multiagente Conversacional para la interacción con los datos del transporte marítimo recogidos en el Diario de la Marina.}}
-\ucicenter{Centro de Informatización Gobierno-Empresa}
+\ucicenter{Vicerrectoría de Investigación y Postgrado}
 \facultynum{1}
 \addtutor[Tutor]{Dr.C. Orlando Grabiel Toledano López}
 \addtutor[Tutores]{MsC. Olga Yarisbel Rojas Grass}
-\addtutor[Tutores]{Ing. Keren Saray Naranjo}
 
-% ============================
-% SECCIONES INICIALES
-% ============================
-\acknowledgment{
-	Agradecimientos y cita inspiradora:
-	\begin{flushright}
-		\textbf{\textit{"La ciencia es mi vida (...) moriría por ella". Nikolái Ivánovich Vavílov}}
-	\end{flushright}
-}
-
-\abstract{Resumen de la tesis.}
-\keywords{Palabras clave}
 
 % ============================
 % ESTRUCTURA DEL DOCUMENTO
@@ -127,12 +118,12 @@
 			\includegraphics[width=0.25\linewidth]{images/uci}
 		\end{figure}
 		\centering{\textsc{\large UNIVERSIDAD DE LAS CIENCIAS INFORMÁTICAS}     \\
-			\textsc{\large CENTRO DE INFORMATIZACIÓN GOBIERNO-EMPRESA} \\
+			\textsc{\large VICERRECTORÍA DE INVESTIGACIÓN Y POSTGRADO} \\
 			\textsc{\large FACULTAD DE TECNOLOGIAS LIBRES} \\}
 		\vspace{3cm}
 		\centering\textsc{\large Multiagente Conversacional para la interacción con los datos del transporte marítimo recogidos en el Diario de la Marina.\\}
 		\vspace{2cm}
-		\centering{\bfseries Tesis presentada en opción al grado científico de \\
+		\centering{\bfseries Trabajo de diploma para optar por el título de \\
 			Ingeniero en Ciencias Informáticas\\}
 		\vspace{2.5cm}
 		\centering{\bfseries Autor:\\}
@@ -142,11 +133,9 @@
 		\centering{
 			Dr.C. Orlando Grabiel Toledano López\\
 			MsC. Olga Yarisbel Rojas Grass\\
-			Ing. Keren Saray Naranjo\\
 		}	
 		\vspace{2cm}
-		\centering{ \bfseries La Habana, febrero del 2025}
-		
+		\centering{ \bfseries La Habana,2025}
 	\end{titlepage}
 	
 	\pagenumbering{roman}
@@ -157,7 +146,15 @@
 	\input{src/tutorop/tutor.tex}
 	\input{src/resumen/resumen.tex}
 	\input{src/abstract/abstract.tex}
-	\newpage
+	
+	% Agregar el índice aquí
+	\cleardoublepage
+	\phantomsection
+	\addcontentsline{toc}{chapter}{Índice general}
+	\tableofcontents
+	\listoffigures
+	\listoftables
+	\cleardoublepage
 	
 	
 	% ============================
@@ -165,33 +162,53 @@
 	% ============================
 	\pagenumbering{arabic}
 	\input{src/introduction/Introduction} % Introducción
-	\newpage
-	\vspace*{\fill} % Espacio flexible para centrar verticalmente
-	\textsc{\Large \bfseries Capítulo 1.\\ }
-	\Large{Fundamentos Teóricos y Contextuales de la Transformación de Datos Históricos y Sistemas Multiagentes Conversacionales}
-	\vspace*{\fill} % Espacio flexible para centrar verticalmente
+	
+	
+	\cleardoublepage
 	\thispagestyle{empty}
-	\addtocounter{page}{-1}
-	\newpage
+	\vspace*{\fill}
+	
+	% Alineado a la izquierda
+	\begin{flushleft}
+		\textsc{\Large \bfseries Capítulo 1.\\[1em]}
+		\Large{Fundamentos Teóricos y Contextuales de la Transformación de Datos Históricos y Sistemas Multiagentes Conversacionales}
+	\end{flushleft}
+	
+	\vspace*{\fill}
+	\clearpage
+	
 	\input{src/chapters/Chapter1} % Capítulo 1
-	\newpage
-	\vspace*{\fill} % Espacio flexible para centrar verticalmente
-	\textsc{\Large \bfseries Capítulo 2.\\ }
-	\Large{Fundamentos Teóricos y Contextuales de la Transformación de Datos Históricos y Sistemas Multiagentes Conversacionales}
-	\vspace*{\fill} % Espacio flexible para centrar verticalmente
+	
+	
+	\cleardoublepage
 	\thispagestyle{empty}
-	\addtocounter{page}{-1}
-	\newpage
-	\input{src/chapters/Chapter2.tex}
-	\newpage
-	\vspace*{\fill} % Espacio flexible para centrar verticalmente
-	\textsc{\Large \bfseries Capítulo 2.\\ }
-	\Large{Fundamentos Teóricos y Contextuales de la Transformación de Datos Históricos y Sistemas Multiagentes Conversacionales}
-	\vspace*{\fill} % Espacio flexible para centrar verticalmente
+	\vspace*{\fill}
+	
+	\begin{flushleft}
+		\textsc{\Large \bfseries Capítulo 2.\\[1em]}
+		\Large{Propuesta de solución}
+	\end{flushleft}
+	
+	\vspace*{\fill}
+	\clearpage
+	
+	\input{src/chapters/Chapter2.tex} % Capítulo 2
+	
+	
+	\cleardoublepage
 	\thispagestyle{empty}
-	\addtocounter{page}{-1}
-	\newpage
-	\input{src/chapters/Chapter3.tex}
+	\vspace*{\fill}
+	
+	\begin{flushleft}
+		\textsc{\Large \bfseries Capítulo 3.\\[1em]}
+		\Large{Validación y Análisis de Resultados}
+	\end{flushleft}
+	
+	\vspace*{\fill}
+	\clearpage
+	
+	
+	\input{src/chapters/Chapter3.tex} % Capítulo 3
 	\input{src/conclusions/Conclusions} % Conclusiones
 	\input{src/recommendation/Recommendations} % Recomendaciones
 	
@@ -203,8 +220,8 @@
 	\input{Anexos/Anexos} % Anexos
 	
 	% Bibliografía
-	\renewcommand\bibname{Referencias bibliográficas}
 	\bibliographystyle{IEEEtran}
-	\bibliography{library}\label{bibliography}
+	\bibliography{library} 
+	%\printbibliography
 	
 \end{document}
