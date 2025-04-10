@@ -1,0 +1,68 @@
+This is BibTeX, Version 0.99d
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: tesis.aux
+Reallocating 'name_of_file' (item size: 1) to 9 items.
+The style file: IEEEtran.bst
+Reallocating 'name_of_file' (item size: 1) to 8 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Reallocating 'wiz_functions' (item size: 4) to 6000 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Database file #1: library.bib
+-- IEEEtran.bst version 1.14 (2015/08/26) by Michael Shell.
+-- http://www.michaelshell.org/tex/ieeetran/bibtex/
+-- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
+Warning--empty journal in mikolov2013efficient
+Warning--empty journal in langchain2023langgraph
+Warning--empty journal in spacy2023nlp
+Warning--empty author in github_version_control
+Warning--empty journal in github_version_control
+Warning--empty author in github_academic
+Warning--empty journal in github_academic
+Warning--empty journal in reimers2019sentence
+Warning--empty journal in BeckCunningham
+
+Done.
+You've used 45 entries,
+            4087 wiz_defined-function locations,
+            1043 strings with 14822 characters,
+and the built_in function-call counts, 21831 in all, are:
+= -- 1789
+> -- 446
+< -- 68
++ -- 228
+- -- 94
+* -- 968
+:= -- 3881
+add.period$ -- 94
+call.type$ -- 45
+change.case$ -- 53
+chr.to.int$ -- 156
+cite$ -- 54
+duplicate$ -- 1695
+empty$ -- 1853
+format.name$ -- 114
+if$ -- 4845
+int.to.chr$ -- 0
+int.to.str$ -- 45
+missing$ -- 339
+newline$ -- 226
+num.names$ -- 43
+pop$ -- 919
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 2
+skip$ -- 1674
+stack$ -- 0
+substring$ -- 419
+swap$ -- 1105
+text.length$ -- 16
+text.prefix$ -- 0
+top$ -- 5
+type$ -- 45
+warning$ -- 9
+while$ -- 71
+width$ -- 47
+write$ -- 482
+(There were 9 warnings)
