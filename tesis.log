@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.2) (preloaded format=pdflatex 2025.3.5)  6 APR 2025 23:53
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.2) (preloaded format=pdflatex 2025.3.5)  15 APR 2025 19:58
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2284,6 +2284,8 @@ LaTeX Font Info:    Font shape `T1/ntxtlf/m/sc' will be
 (Font)              scaled to size 10.95pt on input line 120.
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/sc' will be
 (Font)              scaled to size 12.0pt on input line 120.
+LaTeX Font Info:    Font shape `T1/ntxtlf/m/sc' will be
+(Font)              scaled to size 17.28pt on input line 124.
 LaTeX Font Info:    Font shape `T1/ntxtlf/b/n' will be
 (Font)              scaled to size 10.95pt on input line 126.
 
@@ -2424,21 +2426,17 @@ LaTeX Font Info:    Font shape `U/ntxexa/m/n' will be
 
 [2
 
-]) (src/tutorop/tutor.tex
+]) (src/resumen/resumen.tex
 
 [3
 
-]) (src/resumen/resumen.tex
+]) (src/abstract/abstract.tex
 
 [4
 
-]) (src/abstract/abstract.tex
-
-[5
-
 ])
 
-[6
+[5
 
 ] (tesis.toc
 LaTeX Info: Redefining \. on input line 1.
@@ -2447,18 +2445,18 @@ LaTeX Font Info:    Font shape `T1/ntxtlf/b/sc' will be
 (Font)              scaled to size 10.95pt on input line 2.
 
 
-[7
+[6
 
 
-]
-
-[8])
+])
 \tf@toc=\write7
 \openout7 = `tesis.toc'.
 
 
 
-[9] (tesis.lof
+[7]
+
+[8] (tesis.lof
 LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
 )
@@ -2467,7 +2465,7 @@ LaTeX Info: Redefining \% on input line 1.
 
 
 
-[10
+[9
 
 ] (tesis.lot
 LaTeX Info: Redefining \. on input line 1.
@@ -2478,7 +2476,7 @@ LaTeX Info: Redefining \% on input line 1.
 
 
 
-[11
+[10
 
 ] (src/introduction/Introduction.tex
 
@@ -2487,8 +2485,8 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.7 
-     [1
+l.11 
+      [1
 
 
 ]
@@ -2497,18 +2495,9 @@ l.7
 
 [3]
 
-[4])
+[4]) (src/chapters/Chapter1.tex
 
 [5]
-LaTeX Font Info:    Font shape `T1/ntxtlf/m/sc' will be
-(Font)              scaled to size 14.4pt on input line 173.
-LaTeX Font Info:    Font shape `T1/ntxtlf/b/sc' will be
-(Font)              scaled to size 14.4pt on input line 173.
-
-
-[6
-
-] (src/chapters/Chapter1.tex
 Cap\'{\i }tulo 1.
 LaTeX Font Info:    Font shape `T1/txss/m/n' will be
 (Font)              scaled to size 23.63593pt on input line 1.
@@ -2520,11 +2509,10 @@ LaTeX Font Info:    Font shape `T1/ntxtlf/b/n' will be
 (Font)              scaled to size 12.0pt on input line 11.
 
 
-[7
-
+[6
 
 ]
-<images/diario.jpg, id=262, 1590.9036pt x 2105.466pt>
+<images/diario.jpg, id=250, 1590.9036pt x 2105.466pt>
 File: images/diario.jpg Graphic file (type jpg)
 <use images/diario.jpg>
 Package pdftex.def Info: images/diario.jpg  used on input line 18.
@@ -2533,16 +2521,16 @@ LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
 (Font)              scaled to size 10.0pt on input line 19.
 
 
-[8 <./images/diario.jpg>]
+[7 <./images/diario.jpg>]
 
-[9]
+[8]
 LaTeX Font Info:    Font shape `T1/ntxtlf/b/it' will be
 (Font)              scaled to size 12.0pt on input line 41.
 
 
-[10]
+[9]
 
-[11]
+[10]
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
 (Font)              scaled to size 8.0pt on input line 58.
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
@@ -2604,7 +2592,7 @@ LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
 (Font)              scaled to size 6.6pt on input line 58.
 
 
-[12]
+[11]
 LaTeX Font Info:    Font shape `T1/ntxtlf/b/n' will be
 (Font)              scaled to size 10.0pt on input line 71.
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/it' will be
@@ -2624,6 +2612,8 @@ Overfull \hbox (24.95314pt too wide) in alignment at lines 68--108
  [] [] [] [] 
  []
 
+[12]
+
 [13]
 
 [14]
@@ -2634,42 +2624,35 @@ Overfull \hbox (24.95314pt too wide) in alignment at lines 68--108
 
 [17]
 
-[18]
+[18]) (src/chapters/Chapter2.tex
 
-[19])
-
-[20]
-
-[21
-
-] (src/chapters/Chapter2.tex
+[19]
 Cap\'{\i }tulo 2.
 
 
-[22
-
+[20
 
 ]
-<images/micro.png, id=409, 793.96625pt x 356.33125pt>
+<images/micro.png, id=394, 793.96625pt x 356.33125pt>
 File: images/micro.png Graphic file (type png)
 <use images/micro.png>
 Package pdftex.def Info: images/micro.png  used on input line 17.
 (pdftex.def)             Requested size: 422.77664pt x 189.74635pt.
 
 
-[23 <./images/micro.png>]
-<images/mas.png, id=420, 1167.36125pt x 432.61626pt>
+[21 <./images/micro.png>]
+<images/mas.png, id=405, 1167.36125pt x 432.61626pt>
 File: images/mas.png Graphic file (type png)
 <use images/mas.png>
 Package pdftex.def Info: images/mas.png  used on input line 40.
 (pdftex.def)             Requested size: 469.75502pt x 174.08643pt.
 
 
-[24 <./images/mas.png>]
+[22 <./images/mas.png>]
 
-[25]
+[23]
 
-[26]
+[24]
 Overfull \hbox (11.63527pt too wide) in alignment at lines 73--78
  [] [] [] [] [] 
  []
@@ -2694,16 +2677,16 @@ Overfull \hbox (11.63527pt too wide) in alignment at lines 91--132
  [] [] [] [] [] 
  []
 
-[27] [28] [29]
+[25] [26] [27]
 Underfull \hbox (badness 10000) in paragraph at lines 136--138
 
  []
 
 
 
-[30] [31] [32] [33]
+[28] [29] [30] [31]
 
-[34]
+[32]
 LaTeX Font Info:    Font shape `OT1/minntx/m/n' will be
 (Font)              scaled to size 10.0pt on input line 264.
 LaTeX Font Info:    Font shape `OT1/minntx/m/n' will be
@@ -2738,108 +2721,103 @@ LaTeX Font Info:    Font shape `U/ntxexa/m/n' will be
 (Font)              scaled to size 7.3pt on input line 264.
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
 (Font)              scaled to size 5.5pt on input line 264.
-<images/create.jpeg, id=488, 612.2875pt x 551.05875pt>
+<images/create.jpeg, id=473, 612.2875pt x 551.05875pt>
 File: images/create.jpeg Graphic file (type jpg)
 <use images/create.jpeg>
 Package pdftex.def Info: images/create.jpeg  used on input line 264.
 (pdftex.def)             Requested size: 281.85587pt x 253.66667pt.
- [35]
-<images/login.jpeg, id=498, 616.3025pt x 517.935pt>
+ [33]
+<images/login.jpeg, id=483, 616.3025pt x 517.935pt>
 File: images/login.jpeg Graphic file (type jpg)
 <use images/login.jpeg>
 Package pdftex.def Info: images/login.jpeg  used on input line 302.
 (pdftex.def)             Requested size: 281.85587pt x 236.86995pt.
- [36 <./images/create.jpeg>] [37]
-<images/cerrar_s.jpeg, id=512, 353.32pt x 86.3225pt>
+ [34 <./images/create.jpeg>] [35]
+<images/cerrar_s.jpeg, id=496, 353.32pt x 86.3225pt>
 File: images/cerrar_s.jpeg Graphic file (type jpg)
 <use images/cerrar_s.jpeg>
 Package pdftex.def Info: images/cerrar_s.jpeg  used on input line 337.
 (pdftex.def)             Requested size: 281.85587pt x 68.86313pt.
- [38 <./images/login.jpeg>]
-<images/new_c.jpeg, id=517, 365.365pt x 98.3675pt>
+ [36 <./images/login.jpeg>]
+<images/new_c.jpeg, id=501, 365.365pt x 98.3675pt>
 File: images/new_c.jpeg Graphic file (type jpg)
 <use images/new_c.jpeg>
 Package pdftex.def Info: images/new_c.jpeg  used on input line 376.
 (pdftex.def)             Requested size: 281.85587pt x 75.88727pt.
- [39 <./images/cerrar_s.jpeg>]
-<images/histo.jpeg, id=526, 336.25626pt x 685.56125pt>
+ [37 <./images/cerrar_s.jpeg>]
+<images/histo.jpeg, id=510, 336.25626pt x 685.56125pt>
 File: images/histo.jpeg Graphic file (type jpg)
 <use images/histo.jpeg>
 Package pdftex.def Info: images/histo.jpeg  used on input line 413.
 (pdftex.def)             Requested size: 187.89914pt x 383.09573pt.
- [40 <./images/new_c.jpeg>] [41]
-<images/int_ch.jpeg, id=542, 1606.0pt x 698.61pt>
+ [38 <./images/new_c.jpeg>] [39]
+<images/int_ch.jpeg, id=527, 1606.0pt x 698.61pt>
 File: images/int_ch.jpeg Graphic file (type jpg)
 <use images/int_ch.jpeg>
 Package pdftex.def Info: images/int_ch.jpeg  used on input line 451.
 (pdftex.def)             Requested size: 281.85587pt x 122.59969pt.
- [42 <./images/histo.jpeg>]
-<images/delete_c.jpeg, id=547, 353.32pt x 140.525pt>
+ [40 <./images/histo.jpeg>]
+<images/delete_c.jpeg, id=532, 353.32pt x 140.525pt>
 File: images/delete_c.jpeg Graphic file (type jpg)
 <use images/delete_c.jpeg>
 Package pdftex.def Info: images/delete_c.jpeg  used on input line 489.
 (pdftex.def)             Requested size: 281.85587pt x 112.10278pt.
 
 
-[43 <./images/int_ch.jpeg>]
-<images/chat.jpeg, id=558, 1252.68pt x 706.64pt>
+[41 <./images/int_ch.jpeg>]
+<images/chat.jpeg, id=542, 1252.68pt x 706.64pt>
 File: images/chat.jpeg Graphic file (type jpg)
 <use images/chat.jpeg>
 Package pdftex.def Info: images/chat.jpeg  used on input line 534.
 (pdftex.def)             Requested size: 281.85587pt x 158.99792pt.
 
 
-[44 <./images/delete_c.jpeg>] [45]
+[42 <./images/delete_c.jpeg>] [43]
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
 (Font)              scaled to size 7.3pt on input line 570.
- [46 <./images/chat.jpeg>] [47]
+ [44 <./images/chat.jpeg>] [45]
+
+[46]
+
+[47]
 
 [48]
 
 [49]
 
 [50]
-
-[51]
-
-[52]
-<images/component.png, id=627, 1054.94125pt x 643.40375pt>
+<images/component.png, id=612, 1054.94125pt x 643.40375pt>
 File: images/component.png Graphic file (type png)
 <use images/component.png>
 Package pdftex.def Info: images/component.png  used on input line 836.
 (pdftex.def)             Requested size: 328.82707pt x 200.54285pt.
-)
+) (src/chapters/Chapter3.tex
 
-[53 <./images/component.png>]
-
-[54
-
-] (src/chapters/Chapter3.tex
+[51 <./images/component.png>]
 Cap\'{\i }tulo 3.
 ) (src/conclusions/Conclusions.tex
 
-[55
-
+[52
 
 ]) (src/recommendation/Recommendations.tex
 
-[56
+[53
 
 ]) (Anexos/Anexos.tex) (tesis.bbl
 
-[57
+[54
 
 ]
 
-[58
+[55
 
 ]
 
-[59]
+[56]
 
-[60]
+[57]
 
-[61])
+[58])
 
 Package glossaries Warning: No \printglossary or \printglossaries found. 
 (Remove \makeglossaries if you don't want any glossaries.) 
@@ -2849,7 +2827,7 @@ No file tesis.gls.
 No file tesis.acr.
 
 
-[62]
+[59]
 *geometry* verbose mode - [ newgeometry ] result:
 * driver: pdftex
 * paper: <default>
@@ -2883,26 +2861,26 @@ No file tesis.acr.
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
-(Font)              scaled to size 24.88pt on input line 227.
+(Font)              scaled to size 24.88pt on input line 182.
 LaTeX Font Info:    Font shape `T1/ntxtlf/b/n' will be
-(Font)              scaled to size 24.88pt on input line 227.
+(Font)              scaled to size 24.88pt on input line 182.
 
 
-[63
+[60
 
 
 
 ]
 Anexo A.
 LaTeX Font Info:    Font shape `OT1/minntx/b/n' will be
-(Font)              scaled to size 10.95pt on input line 227.
+(Font)              scaled to size 10.95pt on input line 182.
 LaTeX Font Info:    Font shape `OT1/minntx/b/n' will be
-(Font)              scaled to size 8.0pt on input line 227.
+(Font)              scaled to size 8.0pt on input line 182.
 LaTeX Font Info:    Font shape `OT1/minntx/b/n' will be
-(Font)              scaled to size 6.1pt on input line 227.
+(Font)              scaled to size 6.1pt on input line 182.
 
 
-[64
+[61
 
 
 {C:/Users/danro/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/newtx/ntx-ot1-tlf
@@ -2920,9 +2898,8 @@ LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 0.5pt have occurred.
 
  )
-(\end occurred inside a group at level 7)
+(\end occurred inside a group at level 6)
 
-### semi simple group (level 7) entered at line 3 (\begingroup)
 ### semi simple group (level 6) entered at line 3 (\begingroup)
 ### semi simple group (level 5) entered at line 3 (\begingroup)
 ### semi simple group (level 4) entered at line 3 (\begingroup)
@@ -2931,13 +2908,13 @@ LaTeX Font Warning: Size substitutions with differences
 ### semi simple group (level 1) entered at line 4 (\begingroup)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 58888 strings out of 473522
- 1280435 string characters out of 5714610
+ 58870 strings out of 473522
+ 1280016 string characters out of 5714610
  2128642 words of memory out of 5000000
- 80739 multiletter control sequences out of 15000+600000
- 689963 words of font info for 193 fonts, out of 8000000 for 9000
+ 80732 multiletter control sequences out of 15000+600000
+ 686914 words of font info for 192 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 113i,11n,131p,3109b,1432s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 113i,11n,131p,2418b,1353s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/danro/AppData/Local/Programs/MiKTeX/fonts/type1/publi
 c/newtx/NewTXMI.pfb><C:/Users/danro/AppData/Local/Programs/MiKTeX/fonts/type1/p
 ublic/newtx/NewTXMI7.pfb><C:/Users/danro/AppData/Local/Programs/MiKTeX/fonts/ty
@@ -2948,9 +2925,9 @@ fonts/type1/public/newtx/ztmb.pfb><C:/Users/danro/AppData/Local/Programs/MiKTeX
 /fonts/type1/public/newtx/ztmbi.pfb><C:/Users/danro/AppData/Local/Programs/MiKT
 eX/fonts/type1/public/newtx/ztmr.pfb><C:/Users/danro/AppData/Local/Programs/MiK
 TeX/fonts/type1/public/newtx/ztmri.pfb>
-Output written on tesis.pdf (76 pages, 3594813 bytes).
+Output written on tesis.pdf (72 pages, 3588675 bytes).
 PDF statistics:
- 983 PDF objects out of 1000 (max. 8388607)
- 267 named destinations out of 1000 (max. 500000)
- 446 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 958 PDF objects out of 1000 (max. 8388607)
+ 261 named destinations out of 1000 (max. 500000)
+ 438 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -2,50 +2,49 @@
 \contentsline {chapter}{Declaración de Autoría}{\es@scroman {i}}{chapter*.3}%
 \contentsline {chapter}{Datos de Contacto}{\es@scroman {ii}}{chapter*.5}%
 \contentsline {chapter}{Dedicatoria}{\es@scroman {iii}}{chapter*.7}%
-\contentsline {chapter}{Opinión de los Tutores}{\es@scroman {iv}}{chapter*.9}%
-\contentsline {chapter}{Resumen}{\es@scroman {v}}{chapter*.11}%
-\contentsline {chapter}{Abstract}{\es@scroman {vi}}{chapter*.13}%
-\contentsline {chapter}{Índice general}{\es@scroman {vii}}{section*.14}%
-\contentsline {chapter}{Introducción}{1}{chapter*.19}%
-\contentsline {chapter}{\numberline {1}Fundamentos Teóricos y Contextuales de la Transformación de Datos Históricos y Sistemas Multiagentes Conversacionales}{7}{chapter.1}%
-\contentsline {section}{Introducción}{7}{chapter.1}%
-\contentsline {section}{\numberline {1.1}Fundamentación Teórica}{8}{section.1.1}%
-\contentsline {subsection}{\numberline {1.1.1}Reconocimiento Óptico de Caracteres (OCR)}{8}{subsection.1.1.1}%
-\contentsline {subsection}{\numberline {1.1.2}Agente LLM}{9}{subsection.1.1.2}%
-\contentsline {subsection}{\numberline {1.1.3}Sistema Multiagente (SMA)}{9}{subsection.1.1.3}%
-\contentsline {subsection}{\numberline {1.1.4}Sistemas RAG}{10}{subsection.1.1.4}%
-\contentsline {subsection}{\numberline {1.1.5}Modelos de \textit {embeddings}}{10}{subsection.1.1.5}%
-\contentsline {subsection}{\numberline {1.1.6}Bases de datos vectoriales}{11}{subsection.1.1.6}%
-\contentsline {section}{\numberline {1.2}Análisis del estado del arte}{11}{section.1.2}%
-\contentsline {section}{\numberline {1.3}Metodología de desarrollo de software}{15}{section.1.3}%
-\contentsline {section}{\numberline {1.4}Herramientas y tecnologías}{15}{section.1.4}%
-\contentsline {subsection}{\numberline {1.4.1}Herramienta de Modelado}{16}{subsection.1.4.1}%
-\contentsline {subsection}{\numberline {1.4.2}Lenguaje de programación}{16}{subsection.1.4.2}%
-\contentsline {subsection}{\numberline {1.4.3}Framework de desarrollo}{17}{subsection.1.4.3}%
-\contentsline {subsection}{\numberline {1.4.4}Control de versiones}{18}{subsection.1.4.4}%
-\contentsline {subsection}{\numberline {1.4.5}Vectorización y Almacenamiento}{18}{subsection.1.4.5}%
-\contentsline {section}{Conclusiones del Capítulo}{19}{subsection.1.4.5}%
-\contentsline {chapter}{\numberline {2}Propuesta de solución}{22}{chapter.2}%
-\contentsline {section}{Introducción}{22}{chapter.2}%
-\contentsline {section}{\numberline {2.1}Descripción de la Propuesta de Solución}{23}{section.2.1}%
-\contentsline {section}{\numberline {2.2}Análisis de requisitos}{25}{section.2.2}%
-\contentsline {subsection}{\numberline {2.2.1}Técnicas de captura de requisitos}{25}{subsection.2.2.1}%
-\contentsline {subsection}{\numberline {2.2.2}Requisitos funcionales}{26}{subsection.2.2.2}%
-\contentsline {subsection}{\numberline {2.2.3}Requisitos no funcionales}{31}{subsection.2.2.3}%
-\contentsline {subsection}{\numberline {2.2.4}Historias de usuarios}{34}{subsection.2.2.4}%
-\contentsline {section}{\numberline {2.3}Patrones de diseño}{48}{section.2.3}%
-\contentsline {subsection}{\numberline {2.3.1}Patrones Arquitectónicos}{49}{subsection.2.3.1}%
-\contentsline {subsubsection}{Microservicios}{49}{subsection.2.3.1}%
-\contentsline {subsection}{\numberline {2.3.2}Patrones de Comportamiento}{49}{subsection.2.3.2}%
-\contentsline {subsubsection}{Strategy (Estrategia)}{49}{subsection.2.3.2}%
-\contentsline {subsection}{\numberline {2.3.3}Patrones Estructurales}{50}{subsection.2.3.3}%
-\contentsline {subsubsection}{Facade (Fachada)}{50}{subsection.2.3.3}%
-\contentsline {subsection}{\numberline {2.3.4}Patrones de Concurrencia}{50}{subsection.2.3.4}%
-\contentsline {subsubsection}{Invocación Asíncrona}{50}{subsection.2.3.4}%
-\contentsline {section}{\numberline {2.4}Targetas CRC}{51}{section.2.4}%
-\contentsline {section}{\numberline {2.5}Diagrama de componentes}{53}{section.2.5}%
-\contentsline {chapter}{\numberline {3}Validación y Análisis de Resultados}{55}{chapter.3}%
-\contentsline {chapter}{Conclusiones generales}{56}{chapter*.25}%
-\contentsline {chapter}{Recomendaciones}{57}{chapter*.27}%
-\contentsline {chapter}{Anexos}{63}{section*.29}%
-\contentsline {chapter}{\numberline {A}Notación matemática. Un ejemplo de Anexo}{64}{appendix.Alph1}%
+\contentsline {chapter}{Resumen}{\es@scroman {iv}}{chapter*.9}%
+\contentsline {chapter}{Abstract}{\es@scroman {v}}{chapter*.11}%
+\contentsline {chapter}{Índice general}{\es@scroman {vi}}{section*.12}%
+\contentsline {chapter}{Introducción}{1}{chapter*.17}%
+\contentsline {chapter}{\numberline {1}Fundamentos Teóricos y Contextuales de la Transformación de Datos Históricos y Sistemas Multiagentes Conversacionales}{6}{chapter.1}%
+\contentsline {section}{Introducción}{6}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Fundamentación Teórica}{7}{section.1.1}%
+\contentsline {subsection}{\numberline {1.1.1}Reconocimiento Óptico de Caracteres (OCR)}{7}{subsection.1.1.1}%
+\contentsline {subsection}{\numberline {1.1.2}Agente LLM}{8}{subsection.1.1.2}%
+\contentsline {subsection}{\numberline {1.1.3}Sistema Multiagente (SMA)}{8}{subsection.1.1.3}%
+\contentsline {subsection}{\numberline {1.1.4}Sistemas RAG}{9}{subsection.1.1.4}%
+\contentsline {subsection}{\numberline {1.1.5}Modelos de \textit {embeddings}}{9}{subsection.1.1.5}%
+\contentsline {subsection}{\numberline {1.1.6}Bases de datos vectoriales}{10}{subsection.1.1.6}%
+\contentsline {section}{\numberline {1.2}Análisis del estado del arte}{10}{section.1.2}%
+\contentsline {section}{\numberline {1.3}Metodología de desarrollo de software}{14}{section.1.3}%
+\contentsline {section}{\numberline {1.4}Herramientas y tecnologías}{14}{section.1.4}%
+\contentsline {subsection}{\numberline {1.4.1}Herramienta de Modelado}{15}{subsection.1.4.1}%
+\contentsline {subsection}{\numberline {1.4.2}Lenguaje de programación}{15}{subsection.1.4.2}%
+\contentsline {subsection}{\numberline {1.4.3}Framework de desarrollo}{16}{subsection.1.4.3}%
+\contentsline {subsection}{\numberline {1.4.4}Control de versiones}{17}{subsection.1.4.4}%
+\contentsline {subsection}{\numberline {1.4.5}Vectorización y Almacenamiento}{17}{subsection.1.4.5}%
+\contentsline {section}{Conclusiones del Capítulo}{18}{subsection.1.4.5}%
+\contentsline {chapter}{\numberline {2}Propuesta de solución}{20}{chapter.2}%
+\contentsline {section}{Introducción}{20}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Descripción de la Propuesta de Solución}{21}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Análisis de requisitos}{23}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}Técnicas de captura de requisitos}{23}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.2.2}Requisitos funcionales}{24}{subsection.2.2.2}%
+\contentsline {subsection}{\numberline {2.2.3}Requisitos no funcionales}{29}{subsection.2.2.3}%
+\contentsline {subsection}{\numberline {2.2.4}Historias de usuarios}{32}{subsection.2.2.4}%
+\contentsline {section}{\numberline {2.3}Patrones de diseño}{46}{section.2.3}%
+\contentsline {subsection}{\numberline {2.3.1}Patrones Arquitectónicos}{47}{subsection.2.3.1}%
+\contentsline {subsubsection}{Microservicios}{47}{subsection.2.3.1}%
+\contentsline {subsection}{\numberline {2.3.2}Patrones de Comportamiento}{47}{subsection.2.3.2}%
+\contentsline {subsubsection}{Strategy (Estrategia)}{47}{subsection.2.3.2}%
+\contentsline {subsection}{\numberline {2.3.3}Patrones Estructurales}{48}{subsection.2.3.3}%
+\contentsline {subsubsection}{Facade (Fachada)}{48}{subsection.2.3.3}%
+\contentsline {subsection}{\numberline {2.3.4}Patrones de Concurrencia}{48}{subsection.2.3.4}%
+\contentsline {subsubsection}{Invocación Asíncrona}{48}{subsection.2.3.4}%
+\contentsline {section}{\numberline {2.4}Targetas CRC}{49}{section.2.4}%
+\contentsline {section}{\numberline {2.5}Diagrama de componentes}{51}{section.2.5}%
+\contentsline {chapter}{\numberline {3}Validación y Análisis de Resultados}{52}{chapter.3}%
+\contentsline {chapter}{Conclusiones generales}{53}{chapter*.23}%
+\contentsline {chapter}{Recomendaciones}{54}{chapter*.25}%
+\contentsline {chapter}{Anexos}{60}{section*.27}%
+\contentsline {chapter}{\numberline {A}Notación matemática. Un ejemplo de Anexo}{61}{appendix.Alph1}%
