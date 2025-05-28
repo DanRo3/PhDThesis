@@ -6,10 +6,16 @@
 % ============================
 % PAQUETES UTILIZADOS
 % ============================
-   % Plantilla específica para tesis
+% Plantilla específica para tesis
+\usepackage{parskip}                      % Control preciso del espaciado
+\setlength{\parskip}{10pt plus 0pt minus 0pt} 
+\def\spanish{spanish}
+\RequirePackage[spanish, es-tabla]{babel}
+\usepackage{datatool}
 \usepackage{titlesec}        % Personalización de títulos y secciones
 \usepackage{pgfplots}        % Gráficos en coordenadas matemáticas
 \usepackage{graphicx}        % Inclusión de imágenes
+\usepackage[utf8]{inputenc}
 \usepackage{appendix}        % Manejo de anexos
 \usepackage{rotating}        % Rotación de elementos
 \usepackage{tabularray}      % Tablas avanzadas
@@ -121,7 +127,7 @@
 			\textsc{\large VICERRECTORÍA DE INVESTIGACIÓN Y POSTGRADO} \\
 			\textsc{\large FACULTAD DE TECNOLOGIAS LIBRES} \\}
 		\vspace{3cm}
-		\centering\textsc{\LARGE Multiagente Conversacional para la interacción con los datos del transporte marítimo recogidos en el Diario de la Marina.\\}
+		\centering\textsc{\LARGE Multiagente Conversacional para la interacción con los datos del transporte marítimo recogidos en el Diario de la Marina\\}
 		\vspace{2cm}
 		\centering{\bfseries Trabajo de diploma para optar por el título de \\
 			Ingeniero en Ciencias Informáticas\\}
@@ -135,26 +141,37 @@
 			MsC. Olga Yarisbel Rojas Grass\\
 		}	
 		\vspace{1.5cm}
-		\centering{ \bfseries La Habana,2025}
+		\centering{ \bfseries La Habana, 2025}
 	\end{titlepage}
 	
-	\pagenumbering{roman}
+	\makeatletter
+	\pagenumbering{roman} % Numeración romana para preliminares
+	\let\oldaddcontentsline\addcontentsline
+	\renewcommand{\addcontentsline}[3]{} % Desactiva ToC para preliminares
 	\input{src/statement/statement.tex}
-	\input{src/contact/contact.tex}
 	\input{src/acknowledgment/acknowledgment.tex}
 	\input{src/dedication/dedication.tex}
 	\input{src/resumen/resumen.tex}
 	\input{src/abstract/abstract.tex}
+	\let\addcontentsline\oldaddcontentsline % Reactiva ToC
+	\makeatother
 	
-	% Agregar el índice aquí
+	% ===== Índice (sin auto-referencia) =====
 	\cleardoublepage
-	\phantomsection
-	\addcontentsline{toc}{chapter}{Índice general}
-	\tableofcontents
+	\setcounter{tocdepth}{2} % Asegura subsecciones
+	\makeatletter
+	\renewcommand{\tableofcontents}{%
+		\chapter*{\contentsname} % Título "Índice general" (sin numerar)
+		\@starttoc{toc} % Genera el índice
+		\addtocontents{toc}{\protect\ignorespaces} % Evita auto-referencia
+	}
+	\makeatother
+	\tableofcontents % <<< ¡Sin "\addcontentsline" manual!
+	
+	% ===== Listas de figuras/tablas =====
 	\listoffigures
 	\listoftables
 	\cleardoublepage
-	
 	
 	% ============================
 	% CAPÍTULOS DE LA TESIS
@@ -175,7 +192,8 @@
 	\input{Anexos/Anexos} % Anexos
 	
 	% Bibliografía
-	\bibliographystyle{IEEEtran}
+	%\bibliographystyle{IEEEtran}
+	\bibliographystyle{apalike}
 	\bibliography{library} 
 	%\printbibliography
 	

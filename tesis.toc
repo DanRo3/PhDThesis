@@ -1,50 +1,59 @@
 \babel@toc {spanish}{}\relax 
-\contentsline {chapter}{Declaración de Autoría}{\es@scroman {i}}{chapter*.3}%
-\contentsline {chapter}{Datos de Contacto}{\es@scroman {ii}}{chapter*.5}%
-\contentsline {chapter}{Dedicatoria}{\es@scroman {iii}}{chapter*.7}%
-\contentsline {chapter}{Resumen}{\es@scroman {iv}}{chapter*.9}%
-\contentsline {chapter}{Abstract}{\es@scroman {v}}{chapter*.11}%
-\contentsline {chapter}{Índice general}{\es@scroman {vi}}{section*.12}%
-\contentsline {chapter}{Introducción}{1}{chapter*.17}%
-\contentsline {chapter}{\numberline {1}Fundamentos Teóricos y Contextuales de la Transformación de Datos Históricos y Sistemas Multiagentes Conversacionales}{6}{chapter.1}%
-\contentsline {section}{Introducción}{6}{chapter.1}%
-\contentsline {section}{\numberline {1.1}Fundamentación Teórica}{7}{section.1.1}%
-\contentsline {subsection}{\numberline {1.1.1}Reconocimiento Óptico de Caracteres (OCR)}{7}{subsection.1.1.1}%
-\contentsline {subsection}{\numberline {1.1.2}Agente LLM}{8}{subsection.1.1.2}%
-\contentsline {subsection}{\numberline {1.1.3}Sistema Multiagente (SMA)}{8}{subsection.1.1.3}%
-\contentsline {subsection}{\numberline {1.1.4}Sistemas RAG}{9}{subsection.1.1.4}%
-\contentsline {subsection}{\numberline {1.1.5}Modelos de \textit {embeddings}}{9}{subsection.1.1.5}%
-\contentsline {subsection}{\numberline {1.1.6}Bases de datos vectoriales}{10}{subsection.1.1.6}%
-\contentsline {section}{\numberline {1.2}Análisis del estado del arte}{10}{section.1.2}%
-\contentsline {section}{\numberline {1.3}Metodología de desarrollo de software}{14}{section.1.3}%
-\contentsline {section}{\numberline {1.4}Herramientas y tecnologías}{14}{section.1.4}%
-\contentsline {subsection}{\numberline {1.4.1}Herramienta de Modelado}{15}{subsection.1.4.1}%
-\contentsline {subsection}{\numberline {1.4.2}Lenguaje de programación}{15}{subsection.1.4.2}%
-\contentsline {subsection}{\numberline {1.4.3}Framework de desarrollo}{16}{subsection.1.4.3}%
-\contentsline {subsection}{\numberline {1.4.4}Control de versiones}{17}{subsection.1.4.4}%
-\contentsline {subsection}{\numberline {1.4.5}Vectorización y Almacenamiento}{17}{subsection.1.4.5}%
-\contentsline {section}{Conclusiones del Capítulo}{18}{subsection.1.4.5}%
-\contentsline {chapter}{\numberline {2}Propuesta de solución}{20}{chapter.2}%
-\contentsline {section}{Introducción}{20}{chapter.2}%
+\ignorespaces 
+\contentsline {chapter}{Introducción}{1}{chapter*.14}%
+\contentsline {chapter}{\numberline {1}Fundamentación Teórica}{6}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Reconocimiento Óptico de Caracteres (OCR)}{6}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Agente LLM}{7}{section.1.2}%
+\contentsline {section}{\numberline {1.3}Sistema Multiagente (SMA)}{8}{section.1.3}%
+\contentsline {section}{\numberline {1.4}Sistemas RAG}{9}{section.1.4}%
+\contentsline {section}{\numberline {1.5}Modelos de \textit {embeddings}}{9}{section.1.5}%
+\contentsline {section}{\numberline {1.6}Bases de datos vectoriales}{10}{section.1.6}%
+\contentsline {section}{\numberline {1.7}Análisis del estado del arte}{10}{section.1.7}%
+\contentsline {section}{\numberline {1.8}Enfoque y metodología de desarrollo de software}{14}{section.1.8}%
+\contentsline {subsection}{\numberline {1.8.1}Análisis del enfoque: Estrella de Boehm–Turner}{14}{subsection.1.8.1}%
+\contentsline {subsection}{\numberline {1.8.2}Comparativa de metodologías ágiles}{14}{subsection.1.8.2}%
+\contentsline {paragraph}{Kanban}{14}{subsection.1.8.2}%
+\contentsline {paragraph}{Lean Software Development}{14}{subsection.1.8.2}%
+\contentsline {paragraph}{Dynamic Systems Development Method (DSDM)}{15}{subsection.1.8.2}%
+\contentsline {paragraph}{Extreme Programming (XP)}{15}{subsection.1.8.2}%
+\contentsline {subsection}{\numberline {1.8.3}Justificación de la elección: Extreme Programming}{15}{subsection.1.8.3}%
+\contentsline {section}{\numberline {1.9}Herramientas y tecnologías}{16}{section.1.9}%
+\contentsline {subsection}{\numberline {1.9.1}Herramienta de Modelado}{16}{subsection.1.9.1}%
+\contentsline {subsection}{\numberline {1.9.2}Lenguaje de programación}{16}{subsection.1.9.2}%
+\contentsline {subsection}{\numberline {1.9.3}Framework de desarrollo}{17}{subsection.1.9.3}%
+\contentsline {subsection}{\numberline {1.9.4}Control de versiones}{18}{subsection.1.9.4}%
+\contentsline {subsection}{\numberline {1.9.5}Vectorización y Almacenamiento}{18}{subsection.1.9.5}%
+\contentsline {section}{Conclusiones del Capítulo}{19}{subsection.1.9.5}%
+\contentsline {chapter}{\numberline {2}Análisis, diseño e implementación de la propuesta de solución}{21}{chapter.2}%
 \contentsline {section}{\numberline {2.1}Descripción de la Propuesta de Solución}{21}{section.2.1}%
-\contentsline {section}{\numberline {2.2}Análisis de requisitos}{23}{section.2.2}%
-\contentsline {subsection}{\numberline {2.2.1}Técnicas de captura de requisitos}{23}{subsection.2.2.1}%
-\contentsline {subsection}{\numberline {2.2.2}Requisitos funcionales}{24}{subsection.2.2.2}%
+\contentsline {section}{\numberline {2.2}Análisis de requisitos}{24}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}Técnicas de captura de requisitos}{25}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.2.2}Requisitos funcionales}{26}{subsection.2.2.2}%
 \contentsline {subsection}{\numberline {2.2.3}Requisitos no funcionales}{29}{subsection.2.2.3}%
-\contentsline {subsection}{\numberline {2.2.4}Historias de usuarios}{32}{subsection.2.2.4}%
-\contentsline {section}{\numberline {2.3}Patrones de diseño}{46}{section.2.3}%
-\contentsline {subsection}{\numberline {2.3.1}Patrones Arquitectónicos}{47}{subsection.2.3.1}%
-\contentsline {subsubsection}{Microservicios}{47}{subsection.2.3.1}%
-\contentsline {subsection}{\numberline {2.3.2}Patrones de Comportamiento}{47}{subsection.2.3.2}%
-\contentsline {subsubsection}{Strategy (Estrategia)}{47}{subsection.2.3.2}%
-\contentsline {subsection}{\numberline {2.3.3}Patrones Estructurales}{48}{subsection.2.3.3}%
-\contentsline {subsubsection}{Facade (Fachada)}{48}{subsection.2.3.3}%
-\contentsline {subsection}{\numberline {2.3.4}Patrones de Concurrencia}{48}{subsection.2.3.4}%
-\contentsline {subsubsection}{Invocación Asíncrona}{48}{subsection.2.3.4}%
-\contentsline {section}{\numberline {2.4}Targetas CRC}{49}{section.2.4}%
-\contentsline {section}{\numberline {2.5}Diagrama de componentes}{51}{section.2.5}%
-\contentsline {chapter}{\numberline {3}Validación y Análisis de Resultados}{52}{chapter.3}%
-\contentsline {chapter}{Conclusiones generales}{53}{chapter*.23}%
-\contentsline {chapter}{Recomendaciones}{54}{chapter*.25}%
-\contentsline {chapter}{Anexos}{60}{section*.27}%
-\contentsline {chapter}{\numberline {A}Notación matemática. Un ejemplo de Anexo}{61}{appendix.Alph1}%
+\contentsline {subsection}{\numberline {2.2.4}Historias de usuarios}{30}{subsection.2.2.4}%
+\contentsline {subsection}{\numberline {2.2.5}Tarjetas CRC}{35}{subsection.2.2.5}%
+\contentsline {section}{\numberline {2.3}Diseño de la propuesta de solución}{38}{section.2.3}%
+\contentsline {subsection}{\numberline {2.3.1}Diseño de la arquitectura}{38}{subsection.2.3.1}%
+\contentsline {subsection}{\numberline {2.3.2}Diseño del modelo de datos}{39}{subsection.2.3.2}%
+\contentsline {section}{\numberline {2.4}Implementación}{40}{section.2.4}%
+\contentsline {subsection}{\numberline {2.4.1}Estándares de codificación en Python y JavaScript}{40}{subsection.2.4.1}%
+\contentsline {subsubsection}{Estándares para Python}{40}{subsection.2.4.1}%
+\contentsline {subsubsection}{Estándares para JavaScript}{41}{Item.44}%
+\contentsline {subsection}{\numberline {2.4.2}Patrones de diseño}{41}{subsection.2.4.2}%
+\contentsline {subsection}{\numberline {2.4.3}Interfaz Principal del Sistema}{44}{subsection.2.4.3}%
+\contentsline {subsection}{\numberline {2.4.4}Diagrama de despliege}{45}{subsection.2.4.4}%
+\contentsline {section}{Conclusiones}{47}{figure.caption.25}%
+\contentsline {chapter}{\numberline {3}Pruebas de software}{48}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Pruebas de software}{49}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Estrategia de pruebas}{49}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Pruebas unitarias}{50}{section.3.3}%
+\contentsline {section}{\numberline {3.4}Pruebas funcionales}{53}{section.3.4}%
+\contentsline {subsection}{\numberline {3.4.1}Método de caja negra}{53}{subsection.3.4.1}%
+\contentsline {section}{\numberline {3.5}Prueba de seguridad}{56}{section.3.5}%
+\contentsline {section}{\numberline {3.6}Prueba de rendimiento}{58}{section.3.6}%
+\contentsline {section}{Conclusiones}{58}{section.3.6}%
+\contentsline {chapter}{Conclusiones generales}{59}{chapter*.36}%
+\contentsline {chapter}{Recomendaciones}{60}{chapter*.38}%
+\contentsline {chapter}{Anexos}{67}{section*.40}%
+\contentsline {chapter}{\numberline {A}Historias de Usuario}{68}{appendix.Alph1}%
+\contentsline {chapter}{\numberline {B}Targetas CRC}{80}{appendix.Alph2}%

@@ -1,14 +1,9 @@
-\chapter{Fundamentos Teóricos y Contextuales de la Transformación de Datos Históricos y Sistemas Multiagentes Conversacionales}
+\chapter{Fundamentación Teórica}
 \label{chap:chapter1}
-
-\section*{Introducción}
-\addcontentsline{toc}{section}{Introducción}
 
 El primer capítulo de la tesis establece el marco teórico, contextual y técnico necesario para el desarrollo de un sistema multiagente conversacional capaz de interactuar con datos históricos del transporte marítimo, extraídos del Diario de la Marina, un periódico cubano de gran relevancia histórica, publicado entre 1844 y 1960. Este capítulo se organiza en torno a cinco pilares fundamentales: la fundamentación teórica del tema, un análisis del estado del arte y del mercado en el ámbito de los sistemas multiagente aplicados a este tipo de contextos, la justificación metodológica del proceso de desarrollo de software, la selección y descripción de las herramientas y tecnologías utilizadas, y la gestión de bases de datos requerida para el procesamiento de la información histórica. Como cierre, se presentan observaciones preliminares que no solo resumen los hallazgos iniciales, sino que también sientan las bases conceptuales y técnicas para los capítulos subsiguientes de la investigación.
 
-\section{Fundamentación Teórica}\label{seq_0}
-
-\subsection{Reconocimiento Óptico de Caracteres (OCR)}\label{seq_1}
+\section{Reconocimiento Óptico de Caracteres (OCR)}\label{seq_1}
 
 El Reconocimiento Óptico de Caracteres (OCR) es una tecnología que permite convertir documentos físicos, como imágenes escaneadas o fotografías de texto, en datos digitales editables. Este proceso emplea algoritmos avanzados para analizar la estructura visual de una imagen, identificando caracteres y palabras a partir de patrones reconocibles, lo que transforma contenido analógico en un formato susceptible de edición, búsqueda y análisis automatizado~\cite{piryani2025multilocraqa}. En el ámbito de la digitalización masiva de archivos históricos, como el \textit{Diario de la Marina} (1844–1960), el OCR desempeña un papel crucial como el primer paso para preservar y dar acceso a un patrimonio cultural que, de otro modo, permanecería confinado a soportes físicos deteriorados.
 Sin embargo, su aplicación a documentos históricos no está exenta de limitaciones.\\ 
@@ -23,29 +18,29 @@ Factores como la diversidad de tipografías antiguas, el desgaste físico de los
 
 La importancia del OCR en esta investigación se deriva de su rol como el primer eslabón en la transformación de estos documentos en datos digitales accesibles, aunque sus limitaciones resaltan la necesidad de enfoques posteriores de inteligencia artificial para refinar y dar sentido a la información resultante.
 
-\subsection{Agente LLM}\label{seq_3}
+\section{Agente LLM}\label{seq_3}
 
-Los datos generados por el OCR, aunque accesibles, presentan desafíos que requieren herramientas más avanzadas para su interpretación. Aquí es donde entran en juego los agentes basados en modelos de lenguaje de gran escala (LLM, por sus siglas en inglés: Large Language Model), entidades computacionales que aprovechan técnicas de inteligencia artificial para comprender, generar e interactuar con el lenguaje humano de forma sofisticada~\cite{guo2024largelanguage}. Entrenados con vastos conjuntos de datos textuales, estos agentes son capaces de procesar lenguaje natural con coherencia y contextualidad, interpretando significados implícitos y adaptándose a diferentes estilos de comunicación.
+Los datos generados por el OCR, aunque accesibles, presentan desafíos que requieren herramientas más avanzadas para su interpretación. Aquí es donde entran en juego los agentes basados en modelos de lenguaje de gran escala (LLM, por sus siglas en inglés: \textit{Large Language Model}), entidades computacionales que aprovechan técnicas de inteligencia artificial para comprender, generar e interactuar con el lenguaje humano de forma sofisticada~\cite{guo2024largelanguage}. Entrenados con vastos conjuntos de datos textuales, estos agentes son capaces de procesar lenguaje natural con coherencia y contextualidad, interpretando significados implícitos y adaptándose a diferentes estilos de comunicación.
 En el contexto del Diario de la Marina, los agentes LLM pueden abordar la ambigüedad y los errores de los datos no estructurados producidos por el OCR. Por ejemplo, podrían corregir términos náuticos mal transcritos o inferir el significado de frases incompletas causadas por el deterioro del papel, como una referencia a un cargamento de azúcar en un puerto específico. Además, su capacidad para integrar información externa —mediante herramientas como bases de datos históricas— permite conectar datos aislados con contextos más amplios, como eventos comerciales del Caribe~\cite{guo2024largelanguage}. Este concepto es fundamental porque transforma texto crudo en contenido más comprensible, aunque su acción aislada no basta para estructurar sistemáticamente grandes volúmenes de información histórica, lo que lleva a explorar enfoques más coordinados.
 
 
-\subsection{Sistema Multiagente (SMA)}\label{seq_2}
+\section{Sistema Multiagente (SMA)}\label{seq_2}
 
 Mientras los agentes LLM ofrecen una poderosa herramienta para interpretar texto, la complejidad y el volumen de los datos del Diario de la Marina demandan un enfoque más estructurado. Un sistema multiagente (SMA) se define como un conjunto de agentes autónomos que operan en un entorno compartido, interactuando entre sí para resolver problemas complejos o cumplir tareas específicas que exceden las capacidades de un solo componente~\cite{zambrano2020multiagent}. Estos agentes trabajan de manera independiente pero también colaboran o compiten según los objetivos establecidos, lo que los hace idóneos para manejar información diversa y dinámica~\cite{perezpons2021brief}.
 La relevancia de los SMA radica en su capacidad para descomponer la heterogeneidad de los datos históricos en tareas manejables. Por ejemplo, un agente podría especializarse en identificar nombres de puertos en textos mal transcritos, mientras otro contextualiza esos datos con rutas comerciales del siglo XIX. Esta modularidad permite procesar eficientemente grandes volúmenes de información y adaptarse a las particularidades de los documentos históricos. Características como la autonomía, la interacción mediante protocolos como el lenguaje ACL, y la adaptabilidad~\cite{perezpons2021brief}, junto con elementos como agentes, entorno, comunicación y organización~\cite{zambrano2020multiagent}, potencian las capacidades individuales de herramientas como los LLMs, abriendo la puerta a procesos más robustos de análisis y estructuración de datos.
 
-\subsection{Sistemas RAG}\label{seq_4}
+\section{Sistemas RAG}\label{seq_4}
 
 La coordinación de agentes en un SMA amplifica su potencial, pero la precisión y relevancia de la información procesada dependen de acceder a contextos actualizados y verificables. Los sistemas RAG (Retrieval Augmented Generation) representan una arquitectura innovadora que combina modelos de lenguaje avanzados con mecanismos de recuperación de información en tiempo real~\cite{gao2024retrievalaugmented,lewis2020retrievalaugmented}. A diferencia de los modelos tradicionales, que se limitan a conocimientos preentrenados, los sistemas RAG consultan fuentes externas dinámicamente, integrando datos frescos para generar respuestas más precisas y contextualizadas.
 En el caso de los datos del Diario de la Marina, un sistema RAG podría enriquecer la interpretación de referencias al transporte marítimo al recuperar información complementaria —como registros de otros periódicos o archivos históricos— que no está presente en el texto original. Esto reduce errores y alucinaciones, un problema común en el procesamiento de textos históricos ambiguos, y asegura que la información sea relevante para análisis económicos o sociales. Su importancia en este marco teórico reside en su capacidad para conectar los datos no estructurados con un contexto más amplio, un paso esencial para transformarlos en conocimiento útil, aunque requiere herramientas adicionales para organizar y almacenar eficientemente esa información recuperada.
 
-\subsection{Modelos de \textit{embeddings}}\label{seq_5}
+\section{Modelos de \textit{embeddings}}\label{seq_5}
 
 La recuperación y generación de información que ofrecen los sistemas RAG necesitan un mecanismo para representar y comparar datos de manera efectiva. Los modelos de \textit{embeddings} son algoritmos entrenados para transformar datos complejos, como texto o imágenes, en representaciones vectoriales numéricas en un espacio multidimensional~\cite{mikolov2013efficient}. Estas representaciones capturan relaciones semánticas y contextuales entre los datos, permitiendo a los sistemas de inteligencia artificial identificar similitudes y diferencias con alta precisión~\cite{mikolov2013efficient}.
 Para los datos del Diario de la Marina, los \textit{embeddings} pueden convertir menciones dispersas de puertos, fechas o cargamentos en vectores que reflejen su significado subyacente. Por ejemplo, términos como ``Puerto de La Habana'' y ``Habana'' en contextos distintos podrían agruparse como similares, facilitando su análisis sistemático. Este concepto es clave porque proporciona una base matemática para procesar y estructurar información no estructurada, vinculando los avances de los LLMs y RAG con métodos de almacenamiento y búsqueda más avanzados, necesarios para manejar grandes volúmenes de datos históricos.
 
 
-\subsection{Bases de datos vectoriales}\label{seq_6}
+\section{Bases de datos vectoriales}\label{seq_6}
 
 Finalmente, las representaciones generadas por los modelos de \textit{embeddings} requieren un sistema optimizado para su almacenamiento y recuperación. Las bases de datos vectoriales son una evolución en la gestión de datos, diseñadas específicamente para manejar vectores numéricos de alta dimensión mediante algoritmos de búsqueda aproximada (ANN) y técnicas de indexación como HNSW, PQ y LSH \cite{xie2023brief, han2023comprehensive}. Estas bases utilizan métricas como la distancia coseno o euclidiana para buscar similitudes en espacios multidimensionales, ofreciendo una solución escalable para grandes volúmenes de información no estructurada \cite{azizi2024vector, sun2024soar}.
 En el contexto del \textit{Diario de la Marina}, una base de datos vectorial podría almacenar \textit{embeddings} de los datos del transporte marítimo, permitiendo búsquedas rápidas y contextualizadas —como encontrar todas las menciones de un puerto específico en un rango de años—. Su integración con LLMs y sistemas RAG potencia la capacidad de recuperar información semánticamente relevante, cerrando el ciclo desde la generación inicial de datos por OCR hasta su transformación en conocimiento estructurado. Este enfoque es fundamental para manejar la escala y complejidad de los archivos históricos, proporcionando una infraestructura robusta para análisis posteriores.
@@ -118,10 +113,61 @@ Por ejemplo, en el caso del \textit{Diario de la Marina}, las menciones a puerto
 
 Este análisis pone de manifiesto que las soluciones actuales, aunque avanzadas, carecen de la especificidad necesaria para transformar datos históricos no estructurados en conocimiento útil y accesible. La necesidad de integrar tecnologías como OCR, LLMs, bases de datos vectoriales y técnicas RAG en un marco adaptado a las particularidades de los textos antiguos —con énfasis en la corrección de errores, la contextualización histórica y la interacción dinámica— surge como una respuesta lógica a estas limitaciones. Así, el estado del arte no solo valida la pertinencia de explorar un enfoque más especializado, sino que también orienta la selección de herramientas como LangChain o FAISS, que, combinadas estratégicamente, pueden superar los retos identificados y potenciar el análisis de archivos como los del \textit{Diario de la Marina}.
 
-\section{Metodología de desarrollo de software}
+%\section{Metodología de desarrollo de software}
 
-Para regir el proceso de desarrollo de esta investigación, se seleccionó la metodología ágil Extreme Programming (XP) debido a la capacidad para gestionar eficazmente proyectos complejos y adaptativos, como los que involucran inteligencia artificial y procesamiento de datos no estructurados. XP se basa en valores fundamentales como la comunicación, la simplicidad y el feedback, los cuales son esenciales para el éxito de proyectos innovadores y técnicamente desafiantes~\cite{agilealliance_xp}. Al aplicar XP, se busca minimizar riesgos y maximizar la calidad del software mediante iteraciones cortas y entregas frecuentes de funcionalidades operativas~\cite{wikipedia_xp}. Esto permite al equipo responder ágilmente a cambios en los requisitos o a nuevos descubrimientos durante el proceso de desarrollo, asegurando que el producto final sea relevante y efectivo para los usuarios~\cite{agilealliance_xp}.
-En conclusión, la adopción de Extreme Programming en este proyecto de tesis proporciona un marco sólido y adaptable que se alinea con las necesidades específicas del desarrollo de sistemas de inteligencia artificial aplicados a la interpretación de datos históricos, garantizando una gestión eficiente del proyecto y la entrega de un producto de alta calidad.
+%Para regir el proceso de desarrollo de esta investigación, se seleccionó la metodología ágil Extreme Programming (XP) debido a la capacidad para gestionar eficazmente proyectos complejos y adaptativos, como los que involucran inteligencia artificial y procesamiento de datos no estructurados. XP se basa en valores fundamentales como la comunicación, la simplicidad y el feedback, los cuales son esenciales para el éxito de proyectos innovadores y técnicamente desafiantes~\cite{agilealliance_xp}. Al aplicar XP, se busca minimizar riesgos y maximizar la calidad del software mediante iteraciones cortas y entregas frecuentes de funcionalidades operativas~\cite{wikipedia_xp}. Esto permite al equipo responder ágilmente a cambios en los requisitos o a nuevos descubrimientos durante el proceso de desarrollo, asegurando que el producto final sea relevante y efectivo para los usuarios~\cite{agilealliance_xp}.
+
+\section{Enfoque y metodología de desarrollo de software}
+
+\subsection{Análisis del enfoque: Estrella de Boehm–Turner}
+Para decidir entre un enfoque tradicional o ágil, se aplica la técnica de la Estrella de Boehm–Turner~\cite{boehm_turner2003}. Los cinco ejes relevantes en el proyecto son:
+
+\begin{itemize}
+	\item \textbf{Personas vs. Proceso}: Al ser un equipo de sólo una persona con experiencia previa en metodologías ágiles, se prioriza \emph{People} para maximizar la comunicación y la adaptabilidad.
+	\item \textbf{Cambios vs. Plan}: El alto grado de incertidumbre y la necesidad de iteraciones frecuentes inclinan la balanza hacia \emph{Change}.
+	\item \textbf{Clientes vs. Contrato}: Dada la baja disponibilidad de stakeholders y pocos requisitos regulatorios, se busca un término medio, pero con capacidad de ajustar en función de feedback real.
+	\item \textbf{Competencia técnica vs. Gestión del proyecto}: La introducción de tecnologías nuevas y el tratamiento de datos no estructurados refuerzan la preferencia por la \emph{competencia técnica} y la flexibilidad.
+	\item \textbf{Control vs. Flexibilidad}: el bajo nivel de criticidad permite una mayor \emph{flexibilidad}.
+\end{itemize}
+
+En conjunto, este análisis muestra que un enfoque \textbf{ágil} es el más adecuado para gestionar la incertidumbre, aprovechar la experiencia previa y permitir ajustes rápidos durante los cuatro meses de desarrollo.
+
+\subsection{Comparativa de metodologías ágiles}
+A continuación se describen brevemente cuatro candidatas:
+
+\paragraph{Kanban}  
+– Flujo continuo de trabajo sin iteraciones fijas.  
+– Ventajas: visualización sencilla, adaptación instantánea a cambios.  
+– Inconvenientes: puede perderse la cadencia de entrega regular y foco en la calidad de las prácticas de ingeniería.
+
+\paragraph{Lean Software Development}  
+– Enfoque en eliminar desperdicios, entrega rápida y aprendizaje continuo.  
+– Ventajas: eficiencia en recursos, mejora continua.  
+– Inconvenientes: requiere madurez en prácticas de mejora y métricas precisas.
+
+\paragraph{Dynamic Systems Development Method (DSDM)}  
+– Marco iterativo con fases definidas (Feasibility, Foundations, Exploration, Engineering, Deployment).  
+– Ventajas: estructura híbrida que combina planificación y agilidad, roles y entregables claros.  
+– Inconvenientes: algo más pesado en documentación y governance, puede ralentizarse en proyectos muy cortos.
+
+\paragraph{Extreme Programming (XP)}  
+– Iteraciones muy cortas (1–2 semanas), énfasis en prácticas de ingeniería (desarrollo dirigido por pruebas, pair programming, integración continua).  
+– Ventajas: máxima calidad de código, feedback inmediato, reducción de defectos.  
+– Inconvenientes: requiere disciplina en el uso de prácticas y cierta colaboración permanente (pairing).
+
+\subsection{Justificación de la elección: Extreme Programming}
+Tras comparar las características:
+
+\begin{itemize}
+	\item \textbf{Iteraciones cortas y feedback rápido} de XP encajan con el alto grado de incertidumbre y el plazo de cuatro meses.  
+	\item \textbf{Prácticas de calidad} (TDD, CI, refactoring) minimizan el riesgo al usar tecnologías nuevas y datos no estructurados.  
+	\item La \textbf{experiencia previa} en ágil facilita la adopción de XP sin curva de aprendizaje excesiva.  
+	\item La \textbf{flexibilidad} para ajustar requisitos en cada iteración garantiza que, aunque el involucramiento de stakeholders sea bajo, se puedan incorporar descubrimientos técnicos y cambios de alcance de forma continua.
+\end{itemize}
+
+Por ello, se selecciona \textit{Extreme Programming} como la metodología de desarrollo de este proyecto de tesis, ya que ofrece el equilibrio óptimo entre rapidez, adaptabilidad y calidad del software.~\cite{agilealliance_xp}  
+
+En conclusión, la adopción de \textit{Extreme Programming} en este proyecto de tesis proporciona un marco sólido y adaptable que se alinea con las necesidades específicas del desarrollo de sistemas de inteligencia artificial aplicados a la interpretación de datos históricos, garantizando una gestión eficiente del proyecto y la entrega de un producto de alta calidad.
 
 \section{Herramientas y tecnologías}
 
@@ -160,7 +206,7 @@ Una vez generados los embeddings, es esencial contar con un sistema que permita 
 Por tanto, la integración de estas tecnologías no solo facilita la recuperación de información relevante, sino que también permite mantener la precisión semántica, un factor crítico en el análisis de datos históricos, donde los detalles específicos son clave para la correcta interpretación de los textos \cite{mikolov2013efficient}. En este sentido, la vectorización y el almacenamiento en FAISS ofrecen una solución robusta y escalable para abordar los desafíos de la recuperación de información en documentos históricos complejos, garantizando tanto la eficiencia como la precisión en el contexto de grandes volúmenes de datos no estructurados.
 
 
-\section*{Conclusiones del Capítulo}
+\section*{Conclusiones del capítulo}
 \addcontentsline{toc}{section}{Conclusiones del Capítulo}
 
 Este capítulo ha establecido los fundamentos teóricos y tecnológicos esenciales para el desarrollo de un sistema multiagente conversacional diseñado para procesar y analizar los datos históricos del \textit{Diario de la Marina} (1844--1960). A lo largo de este capítulo, se exploraron diversas tecnologías clave, incluyendo el reconocimiento óptico de caracteres (OCR), los modelos de lenguaje de gran escala (LLMs), sistemas multiagente, Recuperación Aumentada por Generación (RAG), técnicas de \textit{embeddings} y bases de datos vectoriales. Se demostró cómo estas tecnologías tienen el potencial de transformar grandes volúmenes de información no estructurada en conocimiento útil y accesible.
@@ -168,4 +214,3 @@ Este capítulo ha establecido los fundamentos teóricos y tecnológicos esencial
 El análisis comparativo de las soluciones existentes, como Chatize, ha puesto de manifiesto que, aunque efectivas en contextos contemporáneos, estas plataformas no son adecuadas para abordar los desafíos específicos de los documentos históricos. Esto se debe a su incapacidad para manejar de manera efectiva las particularidades de los textos antiguos, como errores de OCR derivados de tipografías obsoletas o la falta de contextualización histórica.
 
 Este enfoque especializado, combinado con la metodología de desarrollo ágil Extreme Programming (XP), permitirá superar estos obstáculos. Las herramientas tecnológicas seleccionadas, como Python 3.12.7, LangChain, LangGraph y FAISS, ofrecen una infraestructura robusta y flexible para la implementación del sistema. Estas herramientas no solo facilitan la construcción de un sistema multiagente eficiente, sino que también permiten una integración efectiva de las tecnologías necesarias para interpretar y contextualizar los datos históricos de manera precisa.
-

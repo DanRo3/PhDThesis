@@ -11,7 +11,6 @@
 %% Copyright (C) 2015 by Hassán Lombera Rodríguez <hlombera@uci.cu>
 %% Maintainers: Luis Guillermo Silva Rojas <lgsilva@uci.cu>
 %%              Rubén Alcolea Núñez <ralcolea@uci.cu>
-%%              Daniel Rojas Grass <danielrg@estudiantes.uci.cu>
 %% 
 %% This file may be distributed and/or modified under the conditions of
 %% the LaTeX Project Public License, either version 1.3c of this license
@@ -64,10 +63,9 @@
 \ProcessOptions\relax
 \RequirePackage{geometry}
 
-\RequirePackage[utf8]{inputenc}
+\RequirePackage[utf8]{inputenc}  % Soporta caracteres modernos
 \RequirePackage[T1]{fontenc}
 \RequirePackage{graphicx}
-\RequirePackage{fncychap}
 \graphicspath{{images/}{Images/}}
 \def\input@path{{images/}{Images/}}
 \RequirePackage[update]{epstopdf}
@@ -164,7 +162,7 @@
 \newcommand{\eqRef}[1]{Ec.~(\ref{#1})}
 \newcommand{\figRef}[1]{Fig.~(\ref{#1})}
 \newcommand{\soft}{\emph{software }}
-\newcommand{\huseparator}{\par\vspace{2ex}\noindent\makebox[\linewidth]{\rule{0.5\linewidth}{0.4pt}}\par\vspace{2ex}}
+
 \newcommand{\@logoFile}{uci}
 \newcommand{\@logo}
 {
@@ -232,7 +230,7 @@ Doctor en Ciencias Técnicas }
 {%
 \fancyhf{} % clear all header and footer fields
 \fancyfoot[R]{\thepage} % for "oneside" option only
-\fancyfoot[L]{\@author}    % for "oneside" option only
+%\fancyfoot[L]{\@author}    % for "oneside" option only
 \ifnum\theauthesiscnt=2
 \fancyfoot[R]{\@authornd}
 \fancyfoot[C]{\thepage}
@@ -248,18 +246,19 @@ Doctor en Ciencias Técnicas }
 
 \fancyfoot{} % clear all footer fields
 \fancyfoot[C]{\thepage}     % for "twoside" option only
-\fancyfoot[RO,LE]{\@author}    % for "twoside" option only
+%\fancyfoot[RO,LE]{\@author}    % for "twoside" option only
 \ifnum\theauthesiscnt=2
 \fancyfoot[RE,LO]{\@authornd}
 \fi
 \renewcommand{\headrulewidth}{0.4pt}
 \renewcommand{\footrulewidth}{0.4pt}
 
+
 \fancypagestyle{plain}
 {%
 \fancyhf{} % clear all header and footer fields
 \fancyfoot[C]{\thepage}  % for "twoside" option only
-\fancyfoot[LE,RO]{\@author} % for "twoside" option only
+%\fancyfoot[LE,RO]{\@author} % for "twoside" option only
 \ifnum\theauthesiscnt=2
 \fancyfoot[RE,LO]{\@authornd}
 \fi
@@ -316,6 +315,12 @@ Doctor en Ciencias Técnicas }
 %\@dedicatory
 %}
 %}
+
+
+
+
+
+
 \newcommand{\set@acknowledgment}
 {
 \newpage
@@ -338,9 +343,8 @@ Doctor en Ciencias Técnicas }
 \noindent \textbf{Palabras clave:} \@keywords.
 \ChangeLipsumPar
 }
-
-
 }
+
 %% =======================================================================
 %% Definición de comandos para la tesis: Sección de autores, dedicatoria, etc.
 %% =======================================================================
@@ -442,8 +446,6 @@ Doctor en Ciencias Técnicas }
 %\ifbool{nolol}{}{\lstlistoflistings}
 %\ifoptionfinal{}{\phantomsection\listoftodos\addcontentsline{toc}{chapter}{Lista de tareas pendientes}}
 }
-
-
 \newcommand{\introduction}
 {
 \phantomsection
@@ -1638,7 +1640,7 @@ hidelinks
 \vfill
 \medskip
 \settimeformat{ampmtime}
-
+\centerline{ }
 \clearpage
 \ifboolexpr{bool{annex}}
 {
@@ -1674,6 +1676,17 @@ hidelinks
 \end{textblock}
 }
 
+\DeclareOption{predefense}
+{
+\AddEverypageHook{\@predefensestamp}
+\ifoptionfinal{}
+{
+\@option@finaltrue  % from package ifdraft
+\renewcommand{\@todo}[2][]{}
+\@sc@wm@stampfalse  % from package draftwatermark
+}
+}
+\ProcessOptions\relax
 \endinput
 %%
 %% End of file `thesis.cls'.
