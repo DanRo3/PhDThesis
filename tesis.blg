@@ -5,82 +5,55 @@ Reallocating 'name_of_file' (item size: 1) to 8 items.
 The style file: apalike.bst
 Reallocating 'name_of_file' (item size: 1) to 8 items.
 Database file #1: library.bib
-Warning--entry type for "chatize2023web" isn't style-file defined
---line 527 of file library.bib
-Warning--entry type for "haystack2023docs" isn't style-file defined
---line 563 of file library.bib
-Warning--entry type for "llamaindex2023web" isn't style-file defined
---line 579 of file library.bib
-Warning--entry type for "textcortex" isn't style-file defined
---line 595 of file library.bib
-Warning--entry type for "vidnoz" isn't style-file defined
---line 611 of file library.bib
-Warning--entry type for "mymap" isn't style-file defined
---line 627 of file library.bib
-Warning--entry type for "acrobatai" isn't style-file defined
---line 643 of file library.bib
-Warning--entry type for "IBMReferential" isn't style-file defined
---line 1117 of file library.bib
-Warning--entry type for "ISO9075" isn't style-file defined
---line 1149 of file library.bib
-Warning--to sort, need author or key in github_version_control
-Warning--to sort, need author or key in github_academic
-Warning--to sort, need author or key in iso25010-2023
-Warning--to sort, need author or key in ISO9075
-Warning--to sort, need author or key in AirbnbJS
 Warning--to sort, need author or key in GoogleJS
-Warning--empty author in github_academic
-Warning--empty journal in github_academic
-Warning--empty author in iso25010-2023
-Warning--empty author in github_version_control
-Warning--empty journal in github_version_control
 Warning--empty journal in BeckCunningham
 Warning--empty journal in turn0search8
 Warning--empty journal in turn0search2
 Warning--empty journal in turn0search0
-Warning--empty journal in langchain2023langgraph
+Warning--empty journal in github_version_control
+Warning--empty journal in ISO9075
 Warning--empty journal in mikolov2013efficient
 Warning--empty journal in spacy2023nlp
 Warning--empty journal in reimers2019sentence
-You've used 69 entries,
+You've used 71 entries,
             1935 wiz_defined-function locations,
-            766 strings with 11376 characters,
-and the built_in function-call counts, 20264 in all, are:
-= -- 1968
-> -- 762
-< -- 51
-+ -- 264
-- -- 244
-* -- 1502
-:= -- 3776
-add.period$ -- 184
-call.type$ -- 69
-change.case$ -- 459
-chr.to.int$ -- 65
-cite$ -- 94
-duplicate$ -- 836
-empty$ -- 1350
-format.name$ -- 327
-if$ -- 3806
-int.to.chr$ -- 5
+            789 strings with 12035 characters,
+and the built_in function-call counts, 21354 in all, are:
+= -- 2062
+> -- 832
+< -- 58
++ -- 285
+- -- 266
+* -- 1563
+:= -- 4009
+add.period$ -- 193
+call.type$ -- 71
+change.case$ -- 475
+chr.to.int$ -- 68
+cite$ -- 82
+duplicate$ -- 880
+empty$ -- 1417
+format.name$ -- 358
+if$ -- 4019
+int.to.chr$ -- 4
 int.to.str$ -- 0
-missing$ -- 46
-newline$ -- 325
-num.names$ -- 189
-pop$ -- 409
+missing$ -- 57
+newline$ -- 338
+num.names$ -- 210
+pop$ -- 433
 preamble$ -- 1
-purify$ -- 463
+purify$ -- 484
 quote$ -- 0
-skip$ -- 671
+skip$ -- 708
 stack$ -- 0
-substring$ -- 1013
-swap$ -- 37
+substring$ -- 1044
+swap$ -- 44
 text.length$ -- 2
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 396
-warning$ -- 19
-while$ -- 139
+type$ -- 398
+warning$ -- 10
+while$ -- 154
 width$ -- 0
-write$ -- 792
-(There were 28 warnings)
+write$ -- 829
+(There were 10 warnings)

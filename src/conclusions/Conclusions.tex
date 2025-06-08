@@ -1,2 +1,25 @@
 \conclusions
-Como resultados de la investigación y dando cumplimiento al objetivo general, se arribó a las siguientes conclusiones:
+\label{chap:conclusiones-generales}
+
+%El presente trabajo de diploma concluye con resultados significativos en el desarrollo de un sistema multiagente conversacional, capaz de interpretar y contextualizar datos históricos no estructurados del transporte marítimo, extraídos del Diario de la Marina.
+%\begin{itemize}
+	%\item Se logró construir un marco conceptual sólido que integró tecnologías clave como OCR, LLM, sistemas multiagente, RAG, modelos de embeddings y bases de datos vectoriales. Este marco permitió abordar con eficacia la complejidad de los documentos históricos, facilitando su digitalización, estructuración y comprensión automatizada.
+	%\item Los resultados del análisis comparativo con herramientas conversacionales existentes evidenciaron que las soluciones generalistas presentan limitaciones notables frente a textos históricos con errores de OCR. En contraste, el sistema propuesto demostró una mayor capacidad para ofrecer respuestas contextualizadas, ajustadas a las particularidades del dominio histórico estudiado.
+	%\item La arquitectura implementada, basada en microservicios y patrones de diseño bien establecidos, permitió alcanzar una solución flexible, escalable y fácilmente mantenible. El sistema respondió de manera efectiva a los requisitos funcionales y no funcionales, superando los estándares iniciales en modularidad y organización del código.
+	%\item El sistema fue capaz de transformar datos históricos crudos en información útil mediante respuestas textuales coherentes y visualizaciones gráficas precisas. Esta funcionalidad fue validada a través de múltiples escenarios de prueba, confirmando su utilidad como herramienta para la consulta y análisis de fuentes históricas complejas.
+	%\item La estrategia de pruebas aplicada permitió identificar y resolver errores críticos antes de la fase de despliegue. Se alcanzó un índice de satisfacción del usuario (ISG) de 0.8, lo cual valida positivamente la experiencia de uso. Además, se evidenció un buen desempeño del componente de IA en la generación de respuestas, con oportunidades identificadas para optimizaciones futuras.
+%\end{itemize}
+
+A partir del desarrollo de la presente investigación, se constata el cumplimiento de los objetivos específicos planteados, los cuales guiaron de manera sistemática la construcción de un sistema multiagente conversacional orientado a la interpretación y contextualización de datos históricos no estructurados provenientes del \textit{Diario de la Marina}.
+
+\begin{itemize}
+	\item El análisis de los referentes teóricos y metodológicos permitió construir un andamiaje conceptual sólido que integró tecnologías fundamentales como el Reconocimiento Óptico de Caracteres (OCR), los modelos de lenguaje de gran escala (LLM), los sistemas multiagente, las arquitecturas RAG, los modelos de \textit{embeddings} y las bases de datos vectoriales. Este marco teórico facilitó la comprensión de las problemáticas asociadas al tratamiento de datos históricos no estructurados y sustentó las decisiones técnicas adoptadas en la propuesta de solución.
+	
+	\item Se desarrolló una arquitectura modular y escalable, que permitió definir claramente los componentes funcionales, sus responsabilidades, interacciones y flujos de trabajo. Este diseño se apoyó en el uso de patrones arquitectónicos y de diseño reconocidos, lo que favoreció la coherencia estructural del sistema y su mantenibilidad a largo plazo.
+	
+	\item Se implementó una solución tecnológica basada en una arquitectura de microservicios que articula un \textit{frontend} en React, un \textit{backend} en \textit{Django REST Framework} y un microservicio especializado construido con \textit{FastAPI}. Esta arquitectura posibilitó la coordinación efectiva entre agentes inteligentes encargados de la recuperación, contextualización y generación de respuestas a partir de datos históricos digitalizados. El sistema demostró capacidad para transformar datos no estructurados en conocimiento accesible y contextualizado, tanto en formato textual como visual.
+	
+	\item Finalmente, en cuanto a la validación del sistema desarrollado, se llevaron a cabo pruebas exhaustivas que incluyeron pruebas unitarias, funcionales, de rendimiento y de seguridad. Los resultados evidenciaron un cumplimiento satisfactorio de los requisitos definidos, así como una alta precisión en la interpretación de consultas en lenguaje natural. No obstante, se identificaron desafíos asociados a la latencia en la respuesta, inherentes a la naturaleza síncrona de los procesos de inferencia.
+\end{itemize}
+
+En síntesis, la presente investigación demuestra la viabilidad técnica y metodológica de emplear sistemas multiagente conversacionales, integrados con modelos de lenguaje y técnicas de recuperación aumentada por generación, para revitalizar y poner en valor archivos históricos digitalizados mediante interacciones en lenguaje natural.

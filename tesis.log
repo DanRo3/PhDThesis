@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.2 NEXT) (preloaded format=pdflatex 2025.5.3)  27 MAY 2025 21:11
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.2 NEXT) (preloaded format=pdflatex 2025.5.3)  8 JUN 2025 11:55
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1558,11 +1558,11 @@ Package: lipsum 2021-09-20 v2.7 150 paragraphs of Lorem Ipsum dummy text
 \glo@main@file=\write5
 \openout5 = `tesis.glo'.
 
-Package glossaries Info: Writing glossary file tesis.glo on input line 461.
+Package glossaries Info: Writing glossary file tesis.glo on input line 472.
 \glo@acronym@file=\write6
 \openout6 = `tesis.acn'.
 
-Package glossaries Info: Writing glossary file tesis.acn on input line 461.
+Package glossaries Info: Writing glossary file tesis.acn on input line 472.
 \c@cntsign=\count451
 \c@cnt=\count452
 \c@authesiscnt=\count453
@@ -2202,22 +2202,28 @@ Package footmisc Info: Declaring symbol style lamport* on input line 747.
 Package footmisc Info: Declaring symbol style lamport*-robust on input line 768
 .
 ))
+(C:\Users\DanRo\AppData\Local\Programs\MiKTeX\tex/latex/makecell\makecell.sty
+Package: makecell 2009/08/03 V0.1e Managing of Tab Column Heads and Cells
+\rotheadsize=\dimen448
+\c@nlinenum=\count563
+\TeXr@lab=\toks110
+)
 (C:\Users\DanRo\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstlang1.sty
 File: lstlang1.sty 2024/09/23 1.10c listings language file
 )
-\c@definition=\count563
+\c@definition=\count564
 Package csquotes Info: Checking for multilingual support...
 Package csquotes Info: ... found 'babel' package.
 Package csquotes Info: Adjusting default style.
 Package csquotes Info: Redefining alias 'default' -> 'spanish'.
 LaTeX Font Info:    Trying to load font information for T1+ntxtlf on input line
- 116.
+ 117.
 
 (C:\Users\DanRo\AppData\Local\Programs\MiKTeX\tex/latex/newtx\t1ntxtlf.fd
 File: t1ntxtlf.fd 2021/05/24 v1.1 font definition file for T1/ntx/tlf
 )
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
-(Font)              scaled to size 10.95pt on input line 116.
+(Font)              scaled to size 10.95pt on input line 117.
 
 
 LaTeX Warning: Unused global option(s):
@@ -2232,69 +2238,66 @@ Package babel Info: 'spanish' activates 'spanish' shorthands.
 
 LaTeX Warning: Label `tab:caminos-grafo' multiply defined.
 
-
-LaTeX Warning: Label `fig:unit_test' multiply defined.
-
 )
 \openout1 = `tesis.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/ntxmi/m/it on input line 116.
+LaTeX Font Info:    Checking defaults for OML/ntxmi/m/it on input line 117.
 LaTeX Font Info:    Trying to load font information for OML+ntxmi on input line
- 116.
+ 117.
  (C:\Users\DanRo\AppData\Local\Programs\MiKTeX\tex/latex/newtx\omlntxmi.fd
 File: omlntxmi.fd 2015/08/25 Fontinst v1.933 font definitions for OML/ntxmi.
 )
-LaTeX Font Info:    ... okay on input line 116.
-LaTeX Font Info:    Checking defaults for OMS/txsy/m/n on input line 116.
+LaTeX Font Info:    ... okay on input line 117.
+LaTeX Font Info:    Checking defaults for OMS/txsy/m/n on input line 117.
 LaTeX Font Info:    Trying to load font information for OMS+txsy on input line 
-116.
+117.
 
 (C:\Users\DanRo\AppData\Local\Programs\MiKTeX\tex/latex/txfonts\omstxsy.fd
 File: omstxsy.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    ... okay on input line 116.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 116.
-LaTeX Font Info:    ... okay on input line 116.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 116.
-LaTeX Font Info:    ... okay on input line 116.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 116.
-LaTeX Font Info:    ... okay on input line 116.
-LaTeX Font Info:    Checking defaults for OMX/txex/m/n on input line 116.
+LaTeX Font Info:    ... okay on input line 117.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 117.
+LaTeX Font Info:    ... okay on input line 117.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 117.
+LaTeX Font Info:    ... okay on input line 117.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 117.
+LaTeX Font Info:    ... okay on input line 117.
+LaTeX Font Info:    Checking defaults for OMX/txex/m/n on input line 117.
 LaTeX Font Info:    Trying to load font information for OMX+txex on input line 
-116.
+117.
 
 (C:\Users\DanRo\AppData\Local\Programs\MiKTeX\tex/latex/txfonts\omxtxex.fd
 File: omxtxex.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    ... okay on input line 116.
-LaTeX Font Info:    Checking defaults for U/ntxexa/m/n on input line 116.
+LaTeX Font Info:    ... okay on input line 117.
+LaTeX Font Info:    Checking defaults for U/ntxexa/m/n on input line 117.
 LaTeX Font Info:    Trying to load font information for U+ntxexa on input line 
-116.
+117.
 
 (C:\Users\DanRo\AppData\Local\Programs\MiKTeX\tex/latex/newtx\untxexa.fd
 File: untxexa.fd 2012/04/16 Fontinst v1.933 font definitions for U/ntxexa.
 )
-LaTeX Font Info:    ... okay on input line 116.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 116.
-LaTeX Font Info:    ... okay on input line 116.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 116.
-LaTeX Font Info:    ... okay on input line 116.
-LaTeX Font Info:    Checking defaults for LMS/ntxsy/m/n on input line 116.
+LaTeX Font Info:    ... okay on input line 117.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 117.
+LaTeX Font Info:    ... okay on input line 117.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 117.
+LaTeX Font Info:    ... okay on input line 117.
+LaTeX Font Info:    Checking defaults for LMS/ntxsy/m/n on input line 117.
 LaTeX Font Info:    Trying to load font information for LMS+ntxsy on input line
- 116.
+ 117.
 
 (C:\Users\DanRo\AppData\Local\Programs\MiKTeX\tex/latex/newtx\lmsntxsy.fd
 File: lmsntxsy.fd 2016/07/02 Fontinst v1.933 font definitions for LMS/ntxsy.
 )
-LaTeX Font Info:    ... okay on input line 116.
-LaTeX Font Info:    Checking defaults for LMX/ntxexx/m/n on input line 116.
+LaTeX Font Info:    ... okay on input line 117.
+LaTeX Font Info:    Checking defaults for LMX/ntxexx/m/n on input line 117.
 LaTeX Font Info:    Trying to load font information for LMX+ntxexx on input lin
-e 116.
+e 117.
 
 (C:\Users\DanRo\AppData\Local\Programs\MiKTeX\tex/latex/newtx\lmxntxexx.fd
 File: lmxntxexx.fd 2016/07/03 Fontinst v1.933 font definitions for LMX/ntxexx.
 )
-LaTeX Font Info:    ... okay on input line 116.
+LaTeX Font Info:    ... okay on input line 117.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -2334,20 +2337,20 @@ LaTeX Font Info:    ... okay on input line 116.
 (C:\Users\DanRo\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mk
 ii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count564
-\scratchdimen=\dimen448
+\scratchcounter=\count565
+\scratchdimen=\dimen449
 \scratchbox=\box128
-\nofMPsegments=\count565
-\nofMParguments=\count566
-\everyMPshowfont=\toks110
-\MPscratchCnt=\count567
-\MPscratchDim=\dimen449
-\MPnumerator=\count568
-\makeMPintoPDFobject=\count569
-\everyMPtoPDFconversion=\toks111
+\nofMPsegments=\count566
+\nofMParguments=\count567
+\everyMPshowfont=\toks111
+\MPscratchCnt=\count568
+\MPscratchDim=\dimen450
+\MPnumerator=\count569
+\makeMPintoPDFobject=\count570
+\everyMPtoPDFconversion=\toks112
 )
-LaTeX Info: Redefining \. on input line 116.
-LaTeX Info: Redefining \% on input line 116.
+LaTeX Info: Redefining \. on input line 117.
+LaTeX Info: Redefining \% on input line 117.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: float package is loaded.
 Package caption Info: hyperref package is loaded.
@@ -2359,10 +2362,10 @@ Package: ltcaption 2021/01/08 v1.4c longtable captions (AR)
 Package caption Info: rotating package is loaded.
 Package caption Info: supertabular package is loaded.
 Package caption Info: End \AtBeginDocument code.
-LaTeX Info: Command `\dddot' is already robust on input line 116.
-LaTeX Info: Command `\ddddot' is already robust on input line 116.
-\c@lstlisting=\count570
-Package hyperref Info: Link coloring ON on input line 116.
+LaTeX Info: Command `\dddot' is already robust on input line 117.
+LaTeX Info: Command `\ddddot' is already robust on input line 117.
+\c@lstlisting=\count571
+Package hyperref Info: Link coloring ON on input line 117.
 
 (C:\Users\DanRo\AppData\Local\Programs\MiKTeX\tex/latex/glossaries-english\glos
 saries-dictionary-English.dict
@@ -2372,9 +2375,9 @@ Dictionary: glossaries-dictionary, Language: English
 saries-dictionary-Spanish.dict
 Dictionary: glossaries-dictionary, Language: Spanish 
 )
-Package hyperref Info: Option `unicode' set `false' on input line 116.
-Package hyperref Info: Option `pdfnewwindow' set `true' on input line 116.
-Package hyperref Info: Option `plainpages' set `false' on input line 116.
+Package hyperref Info: Option `unicode' set `false' on input line 117.
+Package hyperref Info: Option `pdfnewwindow' set `true' on input line 117.
+Package hyperref Info: Option `plainpages' set `false' on input line 117.
 
 Couldn't patch \ttl@straight@ii
 Couldn't patch \ttl@straight@ii
@@ -2383,27 +2386,27 @@ Couldn't patch \deferred@thm@head!
 Package pgfplots Warning: running in backwards compatibility mode (unsuitable t
 ick labels; missing features). Consider writing \pgfplotsset{compat=1.18} into 
 your preamble.
- on input line 116.
+ on input line 117.
 
-\c@mv@tabular=\count571
-\c@mv@boldtabular=\count572
+\c@mv@tabular=\count572
+\c@mv@boldtabular=\count573
 <images/uci.png, id=6, 197.98969pt x 106.14656pt>
 File: images/uci.png Graphic file (type png)
 <use images/uci.png>
-Package pdftex.def Info: images/uci.png  used on input line 124.
+Package pdftex.def Info: images/uci.png  used on input line 125.
 (pdftex.def)             Requested size: 117.43875pt x 62.96281pt.
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/sc' will be
-(Font)              scaled to size 10.95pt on input line 126.
+(Font)              scaled to size 10.95pt on input line 127.
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/sc' will be
-(Font)              scaled to size 12.0pt on input line 126.
+(Font)              scaled to size 12.0pt on input line 127.
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/sc' will be
-(Font)              scaled to size 17.28pt on input line 130.
+(Font)              scaled to size 17.28pt on input line 132.
 LaTeX Font Info:    Font shape `T1/ntxtlf/b/n' will be
-(Font)              scaled to size 10.95pt on input line 132.
+(Font)              scaled to size 10.95pt on input line 134.
 
 
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
-(Font)              scaled to size 153.57375pt on input line 145.
+(Font)              scaled to size 153.57375pt on input line 149.
 [1
 
 \openout4 = `tesis.ist'.
@@ -2529,40 +2532,44 @@ LaTeX Font Info:    Font shape `U/ntxexa/m/n' will be
 LaTeX Font Info:    Font shape `U/ntxexa/m/n' will be
 (Font)              scaled to size 6.1pt on input line 23.
 )
-(src/acknowledgment/acknowledgment.tex) (src/dedication/dedication.tex
+(src/acknowledgment/acknowledgment.tex
 
 [1
 
 {C:/Users/DanRo/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc}])
-(src/resumen/resumen.tex
+(src/dedication/dedication.tex
 
 [2
 
-]) (src/abstract/abstract.tex
+]) (src/resumen/resumen.tex
 
 [3
 
-])
+]) (src/abstract/abstract.tex
 
 [4
+
+])
+
+[5
 
 ] (tesis.toc
 LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
 
 
-[5
+[6
 
 
 ]
 
-[6])
+[7])
 \tf@toc=\write7
 \openout7 = `tesis.toc'.
 
 
 
-[7] (tesis.lof
+[8] (tesis.lof
 LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
 )
@@ -2571,19 +2578,19 @@ LaTeX Info: Redefining \% on input line 1.
 
 
 
-[8
+[9
 
 ] (tesis.lot
 LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
 LaTeX Font Info:    Trying to load font information for T1+txtt on input line 1
-7.
+8.
 
 (C:\Users\DanRo\AppData\Local\Programs\MiKTeX\tex/latex/txfonts\t1txtt.fd
 File: t1txtt.fd 2000/12/15 v3.1
 )
 
-[9
+[10
 
 ])
 \tf@lot=\write9
@@ -2591,7 +2598,7 @@ File: t1txtt.fd 2000/12/15 v3.1
 
 
 
-[10] (src/introduction/Introduction.tex
+[11] (src/introduction/Introduction.tex
 
 
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
@@ -2621,12 +2628,14 @@ LaTeX Font Info:    Font shape `T1/ntxtlf/b/n' will be
 [6
 
 ]
-<images/diario.jpg, id=319, 1590.9036pt x 2105.466pt>
+<images/diario.jpg, id=330, 1590.9036pt x 2105.466pt>
 File: images/diario.jpg Graphic file (type jpg)
 <use images/diario.jpg>
 Package pdftex.def Info: images/diario.jpg  used on input line 14.
 (pdftex.def)             Requested size: 140.92793pt x 186.49597pt.
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
+(Font)              scaled to size 10.0pt on input line 15.
+LaTeX Font Info:    Font shape `T1/ntxtlf/m/it' will be
 (Font)              scaled to size 10.0pt on input line 15.
 
 
@@ -2704,8 +2713,6 @@ LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
 [11]
 LaTeX Font Info:    Font shape `T1/ntxtlf/b/n' will be
 (Font)              scaled to size 10.0pt on input line 67.
-LaTeX Font Info:    Font shape `T1/ntxtlf/m/it' will be
-(Font)              scaled to size 10.0pt on input line 75.
 
 Underfull \hbox (badness 10000) in paragraph at lines 88--89
 []|\T1/ntxtlf/m/it/10 Moderada\T1/ntxtlf/m/n/10 : útil pa-ra
@@ -2725,11 +2732,11 @@ Overfull \hbox (24.95314pt too wide) in alignment at lines 64--104
 
 [12]
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
-(Font)              scaled to size 12.0pt on input line 122.
+(Font)              scaled to size 12.0pt on input line 119.
 LaTeX Font Info:    Font shape `T1/ntxtlf/b/n' will be
-(Font)              scaled to size 12.0pt on input line 122.
+(Font)              scaled to size 12.0pt on input line 119.
 
-Overfull \hbox (49.38348pt too wide) in paragraph at lines 123--124
+Overfull \hbox (49.38348pt too wide) in paragraph at lines 120--121
 []\T1/ntxtlf/m/n/10.95 Para de-ci-dir en-tre un en-fo-que tra-di-cio-nal o ágil
 , se apli-ca la téc-ni-ca de la Es-tre-lla de Boehm^^UTurner [[]].
  []
@@ -2741,6 +2748,9 @@ Overfull \hbox (49.38348pt too wide) in paragraph at lines 123--124
 [14]
 
 [15]
+LaTeX Font Info:    Font shape `T1/ntxtlf/m/it' will be
+(Font)              scaled to size 9.0pt on input line 150.
+
 
 [16]
 
@@ -2751,32 +2761,34 @@ Overfull \hbox (49.38348pt too wide) in paragraph at lines 123--124
 [19]) (src/chapters/Chapter2.tex
 
 [20]
+
+[21]
 Cap\'{\i }tulo 2.
 
 
-[21
+[22
 
 ]
-<images/micro.png, id=466, 746.79pt x 156.585pt>
+<images/micro.png, id=496, 746.79pt x 156.585pt>
 File: images/micro.png Graphic file (type png)
 <use images/micro.png>
 Package pdftex.def Info: images/micro.png  used on input line 18.
 (pdftex.def)             Requested size: 422.77664pt x 88.64749pt.
 
 
-[22 <./images/micro.png>]
-<images/mas-final.png, id=483, 714.67pt x 582.175pt>
+[23 <./images/micro.png>]
+<images/mas-final.png, id=514, 714.67pt x 582.175pt>
 File: images/mas-final.png Graphic file (type png)
 <use images/mas-final.png>
 Package pdftex.def Info: images/mas-final.png  used on input line 39.
 (pdftex.def)             Requested size: 469.75502pt x 382.66435pt.
 
 
-[23 <./images/mas-final.png>]
-
-[24]
+[24 <./images/mas-final.png>]
 
 [25]
+
+[26]
 Overfull \hbox (14.13527pt too wide) in alignment at lines 84--89
  [] [] [] [] [] 
  []
@@ -2801,7 +2813,9 @@ Overfull \hbox (14.13527pt too wide) in alignment at lines 102--135
  [] [] [] [] [] 
  []
 
-[26] [27] [28] [29]
+[27] [28]
+
+[29] [30]
 LaTeX Font Info:    Font shape `OT1/minntx/m/n' will be
 (Font)              scaled to size 10.0pt on input line 252.
 LaTeX Font Info:    Font shape `OT1/minntx/m/n' will be
@@ -2834,93 +2848,90 @@ LaTeX Font Info:    Font shape `U/ntxexa/m/n' will be
 (Font)              scaled to size 10.0pt on input line 252.
 LaTeX Font Info:    Font shape `U/ntxexa/m/n' will be
 (Font)              scaled to size 7.3pt on input line 252.
-<images/chat.PNG, id=529, 750.4035pt x 375.804pt>
+<images/chat.PNG, id=560, 750.4035pt x 375.804pt>
 File: images/chat.PNG Graphic file (type png)
 <use images/chat.PNG>
 Package pdftex.def Info: images/chat.PNG  used on input line 252.
 (pdftex.def)             Requested size: 281.85587pt x 141.15552pt.
+ [31] [32] [33 <./images/chat.PNG>]
 
-
-[30] [31]
-LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
-(Font)              scaled to size 7.3pt on input line 293.
- [32 <./images/chat.PNG>]
-
-[33] [34]
-
-[35]
+[34] [35]
 
 [36]
+
+[37]
 Underfull \hbox (badness 10000) in paragraph at lines 511--511
 
  []
 
 
 
-[37]
-<images/Arquitectura.png, id=606, 1031.855pt x 324.21124pt>
+[38]
+<images/Arquitectura.png, id=637, 1021.8175pt x 325.215pt>
 File: images/Arquitectura.png Graphic file (type png)
 <use images/Arquitectura.png>
 Package pdftex.def Info: images/Arquitectura.png  used on input line 524.
-(pdftex.def)             Requested size: 469.75502pt x 147.59549pt.
+(pdftex.def)             Requested size: 469.75502pt x 149.50642pt.
 
 
-[38 <./images/Arquitectura.png>]
-<images/modelo.png, id=625, 649.2255pt x 177.0615pt>
+[39 <./images/Arquitectura.png>]
+<images/RAGArchitect.png, id=657, 593.21625pt x 211.79124pt>
+File: images/RAGArchitect.png Graphic file (type png)
+<use images/RAGArchitect.png>
+Package pdftex.def Info: images/RAGArchitect.png  used on input line 547.
+(pdftex.def)             Requested size: 234.8775pt x 83.85536pt.
+<images/modelo.png, id=658, 649.2255pt x 177.0615pt>
 File: images/modelo.png Graphic file (type png)
 <use images/modelo.png>
-Package pdftex.def Info: images/modelo.png  used on input line 543.
+Package pdftex.def Info: images/modelo.png  used on input line 556.
 (pdftex.def)             Requested size: 469.75502pt x 128.11366pt.
 
-Overfull \hbox (7.44424pt too wide) in paragraph at lines 549--554
-\T1/ntxtlf/m/n/10.95 La en-ti-dad Sa-la de chat per-mi-te agru-par con-ver-sa-c
-io-nes de ma-ne-ra ló-gi-ca y fil-tra-ble [[]].
+
+[40 <./images/RAGArchitect.png>]
+Overfull \hbox (11.11246pt too wide) in paragraph at lines 562--567
+\T1/ntxtlf/m/n/10.95 La en-ti-dad \T1/ntxtlf/b/n/10.95 Sa-la de chat \T1/ntxtlf
+/m/n/10.95 per-mi-te agru-par con-ver-sa-cio-nes de ma-ne-ra ló-gi-ca y fil-tra
+-ble [[]].
  []
 
 
 
-[39 <./images/modelo.png>]
-Overfull \hbox (49.0015pt too wide) in paragraph at lines 565--566
-[]\T1/ntxtlf/b/n/10.95 Convenciones de Es-ti-lo\T1/ntxtlf/m/n/10.95 : Python cu
-en-ta con una guía ofi-cial de es-ti-lo de-no-mi-na-da PEP 8 [[]],
- []
+[41 <./images/modelo.png>]
 
+[42]
 
-
-[40]
-
-[41]
-<images/singleton.PNG, id=685, 471.56175pt x 75.28125pt>
+[43]
+<images/singleton.PNG, id=726, 471.56175pt x 75.28125pt>
 File: images/singleton.PNG Graphic file (type png)
 <use images/singleton.PNG>
-Package pdftex.def Info: images/singleton.PNG  used on input line 589.
+Package pdftex.def Info: images/singleton.PNG  used on input line 602.
 (pdftex.def)             Requested size: 375.80544pt x 59.99762pt.
-
-
-[42 <./images/singleton.PNG>]
-<images/cadena.PNG, id=693, 461.3235pt x 180.675pt>
+<images/cadena.PNG, id=728, 461.3235pt x 180.675pt>
 File: images/cadena.PNG Graphic file (type png)
 <use images/cadena.PNG>
-Package pdftex.def Info: images/cadena.PNG  used on input line 599.
+Package pdftex.def Info: images/cadena.PNG  used on input line 612.
 (pdftex.def)             Requested size: 375.80544pt x 147.18402pt.
-<images/codigo_template_method.png, id=695, 572.73975pt x 231.86626pt>
+
+
+[44 <./images/singleton.PNG>]
+<images/codigo_template_method.png, id=735, 572.73975pt x 231.86626pt>
 File: images/codigo_template_method.png Graphic file (type png)
 <use images/codigo_template_method.png>
 Package pdftex.def Info: images/codigo_template_method.png  used on input line 
-609.
+622.
 (pdftex.def)             Requested size: 375.80544pt x 152.14415pt.
-
-
-[43 <./images/cadena.PNG> <./images/codigo_template_method.png>]
-<images/fachada.PNG, id=703, 615.4995pt x 300.52275pt>
+<images/fachada.PNG, id=737, 615.4995pt x 300.52275pt>
 File: images/fachada.PNG Graphic file (type png)
 <use images/fachada.PNG>
-Package pdftex.def Info: images/fachada.PNG  used on input line 619.
+Package pdftex.def Info: images/fachada.PNG  used on input line 632.
 (pdftex.def)             Requested size: 375.80544pt x 183.49744pt.
-<images/interfaz1.png, id=705, 1200.73593pt x 520.19344pt>
+
+
+[45 <./images/cadena.PNG> <./images/codigo_template_method.png>]
+<images/interfaz1.png, id=745, 1200.73593pt x 520.19344pt>
 File: images/interfaz1.png Graphic file (type png)
 <use images/interfaz1.png>
-Package pdftex.def Info: images/interfaz1.png  used on input line 634.
+Package pdftex.def Info: images/interfaz1.png  used on input line 647.
 (pdftex.def)             Requested size: 469.75502pt x 203.50961pt.
 
 
@@ -2928,195 +2939,209 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
 
-[44 <./images/fachada.PNG>]
-Underfull \hbox (badness 10000) in paragraph at lines 652--661
+[46 <./images/fachada.PNG>]
+Underfull \hbox (badness 10000) in paragraph at lines 665--674
 
  []
 
-
-
-[45 <./images/interfaz1.png>]
-<images/despliege.drawio.png, id=724, 783.92876pt x 221.82875pt>
+<images/despliege.drawio.png, id=757, 783.92876pt x 221.82875pt>
 File: images/despliege.drawio.png Graphic file (type png)
 <use images/despliege.drawio.png>
-Package pdftex.def Info: images/despliege.drawio.png  used on input line 664.
+Package pdftex.def Info: images/despliege.drawio.png  used on input line 677.
 (pdftex.def)             Requested size: 469.75502pt x 132.92902pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 669--674
-
- []
+LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
 
-[46 <./images/despliege.drawio.png>]) (src/chapters/Chapter3.tex
+[47 <./images/interfaz1.png>]
 
-[47]
+[48 <./images/despliege.drawio.png>]) (src/chapters/Chapter3.tex
+
+[49]
 Cap\'{\i }tulo 3.
 
 
-[48
+[50
 
 ]
-Underfull \hbox (badness 1742) in paragraph at lines 31--31
-\T1/ntxtlf/m/n/10 téc-ni-ca del ca-mino
+Underfull \hbox (badness 1158) in paragraph at lines 23--23
+[]|\T1/ntxtlf/b/n/10 Tipos de prue-
  []
 
-[49]
+[51]
 
-[50]
-<images/postCreateMessage.png, id=750, 3693.8pt x 3103.595pt>
+[52]
+<images/postCreateMessage.png, id=788, 2216.28pt x 1862.157pt>
 File: images/postCreateMessage.png Graphic file (type png)
 <use images/postCreateMessage.png>
-Package pdftex.def Info: images/postCreateMessage.png  used on input line 88.
-(pdftex.def)             Requested size: 187.89914pt x 157.84084pt.
-<images/postMessage.png, id=751, 562.1pt x 271.0125pt>
+Package pdftex.def Info: images/postCreateMessage.png  used on input line 84.
+(pdftex.def)             Requested size: 187.89914pt x 157.86925pt.
+<images/postMessage.png, id=789, 562.1pt x 271.0125pt>
 File: images/postMessage.png Graphic file (type png)
 <use images/postMessage.png>
-Package pdftex.def Info: images/postMessage.png  used on input line 91.
+Package pdftex.def Info: images/postMessage.png  used on input line 87.
 (pdftex.def)             Requested size: 187.89914pt x 90.59229pt.
 LaTeX Font Info:    Font shape `T1/ntxtlf/b/n' will be
-(Font)              scaled to size 8.0pt on input line 105.
+(Font)              scaled to size 8.0pt on input line 101.
 LaTeX Font Info:    Font shape `T1/ntxtlf/b/n' will be
-(Font)              scaled to size 6.1pt on input line 105.
+(Font)              scaled to size 6.1pt on input line 101.
 
 
-[51 <./images/postCreateMessage.png> <./images/postMessage.png>]
+[53 <./images/postCreateMessage.png> <./images/postMessage.png>]
 
-[52{C:/Users/DanRo/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/newtx/ntx-ot1-
+[54{C:/Users/DanRo/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/newtx/ntx-ot1-
 tlf.enc}]
-<images/TestCase.PNG, id=767, 599.23875pt x 86.12175pt>
+<images/TestCase.PNG, id=805, 599.23875pt x 86.12175pt>
 File: images/TestCase.PNG Graphic file (type png)
 <use images/TestCase.PNG>
-Package pdftex.def Info: images/TestCase.PNG  used on input line 169.
+Package pdftex.def Info: images/TestCase.PNG  used on input line 186.
 (pdftex.def)             Requested size: 422.77664pt x 60.76183pt.
 
 
-[53 <./images/TestCase.PNG>]
-<images/Pruebas_funcionales.PNG, id=775, 489.62926pt x 451.08525pt>
+[55 <./images/TestCase.PNG>]
+<images/Pruebas_funcionales.PNG, id=815, 489.62926pt x 451.08525pt>
 File: images/Pruebas_funcionales.PNG Graphic file (type png)
 <use images/Pruebas_funcionales.PNG>
-Package pdftex.def Info: images/Pruebas_funcionales.PNG  used on input line 187
+Package pdftex.def Info: images/Pruebas_funcionales.PNG  used on input line 203
 .
-(pdftex.def)             Requested size: 422.77664pt x 389.49509pt.
+(pdftex.def)             Requested size: 197.29623pt x 181.75932pt.
 
-Overfull \hbox (13.74533pt too wide) in alignment at lines 196--201
+
+[56 <./images/Pruebas_funcionales.PNG>]
+Overfull \hbox (13.74533pt too wide) in alignment at lines 212--217
  [] [] [] [] [] 
  []
 
 
-Overfull \hbox (13.74533pt too wide) in alignment at lines 201--206
+Overfull \hbox (13.74533pt too wide) in alignment at lines 217--222
  [] [] [] [] [] 
  []
 
 
-Overfull \hbox (13.74533pt too wide) in alignment at lines 206--209
+Overfull \hbox (13.74533pt too wide) in alignment at lines 222--225
  [] [] [] [] [] 
  []
 
 
-Overfull \hbox (13.74533pt too wide) in alignment at lines 209--212
+Overfull \hbox (13.74533pt too wide) in alignment at lines 225--228
  [] [] [] [] [] 
  []
 
 
-Underfull \hbox (badness 5622) in paragraph at lines 214--214
+Underfull \hbox (badness 5622) in paragraph at lines 230--230
 []|\T1/ntxtlf/m/n/10 EC 1.1. En-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 214--214
+Underfull \hbox (badness 10000) in paragraph at lines 230--230
 \T1/ntxtlf/m/n/10 viar con-sul-ta
  []
 
 
-Underfull \hbox (badness 5622) in paragraph at lines 216--216
+Underfull \hbox (badness 5622) in paragraph at lines 232--232
 []|\T1/ntxtlf/m/n/10 EC 1.2. En-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 216--216
+Underfull \hbox (badness 10000) in paragraph at lines 232--232
 \T1/ntxtlf/m/n/10 viar con-sul-ta
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 216--216
+Underfull \hbox (badness 10000) in paragraph at lines 232--232
 \T1/ntxtlf/m/n/10 in-co-rrec-ta(con
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 216--216
+Underfull \hbox (badness 10000) in paragraph at lines 232--232
 \T1/ntxtlf/m/n/10 un con-tex-to
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 216--216
+Underfull \hbox (badness 10000) in paragraph at lines 232--232
 \T1/ntxtlf/m/n/10 fue-ra de la
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 216--216
+Underfull \hbox (badness 10000) in paragraph at lines 232--232
 \T1/ntxtlf/m/n/10 in-for-ma-ción
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 218--219
+Underfull \hbox (badness 10000) in paragraph at lines 234--235
 \T1/ntxtlf/m/n/10 fi-ca co-rres-pon-dien-te
  []
 
 
-Overfull \hbox (13.74533pt too wide) in alignment at lines 212--224
+Overfull \hbox (13.74533pt too wide) in alignment at lines 228--240
  [] [] [] [] [] 
  []
 
 
 
-[54 <./images/Pruebas_funcionales.PNG>]
-
-[55]
-<images/grafica_pruebas_funcionales.PNG, id=787, 421.575pt x 239.09325pt>
+[57]
+<images/grafica_pruebas_funcionales.PNG, id=827, 481.8pt x 248.127pt>
 File: images/grafica_pruebas_funcionales.PNG Graphic file (type png)
 <use images/grafica_pruebas_funcionales.PNG>
 Package pdftex.def Info: images/grafica_pruebas_funcionales.PNG  used on input 
-line 256.
-(pdftex.def)             Requested size: 422.77664pt x 239.77852pt.
+line 268.
+(pdftex.def)             Requested size: 234.8775pt x 120.96236pt.
 
 
-[56 <./images/grafica_pruebas_funcionales.PNG>]
-<images/primeraIt.PNG, id=795, 316.18124pt x 181.27725pt>
+[58 <./images/grafica_pruebas_funcionales.PNG>]
+Underfull \hbox (badness 10000) in paragraph at lines 297--298
+
+ []
+
+<images/Rendimiento1.PNG, id=838, 817.8555pt x 385.44pt>
+File: images/Rendimiento1.PNG Graphic file (type png)
+<use images/Rendimiento1.PNG>
+Package pdftex.def Info: images/Rendimiento1.PNG  used on input line 302.
+(pdftex.def)             Requested size: 422.77664pt x 199.2478pt.
+
+
+[59]
+
+[60 <./images/Rendimiento1.PNG>]
+<images/primeraIt.PNG, id=852, 316.18124pt x 181.27725pt>
 File: images/primeraIt.PNG Graphic file (type png)
 <use images/primeraIt.PNG>
-Package pdftex.def Info: images/primeraIt.PNG  used on input line 282.
-(pdftex.def)             Requested size: 422.77664pt x 242.40959pt.
-<images/2iter.PNG, id=796, 333.6465pt x 151.16475pt>
+Package pdftex.def Info: images/primeraIt.PNG  used on input line 334.
+(pdftex.def)             Requested size: 234.8775pt x 134.66585pt.
+<images/2iter.PNG, id=853, 333.6465pt x 151.16475pt>
 File: images/2iter.PNG Graphic file (type png)
 <use images/2iter.PNG>
-Package pdftex.def Info: images/2iter.PNG  used on input line 293.
-(pdftex.def)             Requested size: 422.77664pt x 191.55728pt.
+Package pdftex.def Info: images/2iter.PNG  used on input line 342.
+(pdftex.def)             Requested size: 234.8775pt x 106.41661pt.
 
 
-[57 <./images/primeraIt.PNG>]) (src/conclusions/Conclusions.tex
-
-[58 <./images/2iter.PNG>]) (src/recommendation/Recommendations.tex
-
-[59
-
-]) (Anexos/Anexos.tex) (tesis.bbl
-
-[60
-
-]
-
-[61
-
-]
+[61 <./images/primeraIt.PNG> <./images/2iter.PNG>])
+(src/conclusions/Conclusions.tex
 
 [62]
 
-[63]
+[63
 
-[64]
+]) (src/recommendation/Recommendations.tex
 
-[65])
+[64]) (Anexos/Anexos.tex) (tesis.bbl
+
+[65
+
+]
+
+[66
+
+]
+
+[67]
+
+[68]
+
+[69]
+
+[70])
 
 Package glossaries Warning: No \printglossary or \printglossaries found. 
 (Remove \makeglossaries if you don't want any glossaries.) 
@@ -3126,7 +3151,7 @@ No file tesis.gls.
 No file tesis.acr.
 
 
-[66]
+[71]
 *geometry* verbose mode - [ newgeometry ] result:
 * driver: pdftex
 * paper: <default>
@@ -3160,111 +3185,113 @@ No file tesis.acr.
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
-(Font)              scaled to size 24.88pt on input line 200.
+(Font)              scaled to size 24.88pt on input line 204.
 LaTeX Font Info:    Font shape `T1/ntxtlf/b/n' will be
-(Font)              scaled to size 24.88pt on input line 200.
+(Font)              scaled to size 24.88pt on input line 204.
 
 
-[67
+[72
 
 
 
 ]
 Anexo A.
-<images/create.PNG, id=857, 363.759pt x 351.714pt>
+<images/create.PNG, id=917, 363.759pt x 351.714pt>
 File: images/create.PNG Graphic file (type png)
 <use images/create.PNG>
-Package pdftex.def Info: images/create.PNG  used on input line 200.
+Package pdftex.def Info: images/create.PNG  used on input line 204.
 (pdftex.def)             Requested size: 281.85587pt x 272.52724pt.
-[68
+[73
 
 
 ]
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/sl' will be
-(Font)              scaled to size 10.95pt on input line 200.
-LaTeX Info: Redefining \. on input line 200.
-LaTeX Info: Redefining \% on input line 200.
+(Font)              scaled to size 10.95pt on input line 204.
+LaTeX Info: Redefining \. on input line 204.
+LaTeX Info: Redefining \% on input line 204.
 Package babel Info: 'spanish' activates 'spanish' shorthands.
-(babel)             Reported  on input line 200.
- [69{C:/Users/DanRo/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/newtx/ntx-ect
+(babel)             Reported  on input line 204.
+ [74{C:/Users/DanRo/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/newtx/ntx-ect
 h-tlf.enc}]
-<images/loguin.PNG, id=875, 389.0535pt x 366.77025pt>
+<images/loguin.PNG, id=935, 389.0535pt x 366.77025pt>
 File: images/loguin.PNG Graphic file (type png)
 <use images/loguin.PNG>
-Package pdftex.def Info: images/loguin.PNG  used on input line 200.
+Package pdftex.def Info: images/loguin.PNG  used on input line 204.
 (pdftex.def)             Requested size: 281.85587pt x 265.72533pt.
-LaTeX Info: Redefining \. on input line 200.
-LaTeX Info: Redefining \% on input line 200.
- [70 <./images/create.PNG>]
-LaTeX Info: Redefining \. on input line 200.
-LaTeX Info: Redefining \% on input line 200.
- [71]
-<images/cerrar.PNG, id=893, 183.68625pt x 38.544pt>
+LaTeX Info: Redefining \. on input line 204.
+LaTeX Info: Redefining \% on input line 204.
+ [75 <./images/create.PNG>]
+LaTeX Info: Redefining \. on input line 204.
+LaTeX Info: Redefining \% on input line 204.
+ [76]
+<images/cerrar.PNG, id=953, 183.68625pt x 38.544pt>
 File: images/cerrar.PNG Graphic file (type png)
 <use images/cerrar.PNG>
-Package pdftex.def Info: images/cerrar.PNG  used on input line 200.
+Package pdftex.def Info: images/cerrar.PNG  used on input line 204.
 (pdftex.def)             Requested size: 281.85587pt x 59.15266pt.
-LaTeX Info: Redefining \. on input line 200.
-LaTeX Info: Redefining \% on input line 200.
- [72 <./images/loguin.PNG>]
-<images/newConversation.PNG, id=899, 189.1065pt x 38.544pt>
+LaTeX Info: Redefining \. on input line 204.
+LaTeX Info: Redefining \% on input line 204.
+ [77 <./images/loguin.PNG>]
+<images/newConversation.PNG, id=959, 189.1065pt x 38.544pt>
 File: images/newConversation.PNG Graphic file (type png)
 <use images/newConversation.PNG>
-Package pdftex.def Info: images/newConversation.PNG  used on input line 200.
+Package pdftex.def Info: images/newConversation.PNG  used on input line 204.
 (pdftex.def)             Requested size: 281.85587pt x 57.45178pt.
-LaTeX Info: Redefining \. on input line 200.
-LaTeX Info: Redefining \% on input line 200.
+LaTeX Info: Redefining \. on input line 204.
+LaTeX Info: Redefining \% on input line 204.
 
-[73 <./images/cerrar.PNG>]
-<images/histo.PNG, id=910, 191.5155pt x 238.491pt>
+[78 <./images/cerrar.PNG>]
+<images/histo.PNG, id=970, 191.5155pt x 238.491pt>
 File: images/histo.PNG Graphic file (type png)
 <use images/histo.PNG>
-Package pdftex.def Info: images/histo.PNG  used on input line 200.
+Package pdftex.def Info: images/histo.PNG  used on input line 204.
 (pdftex.def)             Requested size: 187.89914pt x 234.00342pt.
-LaTeX Info: Redefining \. on input line 200.
-LaTeX Info: Redefining \% on input line 200.
- [74 <./images/newConversation.PNG>]
-LaTeX Info: Redefining \. on input line 200.
-LaTeX Info: Redefining \% on input line 200.
- [75]
-<images/lista.PNG, id=930, 945.5325pt x 337.86224pt>
+LaTeX Info: Redefining \. on input line 204.
+LaTeX Info: Redefining \% on input line 204.
+ [79 <./images/newConversation.PNG>]
+LaTeX Info: Redefining \. on input line 204.
+LaTeX Info: Redefining \% on input line 204.
+ [80]
+LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
+(Font)              scaled to size 7.3pt on input line 204.
+<images/lista.PNG, id=990, 945.5325pt x 337.86224pt>
 File: images/lista.PNG Graphic file (type png)
 <use images/lista.PNG>
-Package pdftex.def Info: images/lista.PNG  used on input line 200.
+Package pdftex.def Info: images/lista.PNG  used on input line 204.
 (pdftex.def)             Requested size: 281.85587pt x 100.71503pt.
-LaTeX Info: Redefining \. on input line 200.
-LaTeX Info: Redefining \% on input line 200.
- [76 <./images/histo.PNG>]
+LaTeX Info: Redefining \. on input line 204.
+LaTeX Info: Redefining \% on input line 204.
+ [81 <./images/histo.PNG>]
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
-(Font)              scaled to size 5.5pt on input line 200.
-<images/eliminarC.PNG, id=936, 192.72pt x 54.2025pt>
+(Font)              scaled to size 5.5pt on input line 204.
+<images/eliminarC.PNG, id=996, 192.72pt x 54.2025pt>
 File: images/eliminarC.PNG Graphic file (type png)
 <use images/eliminarC.PNG>
-Package pdftex.def Info: images/eliminarC.PNG  used on input line 200.
+Package pdftex.def Info: images/eliminarC.PNG  used on input line 204.
 (pdftex.def)             Requested size: 281.85587pt x 79.27144pt.
-LaTeX Info: Redefining \. on input line 200.
-LaTeX Info: Redefining \% on input line 200.
- [77 <./images/lista.PNG>]
-LaTeX Info: Redefining \. on input line 200.
-LaTeX Info: Redefining \% on input line 200.
- [78]
+LaTeX Info: Redefining \. on input line 204.
+LaTeX Info: Redefining \% on input line 204.
+ [82 <./images/lista.PNG>]
+LaTeX Info: Redefining \. on input line 204.
+LaTeX Info: Redefining \% on input line 204.
+ [83]
 
-LaTeX Info: Redefining \. on input line 200.
-LaTeX Info: Redefining \% on input line 200.
-[79 <./images/eliminarC.PNG>]
+LaTeX Info: Redefining \. on input line 204.
+LaTeX Info: Redefining \% on input line 204.
+[84 <./images/eliminarC.PNG>]
 Anexo B.
 
 
-[80
+[85
 
 ]
-LaTeX Info: Redefining \. on input line 200.
-LaTeX Info: Redefining \% on input line 200.
- [81]
+LaTeX Info: Redefining \. on input line 204.
+LaTeX Info: Redefining \% on input line 204.
+ [86]
 
-LaTeX Info: Redefining \. on input line 200.
-LaTeX Info: Redefining \% on input line 200.
-[82] (tesis.aux
+LaTeX Info: Redefining \. on input line 204.
+LaTeX Info: Redefining \% on input line 204.
+[87] (tesis.aux
 LaTeX Info: Redefining \. on input line 20.
 LaTeX Info: Redefining \% on input line 20.
 )
@@ -3290,13 +3317,13 @@ LaTeX Warning: There were multiply-defined labels.
 ### semi simple group (level 1) entered at line 4 (\begingroup)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 61539 strings out of 469958
- 1357917 string characters out of 5469814
- 2212013 words of memory out of 5000000
- 86850 multiletter control sequences out of 15000+600000
- 760999 words of font info for 191 fonts, out of 8000000 for 9000
+ 61746 strings out of 469958
+ 1360780 string characters out of 5469814
+ 2214945 words of memory out of 5000000
+ 87031 multiletter control sequences out of 15000+600000
+ 763856 words of font info for 192 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 113i,15n,131p,2540b,1694s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 113i,15n,131p,2540b,1711s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/DanRo/AppData/Local/Programs/MiKTeX/fonts/type1/publi
 c/newtx/NewTXMI.pfb><C:/Users/DanRo/AppData/Local/Programs/MiKTeX/fonts/type1/p
 ublic/txfonts/t1xtt.pfb><C:/Users/DanRo/AppData/Local/Programs/MiKTeX/fonts/typ
@@ -3307,9 +3334,9 @@ onts/type1/public/newtx/ztmb.pfb><C:/Users/DanRo/AppData/Local/Programs/MiKTeX/
 fonts/type1/public/newtx/ztmbi.pfb><C:/Users/DanRo/AppData/Local/Programs/MiKTe
 X/fonts/type1/public/newtx/ztmr.pfb><C:/Users/DanRo/AppData/Local/Programs/MiKT
 eX/fonts/type1/public/newtx/ztmri.pfb>
-Output written on tesis.pdf (93 pages, 4700508 bytes).
+Output written on tesis.pdf (99 pages, 4800052 bytes).
 PDF statistics:
- 1265 PDF objects out of 1440 (max. 8388607)
- 379 named destinations out of 1000 (max. 500000)
- 556 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1332 PDF objects out of 1440 (max. 8388607)
+ 401 named destinations out of 1000 (max. 500000)
+ 574 words of extra memory for PDF output out of 10000 (max. 10000000)
 

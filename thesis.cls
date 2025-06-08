@@ -285,6 +285,10 @@ Doctor en Ciencias Técnicas }
 {
 \def\@acknowledgment{#1}
 }
+\newcommand{\agradecimiento}[1]
+{
+	\def\@agradecimiento{#1}
+}
 \newcommand{\keywords}[1]
 {
 \def\@keywords{#1}
@@ -331,6 +335,7 @@ Doctor en Ciencias Técnicas }
 \@acknowledgment
 }
 }
+
 \newcommand{\set@abstract}
 {
 \newpage
@@ -368,6 +373,12 @@ Doctor en Ciencias Técnicas }
 	\phantomsection
 	\chapter*{Dedicatoria \markboth{\slshape DEDICATORIA}{\slshape DEDICATORIA}}
 	\addcontentsline{toc}{chapter}{Dedicatoria}
+}
+
+\newcommand{\agradecimient}{
+	\phantomsection
+	\chapter*{Agradecimientos \markboth{\slshape AGRADECIMIENTOS}{\slshape AGRADECIMIENTOS}}
+	\addcontentsline{toc}{chapter}{Agradecimientos}
 }
 
 % Comando para la opinión de los tutores

@@ -3,12 +3,12 @@
 
 %\section*{Introducción}
 %\addcontentsline{toc}{section}{Introducción}
-Este capítulo presenta la propuesta de solución para abordar el problema identificado en la investigación: la interpretación y contextualización de datos no estructurados del transporte marítimo extraídos del Diario de la Marina (1844–1960). Aquí se detallan los requisitos funcionales (RF) y no funcionales (RNF) que el sistema debe cumplir, así como una descripción exhaustiva de la solución propuesta, incluyendo las historias de usuario y las tarjetas CRC (Clase-Responsabilidad-Colaboración). Además, se analizan los patrones arquitectónicos y de diseño seleccionados para estructurar la aplicación, junto con las buenas prácticas de codificación asociadas a las tecnologías empleadas. Finalmente, se incluyen el diagrama de clases y el diagrama de componentes, que ilustran los elementos clave que integran esta propuesta. Este capítulo sienta las bases técnicas y conceptuales para la implementación y validación descritas en capítulos posteriores, alineándose con los objetivos específicos de diseño e implementación establecidos en la introducción.
+Este capítulo presenta la propuesta de solución para abordar el problema identificado en la investigación: la interpretación y contextualización de datos no estructurados del transporte marítimo extraídos del \textit{Diario de la Marina} (1844–1960). Aquí se detallan los requisitos funcionales (RF) y no funcionales (RNF) que el sistema debe cumplir, así como una descripción exhaustiva de la solución propuesta, incluyendo las historias de usuario, las tarjetas CRC (Clase-Responsabilidad-Colaboración) y el diseño del modelo de datos. Además, se analizan los patrones arquitectónicos y de diseño seleccionados para estructurar la aplicación, junto con las buenas prácticas de codificación asociadas a las tecnologías empleadas, así como el diagrama de despliege. Este capítulo sienta las bases técnicas y conceptuales para la implementación y validación descritas en capítulos posteriores, alineándose con los objetivos específicos de diseño e implementación establecidos en la introducción.
 
 \section{Descripción de la Propuesta de Solución}
 \label{sec:propuesta_solucion}
 
-La solución propuesta aborda la interacción con los datos históricos del transporte marítimo del \textit{Diario de la Marina} (1844-1960) mediante el desarrollo de una aplicación web moderna, separando claramente las responsabilidades entre la interfaz de usuario, la lógica de negocio y el procesamiento avanzado de lenguaje natural. Esta arquitectura se compone de tres elementos principales: un \textit{frontend} desarrollado con React js, un \textit{backend} API construido con Django REST Framework(DRF), y un microservicio dedicado que alberga el sistema multiagente conversacional basado en inteligencia artificial y que se expone con una api creada con FastApi. 
+La solución propuesta aborda la interacción con los datos históricos del transporte marítimo del \textit{Diario de la Marina} (1844-1960) mediante el desarrollo de una aplicación web moderna, separando claramente las responsabilidades entre la interfaz de usuario, la lógica de negocio y el procesamiento avanzado de lenguaje natural. Esta arquitectura se compone de tres elementos principales: un \textit{frontend} desarrollado con \textit{React js}, un \textit{backend API REST~\footnote{Una \textit{API REST} es un conjunto de reglas y protocolos que permiten que diferentes sistemas informáticos se comuniquen entre sí a través de internet, utilizando principalmente el protocolo \textit{HTTP} para acceder y manipular recursos (datos) de manera estandarizada. \textit{REST} no es un estándar ni un protocolo, sino un estilo arquitectónico diseñado para sistemas distribuidos y escalables, especialmente pensado para la web.}} construido con \textit{Django REST Framework}(DRF), y un microservicio dedicado que alberga el sistema multiagente conversacional basado en inteligencia artificial y que se expone con una \textit{API REST} creada con \textit{FastApi}. 
 %Esta elección arquitectónica promueve la escalabilidad, la mantenibilidad y la separación de intereses, permitiendo que cada componente evolucione de forma independiente.
 
 % Incluye aquí tu nueva figura de arquitectura web
@@ -23,13 +23,13 @@ La solución propuesta aborda la interacción con los datos históricos del tran
 La Figura \ref{fig:arquitectura_web} ilustra la arquitectura general. El flujo de interacción del usuario es el siguiente:
 
 \begin{enumerate}
-	\item El usuario interactúa con la interfaz web desarrollada en React, donde ingresa sus consultas en lenguaje natural (e.g., “¿Qué barcos llegaron de Europa en enero de 1850?”).
-	\item El \textit{frontend} React envía la consulta del usuario, típicamente como una petición HTTPS, al \textit{endpoint} correspondiente del \textit{backend} de DRF.
+	\item El usuario interactúa con la interfaz web desarrollada en \textit{React}, donde ingresa sus consultas en lenguaje natural (e.g., “¿Qué barcos llegaron de Europa en enero de 1850?”).
+	\item El \textit{frontend} \textit{React} envía la consulta del usuario, típicamente como una petición HTTPS, al \textit{endpoint} correspondiente del \textit{backend} de DRF.
 	\item El \textit{backend} de DRF actúa como orquestador principal de la lógica de negocio. Puede gestionar autenticación de usuarios (si aplica), almacenar historial de conversaciones, y, crucialmente, procesa la solicitud entrante. Determina que la consulta requiere procesamiento por IA y la reenvía al microservicio del sistema multiagente a través de una llamada API.
 	\item El microservicio del sistema multiagente recibe la consulta y ejecuta su lógica interna basada en agentes para procesar el lenguaje natural, buscar en la base de datos vectorial del \textit{Diario de la Marina}, contextualizar la información y generar la respuesta (texto y/o imágenes).
 	\item El microservicio del sistema multiagente devuelve el resultado procesado al \textit{backend} de DRF.
 	\item El \textit{backend} de DRF recibe la respuesta del microservicio, la formatea si es necesario (e.g., preparándola para la visualización), y la envía de vuelta al frontend React.
-	\item Finalmente, el \textit{frontend} React recibe la respuesta del \textit{backend} de DRF y la presenta al usuario de forma clara y ordenada en la interfaz de chat, mostrando el texto y/o las imágenes generadas.
+	\item Finalmente, el \textit{frontend React} recibe la respuesta del \textit{backend} de DRF y la presenta al usuario de forma clara y ordenada en la interfaz de chat, mostrando el texto y/o las imágenes generadas.
 \end{enumerate}
 
 Dentro del microservicio sistema multiagente opera la lógica conversacional avanzada, cuyo flujo interno se detalla a continuación y se ilustra en la Figura \ref{fig:flujo_mas_interno}. Este microservicio está diseñado específicamente para transformar los datos históricos no estructurados del \textit{Diario de la Marina} en conocimiento estructurado y accesible, superando las limitaciones de herramientas previas mediante la integración de LLMs\footnote{LLM (Large Language Model): Modelo de lenguaje de gran tamaño entrenado con enormes volúmenes de datos textuales, capaz de comprender y generar lenguaje natural con un alto nivel de coherencia, usado en tareas como la traducción automática, el resumen de textos o la generación de respuestas conversacionales.}, RAG\footnote{RAG (Retrieval-Augmented Generation): Técnica que combina modelos generativos con mecanismos de recuperación de información, permitiendo al modelo acceder a fuentes externas relevantes durante la generación de respuestas, mejorando así la precisión y actualidad de los resultados producidos.} y una coordinación eficiente entre agentes especializados.
@@ -43,7 +43,7 @@ Dentro del microservicio sistema multiagente opera la lógica conversacional ava
 
 El proceso interno del microservicio (Figura \ref{fig:flujo_mas_interno}) inicia cuando recibe una consulta del \textit{backend} DRF. Esta consulta es manejada por el Agente Moderador, que actúa como coordinador central dentro del microservicio. El Agente Moderador extrae palabras clave (e.g., “barcos”, “Europa”, “enero 1850”) y determina la intención del usuario. En la mayoría de los casos, delega la tarea de búsqueda al Agente PandasAi, que realiza la extracción de datos estructurados (como fechas, nombres de capitanes, puertos) desde el archivo CSV que contiene los datos procesados del \textit{Diario de la Marina}. Solo en casos específicos, cuando la consulta requiere información detallada sobre el contenido de la carga de los barcos, el Agente Moderador coordina con el Agente Recuperador, que convierte las palabras clave en \textit{embeddings} y consulta la base de datos vectorial especializada para recuperar fragmentos relevantes. Los datos recuperados, ya sea por el Agente PandasAi o el Agente Recuperador, se devuelven al Agente Moderador.
 Posteriormente, el Agente Moderador envía la información recuperada, junto con la intención del usuario, al Agente Contextualizador. Este agente evalúa si se necesita una respuesta textual, una visualización gráfica (e.g., un gráfico de la frecuencia de llegada de barcos por mes), o ambas. Si se requieren gráficos, el Agente Contextualizador genera instrucciones que se envían al Agente PandasAi. Este agente crea un script Python para generar la visualización, valida su corrección y genera una imagen (e.g., PNG). La imagen resultante se retorna al Agente Contextualizador. Si no se requieren gráficos, el Agente Contextualizador enriquece la información textual. Antes de enviar la respuesta final al \textit{backend} DRF, el Agente Validacion revisa la coherencia y precisión del contenido generado (texto y/o imagen), comparándolo con la consulta original. Finalmente, el Agente Moderador ensambla la respuesta validada y la retorna como salida del microservicio.
-Esta arquitectura desacoplada, combinando una interfaz web moderna, un backend robusto y un microservicio especializado en IA, no solo facilita la interacción del usuario y la gestión de datos, sino que también optimiza la investigación histórica, contribuye a la preservación del patrimonio documental y permite escalar los componentes de IA de forma independiente.
+Esta arquitectura desacoplada, combinando una interfaz web moderna, un \textit{backend} robusto y un microservicio especializado en IA, no solo facilita la interacción del usuario y la gestión de datos, sino que también optimiza la investigación histórica, contribuye a la preservación del patrimonio documental y permite escalar los componentes de IA de forma independiente.
 
 
 \section{Análisis de requisitos}
@@ -67,7 +67,7 @@ la aplicación, entre otros rasgos importantes que contribuyeran a obtener un
 producto con la mejor calidad posible~\cite{sommerville2011software}. Como fuente importante
 para la obtención de requisitos principales del sistema a desarrollar, se encuentra el
 análisis a fondo de los sistemas homólogos estudiados y antes descritos en el
-epígrafe 1.2.\\
+epígrafe 1.7.\\
 La combinación de entrevistas y observación permitió comprender las necesidades de los usuarios con las deficiencias técnicas de las soluciones actuales, proporcionando una base sólida para los requisitos funcionales y no funcionales que se detallan a continuación.
 
 
@@ -102,8 +102,8 @@ A continuación, se describen los requisitos funcionales específicos para el si
 	\endlastfoot 
 	
 	% --- Gestión de Usuarios y Autenticación ---
-	\textbf{RF 1} & Registrar usuario & Permitir a un visitante registrarse proporcionando datos válidos (e.g.,nombre de usuario, email, contraseña), que serán almacenados de forma segura por el backend. & Media & Alta \\ 
-	\textbf{RF 2} & Autenticar usuario & Permitir a un usuario registrado iniciar sesión proporcionando credenciales válidas, verificadas por el backend, generando una sesión activa. & Media & Alta \\ 
+	\textbf{RF 1} & Registrar usuario & Permitir a un visitante registrarse proporcionando datos válidos (e.g.,nombre de usuario, email, contraseña), que serán almacenados de forma segura por el \textit{backend}. & Media & Alta \\ 
+	\textbf{RF 2} & Autenticar usuario & Permitir a un usuario registrado iniciar sesión proporcionando credenciales válidas, verificadas por el \textit{backend}, generando una sesión activa. & Media & Alta \\ 
 	\textbf{RF 3} & Cerrar sesión & Permitir al usuario autenticado finalizar su sesión activa en el sistema. & Baja & Media \\ 
 	% --- Gestión de Conversaciones ---
 	\textbf{RF 4} & Iniciar conversación & Permitir al usuario autenticado crear una nueva sesión de chat independiente de las anteriores. & Baja & Alta \\ % NUEVO
@@ -116,7 +116,7 @@ A continuación, se describen los requisitos funcionales específicos para el si
 	% --- Procesamiento Interno del Microservicio MAS ---
 	\textbf{RF 10} & Recibir consulta & El microservicio MAS debe recibir la consulta para iniciar el flujo de agentes. & Media & Alta \\ 
 	\textbf{RF 11} & Analizar consulta & El Agente Moderador debe analizar la consulta para identificar términos clave relevantes. & Alta & Alta \\ 
-	\textbf{RF 12} & Determinar acción & El Agente Moderador debe interpretar el propósito principal de la consulta del usuario para determinar la próxima acción del sistema (información, análisis,gráficas estadísticas etc.). & Alta & Alta \\ 
+	\textbf{RF 12} & Determinar acción & El Agente Moderador debe interpretar el propósito principal de la consulta del usuario para determinar la próxima acción del sistema (información, análisis,gráficas estadísticas). & Alta & Alta \\ 
 	\textbf{RF 13} & Generar embeddings & El Agente Recuperador debe convertir las palabras clave en representaciones vectoriales (embeddings) adecuadas para la búsqueda semántica. & Alta & Alta \\ 
 	\textbf{RF 14} & Consultar base de datos & El Agente Recuperador debe buscar y obtener fragmentos de texto relevantes del \textit{Diario de la Marina} desde la base de datos vectorial, basándose en los embeddings. & Alta & Alta \\
 	\textbf{RF 15} & Consultar CSV & El Agente PandasAi debe buscar y obtener fragmentos de texto relevantes del \textit{Diario de la Marina} desde la base de datos en formato csv. & Alta & Alta \\ 
@@ -128,9 +128,9 @@ A continuación, se describen los requisitos funcionales específicos para el si
 	\textbf{RF 21} & Generar imagen & El Agente PandasAi debe ejecutar el script validado para generar la visualización como un archivo de imagen (e.g., PNG, JPG). & Alta & Alta \\ 
 	\textbf{RF 22} & Combinar resultados & El Agente Contextualizador (o Moderador) debe combinar la respuesta textual y/o la imagen generada en una estructura de respuesta unificada. & Alta & Alta \\ 
 	\textbf{RF 23} & Validar respuesta & El Agente de Validación debe revisar la respuesta preliminar para asegurar su precisión, coherencia con la consulta y ausencia de información errónea. & Alta & Alta \\  
-	\textbf{RF 24} & Enviar respuesta & El microservicio MAS debe enviar la respuesta final ensamblada al backend a través de su API. & Media & Alta \\ 
+	\textbf{RF 24} & Enviar respuesta & El microservicio MAS debe enviar la respuesta final ensamblada al \textit{backend} a través de su API. & Media & Alta \\ 
 	% --- Flujo de Respuesta Backend y Frontend ---
-	\textbf{RF 25} & Visualizar respuesta & El backend debe enviar la respuesta (texto y/o referencia a la imagen) al frontend para su visualización. & Media & Alta \\ 
+	\textbf{RF 25} & Visualizar respuesta & El \textit{backend} debe enviar la respuesta (texto y/o referencia a la imagen) al \textit{frontend} para su visualización. & Media & Alta \\ 
 	
 \end{longtable}
 
@@ -143,7 +143,7 @@ tiempo, sobre el proceso de desarrollo y estándares~\cite{sommerville2011softwa
 A continuación, se definen los requisitos no funcionales que debe cumplir la aplicación
 basándose en los establecido por las normas ISO 25000 Calidad del Producto de Software,
 específicamente la ISO/IEC 25010 que define las características de calidad que se tienen
-en cuenta al evaluar las propiedades de un producto de software~\cite{iso25010-2023}.
+en cuenta al evaluar las propiedades de un producto de software~\cite{ISO25010-2023}.
 A continuación, se listan los requisitos no funcionales identificados:
 
 \begin{longtable}{@{}p{2cm}p{12cm}@{}}
@@ -202,7 +202,7 @@ A continuación, se listan los requisitos no funcionales identificados:
 
 Las historias de usuario (HU) son descripciones breves y simples de los requerimientos de un cliente o usuario, que facilitan la comunicación con los desarrolladores del proyecto. Estas historias permiten expresar las expectativas y necesidades de los usuarios de una manera clara y comprensible, evitando ambigüedades y malentendidos que podrían llevar a pérdidas de tiempo y recursos \cite{menzinsky2018historias}.
 
-Se realiza una HU por cada RF del componente, a continuación, se mostrarán las HU más relevantes. Para consultar el resto de las historias de usuario, se remite al \textbf{Anexo A}, donde se presentan de forma completa y organizada. Estas historias complementan la visión general del sistema y permiten una comprensión más exhaustiva de los requerimientos funcionales detallados.
+Se realiza una HU por cada requisito funcional, a continuación, se mostrarán las HU más relevantes. Para consultar el resto de las historias de usuario, se remite al \textbf{Anexo A}, donde se presentan de forma completa y organizada. Estas historias complementan la visión general del sistema y permiten una comprensión más exhaustiva de los requerimientos funcionales detallados.
 
 % ==========================================
 % Funcionalidad Principal del Chat y MAS
@@ -217,7 +217,7 @@ Se realiza una HU por cada RF del componente, a continuación, se mostrarán las
 	\storypoints{2 semanas} % Estimación ajustada (cubre FE y BE básico)
 	\storyprogrammer{Daniel Rojas Grass}
 	\storydescription{
-		Como usuario autenticado, quiero poder escribir una consulta en lenguaje natural en la interfaz de chat, enviarla al sistema, y ver tanto mi consulta como la respuesta del sistema (texto y/o imagen) mostradas de forma clara y ordenada en el área de diálogo de la conversación activa. (Corresponde principalmente a RF9-Input, RF10, RF26, RF27, RF28)
+		Como usuario autenticado, puede escribir una consulta en lenguaje natural en la interfaz de chat, enviarla al sistema, y ver tanto su consulta como la respuesta del sistema (texto y/o imagen) mostradas de forma clara y ordenada en el área de diálogo de la conversación activa. (Corresponde principalmente a RF9-Input, RF10, RF26, RF27, RF28)
 		
 		\textbf{Precondiciones:}
 		\begin{itemize}
@@ -234,12 +234,12 @@ Se realiza una HU por cada RF del componente, a continuación, se mostrarán las
 			\item El \textit{frontend} envía la consulta y el ID de la conversación activa (si existe) al \textit{backend}.
 			\item (Flujo cubierto en HU:09 y HU:10) El \textit{backend} recibe la consulta, la envía al microservicio MAS para procesamiento, recibe la respuesta del MAS (texto y/o referencia a imagen) y la almacena en la BD asociada a la conversación (RF9-Persistencia).
 			\item El \textit{backend} envía la respuesta procesada (texto y/o URL/datos de imagen) al frontend.
-			\item El \textit{frontend} recibe la respuesta del backend.
+			\item El \textit{frontend} recibe la respuesta del \textit{backend}.
 			\item El \textit{frontend} muestra la respuesta del sistema (texto y/o imagen) en el área de diálogo (marcada como del sistema).
 		\end{enumerate}
 	}
 	\storyobservation{
-		La interfaz debe indicar visualmente cuándo el sistema está procesando la respuesta. El manejo de errores (fallos de red, errores del MAS) debe ser robusto, mostrando mensajes apropiados al usuario. La visualización del chat debe permitir scroll para ver mensajes antiguos.
+		La interfaz debe indicar visualmente cuándo el sistema está procesando la respuesta. El manejo de errores (fallos de red, errores del MAS) debe ser robusto, mostrando mensajes apropiados al usuario. La visualización del chat debe permitir navegar para ver mensajes antiguos.
 	}
 	\storyinterface{Interfaz principal del Chat en el sitio web mostrando diálogo:
 		\par\medskip % Añade un pequeño espacio vertical
@@ -260,11 +260,11 @@ Se realiza una HU por cada RF del componente, a continuación, se mostrarán las
 	\storypoints{4 semanas} % Estimación basada en ejemplo (complejidad alta)
 	\storyprogrammer{Daniel Rojas Grass}
 	\storydescription{
-		Como sistema (actuando en nombre del usuario), quiero que el microservicio MAS procese una consulta recibida del \textit{backend}, la analice (palabras clave, intención), recupere información relevante del Diario de la Marina desde la BD vectorial, sintetice una respuesta textual coherente y contextualizada, la valide y la devuelva al \textit{backend}, para que el usuario final reciba información precisa. (Corresponde al flujo interno del MAS: RF11, RF12, RF13, RF14, RF15, RF16, RF22, RF23, RF24, RF25)
+		Como sistema, consulta el microservicio MAS para que procese la consulta recibida del \textit{backend}, la analice (palabras clave, intención), recupere información relevante del \textit{Diario de la Marina} desde la BD vectorial, sintetice una respuesta textual coherente y contextualizada, la valide y la devuelva al \textit{backend}, para que el usuario final reciba información precisa. (Corresponde al flujo interno del MAS: RF11, RF12, RF13, RF14, RF15, RF16, RF22, RF23, RF24, RF25)
 		
 		\textbf{Precondiciones:}
 		\begin{itemize}
-			\item El microservicio MAS (FastAPI) está operativo.
+			\item El microservicio MAS (\textit{FastApi}) está operativo.
 			\item Todos los agentes internos (Moderador, Pandasai, Contextualizador, Validación) están implementados y disponibles.
 			\item La base de datos vectorial (Faiss) está cargada con los datos del *Diario de la Marina* y es accesible.
 			\item El csv con los datos del \textit{Diario de la Marina} esta cargado y es accesible.
@@ -274,7 +274,7 @@ Se realiza una HU por cada RF del componente, a continuación, se mostrarán las
 		
 		\textbf{Flujo de acción (interno del MAS):}
 		\begin{enumerate}
-			\item MAS recibe la consulta vía API (RF11).
+			\item MAS recibe la consulta vía \textit{API REST} (RF11).
 			\item Agente Moderador extrae palabras clave y determina intención (RF12, RF13).
 			\item Agente Recuperador genera \textit{embeddings} y busca en BD vectorial (RF14, RF15).
 			\item Agente PandasAi genera tanto gráficas como búsquedas de análisis en el csv.
@@ -282,11 +282,11 @@ Se realiza una HU por cada RF del componente, a continuación, se mostrarán las
 			\item (Si no se requiere gráfico) Agente Contextualizador (o Moderador) prepara la respuesta textual preliminar (RF22).
 			\item Agente Validación revisa coherencia, relevancia y posible toxicidad/error (RF23).
 			\item Agente Moderador ensambla la respuesta textual validada en formato JSON (RF24).
-			\item MAS retorna la respuesta JSON al backend DRF (RF25).
+			\item MAS retorna la respuesta JSON al \textit{backend DRF} (RF25).
 		\end{enumerate}
 	}
 	\storyobservation{
-		La calidad de los embeddings y la estrategia de recuperación son críticas (RF14, RF15). La capacidad del LLM para sintetizar y contextualizar sin "alucinar" es fundamental (RF16). El agente de validación es clave para la fiabilidad (RF23). La latencia del proceso completo debe ser aceptable (considerar RNF).
+		La calidad de los embeddings y la estrategia de recuperación son críticas (RF14, RF15). La capacidad del LLM para sintetizar y contextualizar es fundamental (RF16). El agente de validación es clave para la fiabilidad (RF23). La latencia del proceso completo debe ser aceptable (considerar RNF).
 	}
 	\storyinterface{[N/A - Proceso interno del Microservicio MAS]}
 	
@@ -301,14 +301,14 @@ Se realiza una HU por cada RF del componente, a continuación, se mostrarán las
 	\storypoints{2 semanas} % Estimación basada en ejemplo (complejidad alta)
 	\storyprogrammer{Daniel Rojas Grass}
 	\storydescription{
-		Como usuario autenticado, quiero que cuando mi consulta o la información recuperada sugieran la necesidad de una visualización (e.g., análisis de tendencias, comparación de datos), el sistema (específicamente el MAS) genere un gráfico apropiado (e.g., barras, líneas) y me lo presente como una imagen dentro de la respuesta del chat, junto con el texto explicativo, para facilitar mi comprensión. (Corresponde principalmente a RF17, RF18, RF19, RF20, RF21, RF22-integración, RF28-visualización)
+		Como usuario autenticado, cuando la consulta o la información recuperada sugieran la necesidad de una visualización (e.g., análisis de tendencias, comparación de datos), el sistema (específicamente el MAS) genera un gráfico apropiado (e.g., barras, líneas) se debe presentar como una imagen dentro de la respuesta del chat, junto con el texto explicativo, para facilitar la comprensión del usuario. (Corresponde principalmente a RF17, RF18, RF19, RF20, RF21, RF22-integración, RF28-visualización)
 		
 		\textbf{Precondiciones:}
 		\begin{itemize}
 			\item El flujo de HU:09 está en progreso.
 			\item El Agente Contextualizador identifica que la consulta/datos justifican un gráfico (RF17).
 			\item Los datos necesarios para el gráfico están disponibles y estructurados.
-			\item El Agente PandasAi esta disponible para la generación de gráficas.
+			\item El Agente PandasAi listo para la generación de gráficas.
 		\end{itemize}
 		
 		\textbf{Flujo de acción (continuación de HU:09):}
@@ -517,7 +517,7 @@ En este documento se incluyen ejemplos representativos de algunas de las tarjeta
 
 \subsection{Diseño de la arquitectura}
 
-La arquitectura propuesta adopta el estilo de \emph{microservicios}, en el cual la aplicación se descompone en un conjunto de servicios independientes, cada uno ejecutándose en su propio proceso y comunicándose mediante protocolos API REST~\cite{turn0search0,turn0search9}. Cada microservicio se orienta a una capacidad de negocio específica, lo que facilita la comprensión y el mantenimiento aislado de los componentes~\cite{turn0search6,turn0search0}. La modularidad inherente a este enfoque permite el despliegue automatizado e independiente de cada servicio, mejorando la agilidad operativa y reduciendo el tiempo de inactividad asociado a las actualizaciones \cite{turn0search8,turn0search3}. La escalabilidad horizontal se ve potenciada, dado que cada servicio puede replicarse de forma autónoma según la demanda, optimizando el uso de recursos y posibilitando un dimensionamiento granular \cite{turn0search3,turn1search0}. El desacoplamiento entre servicios incrementa la tolerancia a fallos, ya que la interrupción de un componente no compromete la disponibilidad del sistema global \cite{turn0search2,turn0search6}. La heterogeneidad tecnológica está plenamente soportada, puesto que cada microservicio puede implementarse con los lenguajes y frameworks más adecuados para su responsabilidad particular \cite{turn0search6,turn1search8}.
+La arquitectura propuesta adopta el estilo de microservicios, en el cual la aplicación se descompone en un conjunto de servicios independientes, cada uno ejecutándose en su propio proceso y comunicándose mediante protocolos API REST~\cite{turn0search0}. Cada microservicio se orienta a una capacidad de negocio específica, lo que facilita la comprensión y el mantenimiento aislado de los componentes~\cite{turn0search6,turn0search0}. La modularidad inherente a este enfoque permite el despliegue automatizado e independiente de cada servicio, mejorando la agilidad operativa y reduciendo el tiempo de inactividad asociado a las actualizaciones \cite{turn0search8,turn0search3}. La escalabilidad horizontal se ve potenciada, dado que cada servicio puede replicarse de forma autónoma según la demanda, optimizando el uso de recursos y posibilitando un dimensionamiento granular \cite{turn0search3,turn1search0}. El desacoplamiento entre servicios incrementa la tolerancia a fallos, ya que la interrupción de un componente no compromete la disponibilidad del sistema global \cite{turn0search2,turn0search6}. La heterogeneidad tecnológica está plenamente soportada, puesto que cada microservicio puede implementarse con los lenguajes y \textit{frameworks} más adecuados para su responsabilidad particular \cite{turn0search6,turn1search8}.
 
 \begin{figure}[htbp] 
 	\centering
@@ -529,12 +529,25 @@ La arquitectura propuesta adopta el estilo de \emph{microservicios}, en el cual 
 La presente configuración arquitectónica se materializa en tres componentes principales como se puede visualizar en la Figura \ref{fig:erquitectura_MAS}:
   
 \begin{enumerate}
-	\item Un frontend desarrollado con React, encargado de la interacción con el usuario.  
-	\item Un backend construido con Django REST Framework, que actúa como orquestador de la lógica de negocio y gestor de peticiones.  
-	\item Un microservicio especializado en procesamiento de lenguaje natural, implementado con FastAPI, que alberga el sistema multiagente conversacional.  
+	\item Un \textit{frontend} desarrollado con \textit{React}, encargado de la interacción con el usuario.  
+	\item Un \textit{backend} construido con \textit{Django REST Framework}, que actúa como orquestador de la lógica de negocio y gestor de peticiones.  
+	\item Un microservicio especializado en procesamiento de lenguaje natural, implementado con \textit{FastApi}, que alberga el sistema multiagente conversacional.  
 \end{enumerate}
 
 Esta elección garantiza la independencia en el ciclo de vida de cada servicio, promoviendo la mantenibilidad y facilitando la incorporación de nuevas tecnologías o la sustitución de componentes sin afectar al sistema global \cite{turn0search1,turn1search4}.
+
+\subsubsection{Arquitectura RAG}
+
+Complementando la arquitectura general de microservicios, el Microservicio Multiagente Conversacional implementa internamente un flujo de trabajo basado en la Arquitectura de Generación Aumentada por Recuperación (RAG)\footnote{Un sistema RAG (\textit{Retrieval Augmented Generation}, o Generación Aumentada por Recuperación) es una arquitectura de inteligencia artificial que combina modelos de lenguaje avanzados (LLM) con mecanismos de recuperación de información en tiempo real. Su objetivo es mejorar la precisión, relevancia y actualidad de las respuestas generadas por la IA, permitiéndole acceder a bases de datos o documentos externos que contienen información más reciente o específica que la que fue utilizada durante el entrenamiento del modelo.}~\cite{lewis2020retrievalaugmented}. Esta aproximación es fundamental para que el sistema pueda interactuar de manera precisa y contextualizada con los datos específicos del \textit{Diario de la Marina}.
+
+El proceso RAG dentro del microservicio entra en acción cuando  la consulta requiere información detallada del contenido textual del periódico, entonces el Agente Recuperador utiliza un modelo de embeddings para convertir la consulta del usuario en una representación vectorial, realiza una búsqueda de similitud en la base de datos vectorial (FAISS), que contiene los embeddings de los fragmentos de texto del \textit{Diario de la Marina} donde recupera los fragmentos de texto más relevantes semánticamente para la consulta y los envía al siguiente agente en la cadena de procesamiento como se observa en la Figura \ref{fig:rag}.
+
+\begin{figure}[htbp] 
+	\centering
+	\includegraphics[width=0.5\textwidth]{images/RAGArchitect.png} 
+	\caption{Arquitectura RAG (Fuente: elaboración propia).}
+	\label{fig:rag}
+\end{figure}
 
 \subsection{Diseño del modelo de datos}
 
@@ -547,9 +560,9 @@ Esta elección garantiza la independencia en el ciclo de vida de cada servicio, 
 
 
 El modelo de datos propuesto en la Figura \ref{fig:modelo_de_datos} articula de manera coherente la estructura relacional necesaria para soportar un sistema de chat en tiempo real~\cite{Codd1970}. Se fundamenta en los principios del modelo relacional que establecen las bases para el almacenamiento y la recuperación eficiente de datos, garantizando la unicidad de las tuplas y la ausencia de redundancia innecesaria~\cite{Silberschatz2019}.\\
-La definición de la entidad Usuario contempla un identificador único uid, atributos de autenticación y perfil, así como indicadores de estado y marcas temporales de creación y modificación, satisfaciendo los requerimientos de integridad y auditoría en el dominio de usuario~\cite{ElmasriNavathe2010}. La elección de tipos de datos VARCHAR para los campos característicos responde a la flexibilidad necesaria para posibles extensiones en los identificadores y datos personales~\cite{Date2003}.\\
-La entidad Sala de chat permite agrupar conversaciones de manera lógica y filtrable~\cite{ConnollyBegg2014}. Al establecer una relación de uno a muchos con la entidad Usuario a través de la clave foránea registered\_by, se refuerza la trazabilidad de la creación y administración de espacios de comunicación~\cite{Harrington2015}.\\
-La entidad Mensajes está diseñada para almacenar cada mensaje asociado a una sala de chat, con su propio identificador, estado de actividad, contenido textual, atributos de rol y metadatos adicionales que facilitan la moderación y la representación multimodal~\cite{Silberschatz2019}. La implementación de la clave foránea chat\_room garantiza la integridad referencial, evitando mensajes huérfanos y asegurando la coherencia de las interacciones~\cite{IBMReferential}.\\
+La definición de la entidad \textbf{Usuario} contempla un identificador único uid, atributos de autenticación y perfil, así como indicadores de estado y marcas temporales de creación y modificación, satisfaciendo los requerimientos de integridad y auditoría en el dominio de usuario~\cite{ElmasriNavathe2010}. La elección de tipos de datos \textit{VARCHAR} para los campos característicos responde a la flexibilidad necesaria para posibles extensiones en los identificadores y datos personales~\cite{Date2003}.\\
+La entidad \textbf{Sala de chat} permite agrupar conversaciones de manera lógica y filtrable~\cite{ConnollyBegg2014}. Al establecer una relación de uno a muchos con la entidad Usuario a través de la clave foránea \textit{registered\_by}, se refuerza la trazabilidad de la creación y administración de espacios de comunicación~\cite{Harrington2015}.\\
+La entidad \textbf{Mensajes} está diseñada para almacenar cada mensaje asociado a una sala de chat, con su propio identificador, estado de actividad, contenido textual, atributos de rol y metadatos adicionales que facilitan la moderación y la representación multimodal~\cite{Silberschatz2019}. La implementación de la clave foránea \textit{chat\_room} garantiza la integridad referencial, evitando mensajes huérfanos y asegurando la coherencia de las interacciones~\cite{IBMReferential}.\\
 El diseño enfatiza la normalización hasta la tercera forma normal, minimizando anomalías de actualización y duplicación de datos~\cite{Silberschatz2019}. Asimismo, la adopción de métodos ágiles para el modelado de datos respalda iteraciones rápidas y adaptativas durante el ciclo de vida del desarrollo~\cite{Ambler2003}. La adherencia al estándar SQL definido en ISO/IEC 9075 certifica la interoperabilidad en entornos heterogéneos de bases de datos~\cite{ISO9075}.Finalmente, la consideración de criterios de escalabilidad y rendimiento se inspira en lecciones históricas sobre arquitecturas de sistemas de datos~\cite{Stonebraker2005}.
 
 
@@ -557,21 +570,21 @@ El diseño enfatiza la normalización hasta la tercera forma normal, minimizando
 
 \subsection{Estándares de codificación en Python y JavaScript}
 
-Los estándares de codificación son esenciales para garantizar la mantenibilidad, colaboración y calidad del software~\cite{PEP8}. En este epígrafe se analiza comparativamente las convenciones principales para Python y JavaScript, destacando sus similitudes y diferencias fundamentales.
+Los estándares de codificación son esenciales para garantizar la mantenibilidad, colaboración y calidad del software~\cite{van2001pep}. En este epígrafe se analiza comparativamente las convenciones principales para Python y JavaScript, destacando sus similitudes y diferencias fundamentales.
 
 \subsubsection{Estándares para Python}
 
 \begin{enumerate}
-	\item \textbf{Convenciones de Estilo}: Python cuenta con una guía oficial de estilo denominada PEP 8~\cite{PEP8}, que establece directrices precisas para la escritura de código. La indentación de 4 espacios (prohibiendo el uso de tabuladores) y el límite de 79 caracteres por línea son dos de sus reglas más características. El espaciado alrededor de operadores y la organización de imports en tres grupos (bibliotecas estándar, terceros y locales) promueven la consistencia visual. La nomenclatura sigue patrones específicos: \texttt{snake\_case} para funciones y variables, \texttt{PascalCase} para clases, y \texttt{MAYÚSCULAS} para constantes. La documentación mediante docstrings (siguiendo PEP 257~\cite{PEP257}) facilita la generación automática de documentación técnica.
-	\item \textbf{Herramientas y Prácticas}: El ecosistema Python ofrece herramientas como \texttt{flake8} para verificación de estilo y \texttt{black} para formateo automático. El uso de \textit{type hints} (desde Python 3.5) mejora la seguridad de tipos en proyectos complejos. El manejo de excepciones debe ser explícito, evitando cláusulas \texttt{except} genéricas que puedan ocultar errores.
+	\item \textbf{Convenciones de Estilo}: Python cuenta con una guía oficial de estilo denominada PEP 8, que establece directrices precisas para la escritura de código. La indentación de 4 espacios (prohibiendo el uso de tabuladores) y el límite de 79 caracteres por línea son dos de sus reglas más características. El espaciado alrededor de operadores y la organización de \textit{imports} en tres grupos (bibliotecas estándar, terceros y locales) promueven la consistencia visual. La nomenclatura sigue patrones específicos: \texttt{snake\_case} para funciones y variables, \textit{PascalCase} para clases, y \textit{MAYÚSCULAS} para constantes\cite{van2001pep}. La documentación mediante \textit{docstrings} (siguiendo PEP 257~\cite{PEP257}) facilita la generación automática de documentación técnica.
+	\item \textbf{Herramientas y Prácticas}: El ecosistema \textit{Python} ofrece herramientas como \textit{flake8} para verificación de estilo y \textit{black} para formateo automático. El uso de \textit{type hints} (desde \textit{Python 3.5}) mejora la seguridad de tipos en proyectos complejos. El manejo de excepciones debe ser explícito, evitando cláusulas \textit{except} genéricas que puedan ocultar errores.
 \end{enumerate}
 
 \subsubsection{Estándares para JavaScript}
 
 \begin{enumerate}
-	\item \textbf{Guías de Referencia}: JavaScript carece de un estándar oficial único, pero guías como el Airbnb JavaScript Style Guide~\cite{AirbnbJS} y Google JavaScript Style Guide~\cite{GoogleJS} se han consolidado como referencias. Estas enfatizan el uso de ES6+, con preferencia por \texttt{const/let} sobre \texttt{var}, y arrow functions para callbacks.\\
-	La convención de nombres utiliza \texttt{camelCase} para variables/funciones y \texttt{PascalCase} para clases. Los literales de plantilla (template strings) son preferidos sobre concatenación manual, y el punto y coma sigue siendo opcional pero debe usarse consistentemente.
-	\item \textbf{Ecosistema Moderno}: Herramientas como ESLint (configurable con reglas específicas) y Prettier automatizan la aplicación de estándares. El sistema de módulos ES6 (\texttt{import/export}) ha reemplazado ampliamente a \texttt{require} en proyectos nuevos. Para proyectos complejos, TypeScript ofrece tipado estático, reduciendo errores en tiempo de ejecución~\cite{TypeScript}.
+	\item \textbf{Guías de Referencia}: JavaScript carece de un estándar oficial único, pero guías como el \textit{Airbnb JavaScript Style Guide}~\cite{AirbnbJS} y \textit{Google JavaScript Style Guide}~\cite{GoogleJS} se han consolidado como referencias. Estas enfatizan el uso de ES6+, con preferencia por \textit{const/let} sobre \textit{var}, y \textit{arrow functions} para \textit{callbacks}.\\
+	La convención de nombres utiliza \textit{camelCase} para variables/funciones y \textit{PascalCase} para clases. Los literales de plantilla (\textit{template strings}) son preferidos sobre concatenación manual, y el punto y coma sigue siendo opcional pero debe usarse consistentemente.
+	\item \textbf{Ecosistema Moderno}: Herramientas como \textit{ESLint} (configurable con reglas específicas) y \textit{Prettier} automatizan la aplicación de estándares. El sistema de módulos ES6 (\textit{import/export}) ha reemplazado ampliamente a \textit{require} en proyectos nuevos. Para proyectos complejos, TypeScript ofrece tipado estático, reduciendo errores en tiempo de ejecución~\cite{TypeScript}.
 \end{enumerate}
 
 Ambos lenguajes comparten principios fundamentales: modularización del código, documentación clara, y uso de linters. Python muestra mayor uniformidad gracias a PEP 8, mientras JavaScript permite más flexibilidad mediante guías configurables. En rendimiento, JavaScript prioriza la compatibilidad con navegadores, mientras Python enfatiza la legibilidad como principio filosófico~\cite{PEP20}. La adopción de estándares debe adaptarse al contexto del proyecto y equipo, utilizando herramientas automatizadas para garantizar cumplimiento. Tanto Python como JavaScript han desarrollado ecosistemas maduros que, cuando se usan consistentemente, elevan sustancialmente la calidad del código.
@@ -579,7 +592,7 @@ Ambos lenguajes comparten principios fundamentales: modularización del código,
 \subsection{Patrones de diseño}
 \label{sec:patrones_diseno}
 
-Los patrones de diseño de software representan soluciones probadas y estandarizadas para problemas recurrentes en el desarrollo, encapsulando mejores prácticas y promoviendo la creación de software modular, legible, flexible y robusto \cite{gavilanez2022analisis}. En el desarrollo de esta aplicación web y su microservicio asociado, se han aplicado conscientemente varios patrones para abordar los desafíos inherentes a su arquitectura distribuida y su flujo de trabajo basado en IA. A continuación, se analizan algunos de los patrones de diseño a implementar en el sistema multiagente conversacional y en el \textit{backend} (desarrollado con Django REST Framework), destacando su relevancia y su impacto en el procesamiento de datos históricos del \textit{Diario de la Marina}.
+Los patrones de diseño de software representan soluciones probadas y estandarizadas para problemas recurrentes en el desarrollo, encapsulando mejores prácticas y promoviendo la creación de software modular, legible, flexible y robusto \cite{gavilanez2022analisis}. En el desarrollo de esta aplicación web y su microservicio asociado, se han aplicado conscientemente varios patrones para abordar los desafíos inherentes a su arquitectura distribuida y su flujo de trabajo basado en IA. A continuación, se analizan los patrones de diseño a implementar en el sistema multiagente conversacional y en el \textit{backend} (desarrollado con \textit{Django REST Framework}), destacando su relevancia y su impacto en el procesamiento de datos históricos del \textit{Diario de la Marina}.
 
 \textbf{Patrón Singleton} se utiliza para gestionar recursos críticos compartidos en el sistema multiagente, asegurando que componentes como la base de datos históricos, el índice FAISS para la base de datos vectorial, y los agentes tengan una única instancia en toda la aplicación. Este patrón es fundamental para optimizar el uso de recursos, ya que evita la creación redundante de instancias pesadas, lo que podría impactar negativamente el rendimiento del sistema, especialmente al procesar grandes volúmenes de datos históricos del \textit{Diario de la Marina}. La Figura \ref{fig:codigo_singleton} muestra un extracto de este código, evidenciando la implementación del patrón.\\
 La importancia del patrón \textit{Singleton} radica en su capacidad para centralizar el acceso a recursos compartidos, reduciendo la sobrecarga computacional y asegurando consistencia en los datos procesados. Esto es particularmente relevante en un sistema multiagente, donde múltiples agentes (como \texttt{AgenteRecuperador} y \texttt{AgentePandasAi}) necesitan acceder a las mismas estructuras de datos para generar respuestas textuales o gráficas.
@@ -611,8 +624,8 @@ La importancia del patrón \textit{Plantilla Abstracta} en este contexto radica 
 	\label{fig:codigo_template_method}
 \end{figure}
 
-\textbf{Patrón Fachada} permite simplificar la interacción con subsistemas complejos, encapsulando la lógica de manejo de mensajes y respuestas en clases específicas. Este patrón permite abstraer operaciones complejas, como el formateo de mensajes o la gestión de respuestas de un modelo de lenguaje, en una interfaz sencilla que puede ser utilizada por otras partes del sistema. La Figura \ref{fig:codigo_facade} muestra ejemplo de la implementación de este patrón.\\
-La relevancia del patrón \textit{Facade/Service} radica en su capacidad para reducir la complejidad del backend, permitiendo que los controladores de Django REST Framework se centren en la lógica de negocio mientras las clases de servicio manejan las operaciones más técnicas. Esto mejora la modularidad y facilita la integración con el sistema multiagente, asegurando que las respuestas generadas por el Microservicio MAS se procesen y entreguen al frontend de manera eficiente.
+\textbf{Patrón Fachada} permite simplificar la interacción con subsistemas complejos, encapsulando la lógica de manejo de mensajes y respuestas en clases específicas. Este patrón permite abstraer operaciones complejas, como el formateo de mensajes o la gestión de respuestas de un modelo de lenguaje, en una interfaz sencilla que puede ser utilizada por otras partes del sistema. La Figura \ref{fig:codigo_facade} muestra un ejemplo de la implementación de este patrón.\\
+La relevancia del patrón \textit{Facade/Service} radica en su capacidad para reducir la complejidad del \textit{backend}, permitiendo que los controladores de \textit{Django REST Framework} se centren en la lógica de negocio mientras las clases de servicio manejan las operaciones más técnicas. Esto mejora la modularidad y facilita la integración con el sistema multiagente, asegurando que las respuestas generadas por el Microservicio MAS se procesen y entreguen al \textit{frontend} de manera eficiente.
 
 \begin{figure}[htbp]
 	\centering
@@ -621,7 +634,7 @@ La relevancia del patrón \textit{Facade/Service} radica en su capacidad para re
 	\label{fig:codigo_facade}
 \end{figure}
 
-El uso de estos patrones de diseño en el sistema multiagente y el backend no solo asegura una implementación robusta y escalable, sino que también facilita la transformación de datos históricos del \textit{Diario de la Marina} en conocimiento estructurado, cumpliendo con los objetivos del proyecto.
+El uso de estos patrones de diseño en el sistema multiagente y el \textit{backend} no solo asegura una implementación robusta y escalable, sino que también facilita la transformación de datos históricos del \textit{Diario de la Marina} en conocimiento estructurado, cumpliendo con los objetivos del proyecto.
 
 
 
@@ -666,11 +679,11 @@ A continuación, la figura~\ref{fig:despliege}. muestra el diagrama correspondie
 	\label{fig:despliege}
 \end{figure}
 
-\textbf{Dispositivo del cliente}: Se refiere a el conjunto de todos los clientes que consumirán el software desde sus computadoras. La máquina cliente necesita de muy pocas
-prestaciones; teniendo un navegador web (Chrome, Mozilla Firefox, Internet Explorer,Opera), una RAM mínima de 4 GB, una tarjeta de red y un procesador mínimo de 3.3 GB podrá acceder al sistema y realizar las operaciones necesarias\\
+\textbf{Dispositivo del cliente}: Se refiere al conjunto de todos los clientes que consumirán el software desde sus computadoras. La máquina cliente necesita de pocas
+prestaciones; teniendo un navegador web (Chrome, Mozilla Firefox, Internet Explorer,Opera), una RAM mínima de 4 GB, una tarjeta de red y un procesador mínimo de 3.3 GB podrá acceder al sistema y realizar las operaciones necesarias.\\
 \textbf{Servidor Web}: Representa el servidor que se comunica con la PC Cliente mediante el protocolo HTTPS y además realiza peticiones al servidor de Bases de Datos mediante el protocolo TCP/IP, es el encargado de la presentación del repositorio, debe estar compuesto de 32 GB de RAM, 1 TB de almacenamiento, un procesador de 3.3 GHz o superior, una tarjeta de red, servidor web Nginx o Treafic con Docker.\\
-\textbf{Servidor de BD}: Elemento de cómputo, dedicado a almacenar y proveer datos necesarios para el funcionamiento de la aplicación web. es el encargado de almacenar la información generada del
-sistema, para el correcto funcionamiento del repositorio es necesario que posea PostgreSQL, una RAM mínima de 4 GB, un procesador mínimo de 3.3 GHz y un disco duro de 1 TB.\\
+\textbf{Servidor de BD}: Es el servidor, dedicado a almacenar y proveer datos necesarios para el funcionamiento de la aplicación web. es el encargado de almacenar la información generada del
+sistema, para el correcto funcionamiento del repositorio es necesario que posea PostgreSQL, una RAM mínima de 4 GB, un procesador mínimo de 3.3 GHz y un disco duro de 1 TB.
 
 \section*{Conclusiones del capítulo}
 \addcontentsline{toc}{section}{Conclusiones}

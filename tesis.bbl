@@ -1,39 +1,19 @@
 \begin{thebibliography}{}
 
-\bibitem[ISO, 2016]{ISO9075}
- (2016).
-\newblock Information technology -- database languages -- sql.
-
-\bibitem[git, 2021]{github_academic}
- (2021).
-\newblock Implementing version control with git and github as a learning tool.
-
-\bibitem[Air, 2022]{AirbnbJS}
- (2022).
-\newblock Airbnb javascript style guide.
-\newblock \url{https://github.com/airbnb/javascript}.
-
 \bibitem[Goo, 2022]{GoogleJS}
  (2022).
 \newblock Google javascript style guide.
 \newblock \url{https://google.github.io/styleguide/jsguide.html}.
 
-\bibitem[iso, 2023]{iso25010-2023}
- (2023).
-\newblock {ISO/IEC 25010:2023 -- Systems and software engineering -- Systems
-  and software Quality Requirements and Evaluation (SQuaRE) -- Product quality
-  model}.
-\newblock Standard ISO/IEC 25010:2023, International Organization for
-  Standardization, Geneva, Switzerland.
-
-\bibitem[git, 2024]{github_version_control}
- (2024).
-\newblock What is version control?
-
 \bibitem[{Adobe Inc.}, 2024]{acrobatai}
 {Adobe Inc.} (2024).
 \newblock Adobe acrobat ai assistant.
 \newblock Consultado en abril de 2025.
+
+\bibitem[Airborn, 2022]{AirbnbJS}
+Airborn (2022).
+\newblock Airbnb javascript style guide.
+\newblock \url{https://github.com/airbnb/javascript}.
 
 \bibitem[Alliance, 2017]{agilealliance_xp}
 Alliance, A. (2017).
@@ -45,15 +25,34 @@ Ambler, S.~W. (2003).
   Software Developer}.
 \newblock Wiley.
 
+\bibitem[Anderson, 2010]{anderson2010kanban}
+Anderson, D.~J. (2010).
+\newblock {\em Kanban: Successful Evolutionary Change for Your Technology
+  Business}.
+\newblock Blue Hole Press.
+
 \bibitem[Azizi et~al., 2024]{azizi2024vector}
 Azizi, I., Echihabi, K., and Palpanas, T. (2024).
 \newblock Vector search on billion-scale data collections.
 \newblock {\em Proceedings of the VLDB PhD Workshop}.
 
+\bibitem[Beck, 2000]{beck2000extreme}
+Beck, K. (2000).
+\newblock {\em Extreme Programming Explained: Embrace Change}.
+\newblock Addison-Wesley.
+
 \bibitem[Beck and Cunningham, 1989]{BeckCunningham}
 Beck, K. and Cunningham, W. (1989).
 \newblock A laboratory for teaching object-oriented thinking.
 \newblock Disponible en: \url{https://c2.com/doc/oopsla89/paper.html}.
+
+\bibitem[Beckman et~al., 2021]{Beckman01012021}
+Beckman, M.~D., Çetinkaya Rundel, M., Horton, N.~J., Rundel, C.~W., Sullivan,
+  A.~J., and and, M.~T. (2021).
+\newblock Implementing version control with git and github as a learning
+  objective in statistics and data science courses.
+\newblock {\em Journal of Statistics and Data Science Education},
+  29(sup1):S132--S144.
 
 \bibitem[Bird et~al., 2009]{bird2009natural}
 Bird, S., Klein, E., and Loper, E. (2009).
@@ -86,6 +85,11 @@ Connolly, T. and Begg, C. (2014).
   Implementation, and Management}.
 \newblock Pearson, 6th edition.
 
+\bibitem[Consortium, 2014]{dsdm2014handbook}
+Consortium, D. (2014).
+\newblock {\em DSDM Agile Project Framework Handbook}.
+\newblock DSDM Alliance.
+
 \bibitem[Date, 2003]{Date2003}
 Date, C.~J. (2003).
 \newblock {\em An Introduction to Database Systems}.
@@ -106,7 +110,11 @@ Elmasri, R. and Navathe, S.~B. (2010).
 Ferro, S., Pelillo, M., and Traviglia, A. (2023).
 \newblock Ai-assisted digitalisation of historical documents.
 \newblock {\em The International Archives of the Photogrammetry, Remote Sensing
-  and Spatial Information Sciences}, XLVIII-M-2-2023:557--563.
+  and Spatial Information Sciences}, XLVIII-M-2-2023.
+
+\bibitem[{fotosdlahabana}, 2021]{fotosdlahabana}
+{fotosdlahabana} (2021).
+\newblock Diario de la marina (1844) – periódicos de la habana.
 
 \bibitem[Fowler, 2014a]{turn0search8}
 Fowler, M. (2014a).
@@ -131,6 +139,10 @@ Gavilánez~Álvarez, O.~D., Layedra~Larrea, N.~P., and Ramos~Valencia, M.~V.
 \newblock Análisis comparativo de patrones de diseño de software.
 \newblock {\em Polo del Conocimiento: Revista científico - profesional},
   7(7):2146--2165.
+
+\bibitem[GitHub, 2024]{github_version_control}
+GitHub (2024).
+\newblock What is version control?
 
 \bibitem[Goodger, 2001]{PEP257}
 Goodger, D. (2001).
@@ -167,9 +179,22 @@ Harrington, J.~L. (2015).
 \newblock Referential integrity.
 \newblock Accessed: 2025-05-07.
 
-\bibitem[{LangChain}, 2023]{langchain2023langgraph}
-{LangChain} (2023).
-\newblock Langgraph.
+\bibitem[{ISO}, 2023]{ISO25010-2023}
+{ISO} (2023).
+\newblock {ISO/IEC 25010:2023 -- Systems and software engineering -- Systems
+  and software Quality Requirements and Evaluation (SQuaRE) -- Product quality
+  model}.
+\newblock Standard ISO/IEC 25010:2023, International Organization for
+  Standardization, Geneva, Switzerland.
+
+\bibitem[ISO/IEC, 2016]{ISO9075}
+ISO/IEC (2016).
+\newblock Information technology -- database languages -- sql.
+
+\bibitem[{LangChain Team}, 2023]{langchain2023docs}
+{LangChain Team} (2023).
+\newblock Langchain documentation.
+\newblock Accedido: 2025-02-25.
 
 \bibitem[Lewis et~al., 2020a]{lewis2020retrievalaugmented}
 Lewis, P. et~al. (2020a).
@@ -228,12 +253,6 @@ Newman, S. and Fowler, M. (2021).
 \newblock When to use microservices: Sam newman and martin fowler share their
   knowledge.
 
-\bibitem[Nguyen et~al., 2025]{proposed_llm}
-Nguyen, H.~D., Nguyen, T.-H.~A., and Nguyen, T.~B. (2025).
-\newblock A proposed large language model-based smart search for archive
-  system.
-\newblock arXiv preprint.
-
 \bibitem[Palli, 2023]{palli2023analisis}
 Palli, A. (2023).
 \newblock La importancia del análisis de requerimientos en el desarrollo de
@@ -250,6 +269,11 @@ Piryani, B., Mozafari, J., Abdallah, A., Doucet, A., and Jatowt, A. (2025).
 \newblock Multiocr-qa: Dataset for evaluating robustness of llms in question
   answering on multilingual ocr texts.
 \newblock {\em arXiv preprint arXiv:2502.16781}.
+
+\bibitem[Poppendieck and Poppendieck, 2003]{poppendieck2003lean}
+Poppendieck, M. and Poppendieck, T. (2003).
+\newblock {\em Lean Software Development: An Agile Toolkit}.
+\newblock Addison-Wesley.
 
 \bibitem[Pressman et~al., 2010]{pressman2010practitioner}
 Pressman, R.~S. et~al. (2010).
@@ -269,6 +293,12 @@ Pérez-Pons, M.~E., Parra, J., Corchado, J.~M., Durán, R., Queiroz, J., and
 \bibitem[Reimers and Gurevych, 2019]{reimers2019sentence}
 Reimers, N. and Gurevych, I. (2019).
 \newblock Sentence-bert: Sentence embeddings using siamese bert-networks.
+
+\bibitem[Reinertsen, 2009]{reinertsen2009principles}
+Reinertsen, D.~G. (2009).
+\newblock {\em The Principles of Product Development Flow: Second Generation
+  Lean Product Development}.
+\newblock Celeritas Publishing.
 
 \bibitem[Richardson, 2025]{turn0search6}
 Richardson, C. (2025).
@@ -295,38 +325,25 @@ Sun, P. and Guo, R. (2024).
 \newblock Soar: New algorithms for even faster vector search with scann.
 \newblock Google Research Blog.
 
-\bibitem[Team, 2023a]{langchain2023}
-Team, L. (2023a).
-\newblock Langchain documentation.
-\newblock Accedido: 2023-04-05.
-
-\bibitem[Team, 2023b]{langraph2023}
-Team, L. (2023b).
+\bibitem[Team, 2023]{langraph2023}
+Team, L. (2023).
 \newblock Langraph documentation.
-\newblock Accedido: 2023-04-05.
+\newblock Accedido: 2025-02-05.
 
 \bibitem[{TextCortex}, 2024]{textcortex}
 {TextCortex} (2024).
 \newblock Textcortex chatpdf.
 \newblock Consultado en abril de 2025.
 
-\bibitem[van Rossum et~al., 2001]{PEP8}
-van Rossum, G., Warsaw, B., and Coghlan, N. (2001).
-\newblock Pep 8 -- style guide for python code.
-\newblock \url{https://peps.python.org/pep-0008/}.
+\bibitem[Van~Rossum et~al., 2001]{van2001pep}
+Van~Rossum, G., Warsaw, B., and Coghlan, N. (2001).
+\newblock Pep 8--style guide for python code.
+\newblock {\em Python. org}, 1565:28.
 
 \bibitem[{Vidnoz}, 2024]{vidnoz}
 {Vidnoz} (2024).
 \newblock Vidnoz chatpdf.
 \newblock Consultado en abril de 2025.
-
-\bibitem[{Wikipedia}, 2023]{wikipedia_diario}
-{Wikipedia} (2023).
-\newblock Diario de la marina.
-
-\bibitem[Wikipedia, 2025]{turn0search9}
-Wikipedia (2025).
-\newblock Microservices.
 
 \bibitem[Xie et~al., 2023]{xie2023brief}
 Xie, X., Liu, H., Hou, W., and Huang, H. (2023).
